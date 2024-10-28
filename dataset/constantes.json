@@ -1,0 +1,1462 @@
+{
+  "ClassificacaoEvento": [
+    {
+      "Valor": "ABATFUNDOASSISTENCIAFER",
+      "Descrição": "Abatimento Fundo de Assistência pago em férias"
+    },
+    {
+      "Valor": "ABATFUNDOPREVIDENCIAFER",
+      "Descrição": "Abatimento Fundo de Previdência pago em férias"
+    },
+    {
+      "Valor": "ABATFUNDOFINANCEIROFER",
+      "Descrição": "Abatimento Fundo Financeiro pago em férias"
+    },
+    {
+      "Valor": "ABATINSSFER",
+      "Descrição": "Abatimento INSS pago em férias"
+    },
+    {
+      "Valor": "ABATPREVIDENCIAESTADUALFER",
+      "Descrição": "Abatimento Previdência Estadual pago em férias"
+    },
+    {
+      "Valor": "ABATSALM",
+      "Descrição": "Abatimento salário maternidade"
+    },
+    {
+      "Valor": "ABATSALM13",
+      "Descrição": "Abatimento salário maternidade 13º salário"
+    },
+    {
+      "Valor": "ABONOTERCO",
+      "Descrição": "1/3 de abono"
+    },
+    {
+      "Valor": "ADI13SAL",
+      "Descrição": "13º salário adiantado"
+    },
+    {
+      "Valor": "ADIFERIAS",
+      "Descrição": "Adiantamento de férias"
+    },
+    {
+      "Valor": "ADISALNDESC",
+      "Descrição": "Adiantamento salarial não descontado"
+    },
+    {
+      "Valor": "AUXNAT",
+      "Descrição": "Auxílio natalidade"
+    },
+    {
+      "Valor": "AUXDOENCA15DIAS",
+      "Descrição": "Auxílio doença/acidente até 15 dias"
+    },
+    {
+      "Valor": "AVPREDESC",
+      "Descrição": "Aviso prévio descontado"
+    },
+    {
+      "Valor": "AVPREIND",
+      "Descrição": "Aviso prévio indenizado"
+    },
+    {
+      "Valor": "AVPREIND13SAL",
+      "Descrição": "13º salário aviso prévio indenizado"
+    },
+    {
+      "Valor": "AVPREINDUMDOZE",
+      "Descrição": "1/12 aviso prévio indenizado"
+    },
+    {
+      "Valor": "BASABATINSSDV",
+      "Descrição": "Base abatimento INSS - duplo vínculo"
+    },
+    {
+      "Valor": "BASEINSSNEG",
+      "Descrição": "Base negativa INSS - Mensal"
+    },
+    {
+      "Valor": "BASINSSDV",
+      "Descrição": "Base INSS - duplo vínculo"
+    },
+    {
+      "Valor": "BASINSSDV13SAL",
+      "Descrição": "Base INSS 13º salário - duplo vínculo"
+    },
+    {
+      "Valor": "BASINSSOUTEMP",
+      "Descrição": "Base INSS outras empresas"
+    },
+    {
+      "Valor": "BASINSSOUTEMP13SAL",
+      "Descrição": "Base INSS outras empresas 13º salário"
+    },
+    {
+      "Valor": "BASIRRFDV",
+      "Descrição": "Base IRRF - duplo vínculo"
+    },
+    {
+      "Valor": "BASIRRFDV13SAL",
+      "Descrição": "Base IRRF 13º salário - duplo vínculo"
+    },
+    {
+      "Valor": "BASIRRFFERIASANT",
+      "Descrição": "Base IRRF de férias anteriores"
+    },
+    {
+      "Valor": "BASIRRFFERIASRESCDV",
+      "Descrição": "Base IRRF férias resc. - duplo vínculo"
+    },
+    {
+      "Valor": "BASIRRFOUTEMP",
+      "Descrição": "Base IRRF outras empresas"
+    },
+    {
+      "Valor": "BASIRRFOUTEMP13SAL",
+      "Descrição": "Base IRRF outras empresas 13º salário"
+    },
+    {
+      "Valor": "DESC13SALADI",
+      "Descrição": "Desconto 13º salário adiantado"
+    },
+    {
+      "Valor": "DESC13SALDEVREINTG",
+      "Descrição": "Desconto de 13º salário devido reintegração"
+    },
+    {
+      "Valor": "DESC13SALINTEGADI",
+      "Descrição": "Desc. do 13º Integral adiantado"
+    },
+    {
+      "Valor": "DESC13SALINTEGADIESOCIAL",
+      "Descrição": "Desc. do 13º Integral adiantado eSocial"
+    },
+    {
+      "Valor": "DESCADISAL",
+      "Descrição": "Desconto adiantamento salarial"
+    },
+    {
+      "Valor": "DESCDEP",
+      "Descrição": "Desconto por dependente"
+    },
+    {
+      "Valor": "DESCHAUXMAT",
+      "Descrição": "Desc. horas aux. maternidade"
+    },
+    {
+      "Valor": "DESCHAUXMAT13SAL",
+      "Descrição": "Desc. horas aux. maternidade 13º salário"
+    },
+    {
+      "Valor": "DEVFGTS",
+      "Descrição": "Devolução FGTS 13º salário"
+    },
+    {
+      "Valor": "DEVINSS",
+      "Descrição": "Devolução de INSS"
+    },
+    {
+      "Valor": "DEVIRRF",
+      "Descrição": "Devolução de IRRF"
+    },
+    {
+      "Valor": "EMPRESTIMO",
+      "Descrição": "Empréstimos"
+    },
+    {
+      "Valor": "FALTADSR",
+      "Descrição": "Faltas DSR"
+    },
+    {
+      "Valor": "FALTAS",
+      "Descrição": "Faltas"
+    },
+    {
+      "Valor": "FERDOBROTERCO",
+      "Descrição": "1/3 de férias em dobro"
+    },
+    {
+      "Valor": "FERIASADI",
+      "Descrição": "Férias adiantadas"
+    },
+    {
+      "Valor": "FERIASTERCO",
+      "Descrição": "1/3 de férias"
+    },
+    {
+      "Valor": "FERINDENTERCO",
+      "Descrição": "1/3 de férias indenizadas"
+    },
+    {
+      "Valor": "FERPROPTERCO",
+      "Descrição": "1/3 de férias proporcionais"
+    },
+    {
+      "Valor": "FERVENCTERCO",
+      "Descrição": "1/3 de férias vencidas"
+    },
+    {
+      "Valor": "FGTS",
+      "Descrição": "FGTS"
+    },
+    {
+      "Valor": "FGTS13SAL",
+      "Descrição": "FGTS 13º salário"
+    },
+    {
+      "Valor": "FGTSAVPRE",
+      "Descrição": "FGTS aviso prévio"
+    },
+    {
+      "Valor": "FGTSMESANT",
+      "Descrição": "FGTS mês anterior"
+    },
+    {
+      "Valor": "FGTSSOBFERIAS",
+      "Descrição": "FGTS sobre férias"
+    },
+    {
+      "Valor": "FUNDASS",
+      "Descrição": "Fundo assistência"
+    },
+    {
+      "Valor": "FUNDASS13SAL",
+      "Descrição": "Fundo assistência 13º salário"
+    },
+    {
+      "Valor": "FUNDFIN",
+      "Descrição": "Fundo financeiro"
+    },
+    {
+      "Valor": "FUNDFIN13SAL",
+      "Descrição": "Fundo financeiro 13º salário"
+    },
+    {
+      "Valor": "FUNDPREV",
+      "Descrição": "Fundo previdência"
+    },
+    {
+      "Valor": "FUNDPREV13SAL",
+      "Descrição": "Fundo previdência 13º salário"
+    },
+    {
+      "Valor": "HAUXMATNPAG",
+      "Descrição": "Horas aux. maternidade não pagas"
+    },
+    {
+      "Valor": "HORASFERIAS",
+      "Descrição": "Horas férias"
+    },
+    {
+      "Valor": "HORASFERIASAVPREVIND",
+      "Descrição": "Horas férias aviso prévio indenizado"
+    },
+    {
+      "Valor": "HORASFERIASCOL",
+      "Descrição": "Horas férias coletivas"
+    },
+    {
+      "Valor": "INSS",
+      "Descrição": "INSS"
+    },
+    {
+      "Valor": "INSS13SAL",
+      "Descrição": "INSS 13º salário"
+    },
+    {
+      "Valor": "INSSSOBHAUXMATNPAG",
+      "Descrição": "INSS sobre horas aux. matern. não pagas"
+    },
+    {
+      "Valor": "INTEG13SAL",
+      "Descrição": "13º salário integral"
+    },
+    {
+      "Valor": "IRRF",
+      "Descrição": "IRRF"
+    },
+    {
+      "Valor": "IRRF13SAL",
+      "Descrição": "IRRF 13º salário"
+    },
+    {
+      "Valor": "IRRFFERIASRESC",
+      "Descrição": "IRRF férias rescisão"
+    },
+    {
+      "Valor": "ISS",
+      "Descrição": "ISS - Imposto Sobre Serviço"
+    },
+    {
+      "Valor": "LIQ13SALINTEGADI",
+      "Descrição": "Líquido do 13º Integral adiantado"
+    },
+    {
+      "Valor": "MULTAFGTS",
+      "Descrição": "Multa do FGTS"
+    },
+    {
+      "Valor": "NENHUMA",
+      "Descrição": "Nenhuma"
+    },
+    {
+      "Valor": "PARCISENFUNDFIN",
+      "Descrição": "Parcela isenta fundo financeiro"
+    },
+    {
+      "Valor": "PARCISENFUNDFIN13SAL",
+      "Descrição": "Parcela isenta fundo financeiro 13º salário"
+    },
+    {
+      "Valor": "PARCISENFUNDPREV",
+      "Descrição": "Parcela isenta fundo previdência"
+    },
+    {
+      "Valor": "PARCISENFUNDPREV13SAL",
+      "Descrição": "Parcela isenta fundo previdência 13º salário"
+    },
+    {
+      "Valor": "PARCISENIRRF",
+      "Descrição": "Parcela isenta IRRF"
+    },
+    {
+      "Valor": "PARCISENIRRF13SAL",
+      "Descrição": "Parcela isenta IRRF 13º salário"
+    },
+    {
+      "Valor": "PARCISENIRRFMOLGRV",
+      "Descrição": "Parcela isenta IRRF moléstia grave"
+    },
+    {
+      "Valor": "PARCISENIRRFMOLGRV13SAL",
+      "Descrição": "Parcela isenta IRRF moléstia grave 13º salário"
+    },
+    {
+      "Valor": "PARCISENIRRFMOLGRVFERIAS",
+      "Descrição": "Parcela isenta IRRF moléstia grave férias"
+    },
+    {
+      "Valor": "PARCISENIRRFMOLGRVFERIASADI",
+      "Descrição": "Parc. isenta IRRF moléstia grave férias adiant"
+    },
+    {
+      "Valor": "PARCISENIRRFMOLGRVFERIASRESC",
+      "Descrição": "Parc. isenta IRRF moléstia grave férias resc."
+    },
+    {
+      "Valor": "PARCISENIRRFSOBFERIASRESC",
+      "Descrição": "Parcela isenta IRRF sobre férias resc."
+    },
+    {
+      "Valor": "PENSJUDDESC",
+      "Descrição": "Pensão judicial - Desconto"
+    },
+    {
+      "Valor": "PLANOSAUDE",
+      "Descrição": "Plano de saúde"
+    },
+    {
+      "Valor": "PONTIDAO",
+      "Descrição": "Prontidão"
+    },
+    {
+      "Valor": "PREVEST",
+      "Descrição": "Prev. estadual"
+    },
+    {
+      "Valor": "PREVESTDECSAL",
+      "Descrição": "Prev. estadual 13º salário"
+    },
+    {
+      "Valor": "PROCEDMED",
+      "Descrição": "Procedimentos médicos"
+    },
+    {
+      "Valor": "PRORROGAUXMAT11770",
+      "Descrição": "Prorrog. do aux. maternidade - Lei 11770/2008"
+    },
+    {
+      "Valor": "REDBASINSSTRANSPAUT",
+      "Descrição": "Redutor base INSS transportador autônomo"
+    },
+    {
+      "Valor": "REDBASIRRFTRANSPAUT",
+      "Descrição": "Redutor base IRRF transportador autônomo"
+    },
+    {
+      "Valor": "RPPSABAT",
+      "Descrição": "Abatimento para RPPS"
+    },
+    {
+      "Valor": "RPPSABAT13",
+      "Descrição": "Abatimento para RPPS 13º salário"
+    },
+    {
+      "Valor": "SALFAMAPOS",
+      "Descrição": "Salário família aposentado"
+    },
+    {
+      "Valor": "SALFAMCEL",
+      "Descrição": "Salário família celetista"
+    },
+    {
+      "Valor": "SALFAMESP",
+      "Descrição": "Salário família especial"
+    },
+    {
+      "Valor": "SALFAMEST",
+      "Descrição": "Salário família estatutário"
+    },
+    {
+      "Valor": "SALFAMPAGMAIOR",
+      "Descrição": "Salário família pago a maior"
+    },
+    {
+      "Valor": "SENAT",
+      "Descrição": "SENAT"
+    },
+    {
+      "Valor": "SEST",
+      "Descrição": "SEST"
+    },
+    {
+      "Valor": "SOBREAVISO",
+      "Descrição": "Sobreaviso"
+    },
+    {
+      "Valor": "TOTDESC13SALINTEGADI",
+      "Descrição": "Total de desc. do 13º Integral adiantado"
+    },
+    {
+      "Valor": "VALETRANSP",
+      "Descrição": "Vale transporte - custo empregador"
+    }
+  ],
+  "TipoProcessamento": [
+    {
+      "Valor": "MENSAL",
+      "Descrição": "Mensal"
+    },
+    {
+      "Valor": "FERIAS",
+      "Descrição": "Férias"
+    },
+    {
+      "Valor": "DECIMO_TERCEIRO_SALARIO",
+      "Descrição": "Décimo terceiro salário"
+    },
+    {
+      "Valor": "RESCISAO",
+      "Descrição": "Rescisão"
+    }
+  ],
+  "SubTipoProcessamento": [
+    {
+      "Valor": "INTEGRAL",
+      "Descrição": "Integral"
+    },
+    {
+      "Valor": "ADIANTAMENTO",
+      "Descrição": "Adiantamento"
+    },
+    {
+      "Valor": "COMPLEMENTAR",
+      "Descrição": "Complementar"
+    }
+  ],
+  "TipoAvisoPrevio": [
+    {
+      "Valor": "TRABALHADO_REDUCAO_2_HORAS_DIARIAS",
+      "Descrição": "Trabalhado com redução de 2 horas diárias"
+    },
+    {
+      "Valor": "TRABALHADO_REDUCAO_7_DIAS_CORRIDOS",
+      "Descrição": "Trabalhado com redução de 7 dias corridos"
+    },
+    {
+      "Valor": "INDENIZADO",
+      "Descrição": "Indenizado"
+    },
+    {
+      "Valor": "TRABALHADO",
+      "Descrição": "Trabalhado"
+    },
+    {
+      "Valor": "DESCONTADO",
+      "Descrição": "Descontado"
+    },
+    {
+      "Valor": "DISPENSADO",
+      "Descrição": "Dispensado"
+    }
+  ],
+  "TipoEvento": [
+    {
+      "Valor": "VENCIMENTO",
+      "Descrição": "Vencimento (provento)"
+    },
+    {
+      "Valor": "DESCONTO",
+      "Descrição": "Desconto"
+    },
+    {
+      "Valor": "INFORMATIVO_MAIS",
+      "Descrição": "Informativo mais (evento de vencimento que não compõe líquido)"
+    },
+    {
+      "Valor": "INFORMATIVO_MENOS",
+      "Descrição": "Informativo menos (evento de desconto que não compõe líquido)"
+    }
+  ],
+  "UnidadeEvento": [
+    {
+      "Valor": "AUTOMATICO",
+      "Descrição": "Automático"
+    },
+    {
+      "Valor": "AVOS",
+      "Descrição": "Avos"
+    },
+    {
+      "Valor": "DIAS",
+      "Descrição": "Dias"
+    },
+    {
+      "Valor": "HORAS",
+      "Descrição": "Horas"
+    },
+    {
+      "Valor": "PERCENTUAL",
+      "Descrição": "Percentual"
+    },
+    {
+      "Valor": "QUANTIDADE",
+      "Descrição": "Quantidade"
+    },
+    {
+      "Valor": "VALOR",
+      "Descrição": "Valor"
+    }
+  ],
+  "FormaPagamento": [
+    {
+      "Valor": "DINHEIRO",
+      "Descrição": "Dinheiro"
+    },
+    {
+      "Valor": "CHEQUE",
+      "Descrição": "Cheque"
+    },
+    {
+      "Valor": "CREDITO_EM_CONTA",
+      "Descrição": "Crédito em conta"
+    }
+  ],
+  "GrauDeficiencia": [
+    {
+      "Valor": "PARCIAL",
+      "Descrição": "Parcial"
+    },
+    {
+      "Valor": "TOTAL",
+      "Descrição": "Total"
+    },
+    {
+      "Valor": "NAOINVALIDO",
+      "Descrição": "Não inválido"
+    }
+  ],
+  "MesContribuicaoSindical": [
+    {
+      "Valor": "JANEIRO",
+      "Descrição": "Janeiro"
+    },
+    {
+      "Valor": "FEVEREIRO",
+      "Descrição": "Fevereiro"
+    },
+    {
+      "Valor": "MARCO",
+      "Descrição": "Março"
+    },
+    {
+      "Valor": "ABRIL",
+      "Descrição": "Abril"
+    },
+    {
+      "Valor": "MAIO",
+      "Descrição": "Maio"
+    },
+    {
+      "Valor": "JUNHO",
+      "Descrição": "Junho"
+    },
+    {
+      "Valor": "JULHO",
+      "Descrição": "Julho"
+    },
+    {
+      "Valor": "AGOSTO",
+      "Descrição": "Agosto"
+    },
+    {
+      "Valor": "SETEMBRO",
+      "Descrição": "Setembro"
+    },
+    {
+      "Valor": "OUTUBRO",
+      "Descrição": "Outubro"
+    },
+    {
+      "Valor": "NOVEMBRO",
+      "Descrição": "Novembro"
+    },
+    {
+      "Valor": "DEZEMBRO",
+      "Descrição": "Dezembro"
+    }
+  ],
+  "OrigemRendimento": [
+    {
+      "Valor": "CARGO",
+      "Descrição": "Cargo"
+    },
+    {
+      "Valor": "CARGO_COMISSIONADO",
+      "Descrição": "Cargo comissionado"
+    }
+  ],
+  "Sexo": [
+    {
+      "Valor": "MASCULINO",
+      "Descrição": "Masculino"
+    },
+    {
+      "Valor": "FEMININO",
+      "Descrição": "Feminino"
+    }
+  ],
+  "TipoAdmissao": [
+    {
+      "Valor": "ADMISSAO",
+      "Descrição": "Admissão"
+    },
+    {
+      "Valor": "TRANSFERENCIA",
+      "Descrição": "Transferência"
+    },
+    {
+      "Valor": "SUBSTITUICAO",
+      "Descrição": "Substituição"
+    }
+  ],
+  "TipoVinculo": [
+    {
+      "Valor": "CELETISTA",
+      "Descrição": "Celetista"
+    },
+    {
+      "Valor": "ESTATUTARIO",
+      "Descrição": "Estatutário"
+    },
+    {
+      "Valor": "OUTROS",
+      "Descrição": "Outros"
+    }
+  ],
+  "TipoMatricula": [
+    {
+      "Valor": "FUNCIONARIO",
+      "Descrição": "Funcionário"
+    },
+    {
+      "Valor": "ESTAGIARIO",
+      "Descrição": "Estagiário"
+    },
+    {
+      "Valor": "AUTONOMO",
+      "Descrição": "Autônomo"
+    },
+    {
+      "Valor": "APOSENTADO",
+      "Descrição": "Aposentado"
+    },
+    {
+      "Valor": "PENSIONISTA",
+      "Descrição": "Pensionista"
+    }
+  ],
+  "ResponsabilidadePagamento": [
+    {
+      "Valor": "PAGAMENTO_EXCLUSIVAMENTE_PELO_CEDENTE_ORIGEM",
+      "Descrição": "Pagamento exclusivamente feito pelo cedente (origem)"
+    },
+    {
+      "Valor": "PAGAMENTO_EXCLUSIVAMENTE_PELO_CESSIONARIO_DESTINO",
+      "Descrição": "Pagamento exclusivamente feito pelo cessionário (destino)"
+    },
+    {
+      "Valor": "PAGAMENTO_PELO_CEDENTE_ORIGEM_E_PELO_CESSIONARIO_DESTINO",
+      "Descrição": "Pagamento feito pelo cedente e pelo cessionário"
+    },
+    {
+      "Valor": "PAGAMENTO_PELO_CEDENTE_ORIGEM_COM_RESSARCIMENTO_PELO_CESSIONARIO_DESTINO",
+      "Descrição": "Pagamento feito pelo cedente e ressarcimento pelo cessionário"
+    }
+  ],
+  "TipoOnus": [
+    {
+      "Valor": "CEDENTE",
+      "Descrição": "Cedente"
+    },
+    {
+      "Valor": "CESSIONARIO",
+      "Descrição": "Cessionário"
+    }
+  ],
+  "TipoRegime": [
+    {
+      "Valor": "CAIXA",
+      "Descrição": "Caixa"
+    },
+    {
+      "Valor": "COMPETENCIA",
+      "Descrição": "Competência"
+    }
+  ],
+  "ClassificacaoTipoAfastamento": [
+    {
+      "Valor": "ABORTO_NAO_CRIMINOSO",
+      "Descrição": "Aborto não criminoso"
+    },
+    {
+      "Valor": "ACIDENTE_DE_TRABALHO_EMPREGADOR",
+      "Descrição": "Acidente de trabalho empregador"
+    },
+    {
+      "Valor": "ACIDENTE_DE_TRABALHO_PREVIDENCIA",
+      "Descrição": "Acidente de trabalho previdência"
+    },
+    {
+      "Valor": "ACIDENTE_DE_TRAJETO_EMPREGADOR",
+      "Descrição": "Acidente de trajeto empregador"
+    },
+    {
+      "Valor": "ACIDENTE_DE_TRAJETO_PREVIDENCIA",
+      "Descrição": "Acidente de trajeto previdência"
+    },
+    {
+      "Valor": "DOENCA_DO_TRABALHO_EMPREGADOR",
+      "Descrição": "Doença do trabalho empregador"
+    },
+    {
+      "Valor": "DOENCA_DO_TRABALHO_PREVIDENCIA",
+      "Descrição": "Doença do trabalho previdência"
+    },
+    {
+      "Valor": "AUXILIO_DOENCA_EMPREGADOR",
+      "Descrição": "Auxílio doença empregador"
+    },
+    {
+      "Valor": "AUXILIO_DOENCA_PREVIDENCIA",
+      "Descrição": "Auxílio doença previdência"
+    },
+    {
+      "Valor": "ACOMPANHAR_MEMBRO_DA_FAMILIA_ENFERMO",
+      "Descrição": "Acompanhar membro da família enfermo"
+    },
+    {
+      "Valor": "ADOCAO_GUARDA_JUDICIAL_DE_CRIANCA",
+      "Descrição": "Adoção/guarda judicial de criança"
+    },
+    {
+      "Valor": "APOSENTADORIA_POR_INVALIDEZ",
+      "Descrição": "Aposentadoria por invalidez"
+    },
+    {
+      "Valor": "CANDIDATO_A_CARGO_ELETIVO",
+      "Descrição": "Candidato a cargo eletivo"
+    },
+    {
+      "Valor": "CARCERE",
+      "Descrição": "Cárcere"
+    },
+    {
+      "Valor": "CEDENCIA",
+      "Descrição": "Cedência"
+    },
+    {
+      "Valor": "FALTA",
+      "Descrição": "Falta"
+    },
+    {
+      "Valor": "FERIAS",
+      "Descrição": "Férias"
+    },
+    {
+      "Valor": "LICENCA_COM_VENCIMENTOS",
+      "Descrição": "Licença COM vencimentos"
+    },
+    {
+      "Valor": "LICENCA_SEM_VENCIMENTOS",
+      "Descrição": "Licença SEM vencimentos"
+    },
+    {
+      "Valor": "LICENCA_MATERNIDADE",
+      "Descrição": "Licença maternidade"
+    },
+    {
+      "Valor": "MANDATO_ELEITORAL_COM_REMUNERACAO",
+      "Descrição": "Mandato eleitoral COM remuneração"
+    },
+    {
+      "Valor": "MANDATO_ELEITORAL_SEM_REMUNERACAO",
+      "Descrição": "Mandato eleitoral SEM remuneração"
+    },
+    {
+      "Valor": "MANDATO_SINDICAL",
+      "Descrição": "Mandato sindical"
+    },
+    {
+      "Valor": "MULHER_VITIMA_DE_VIOLENCIA_LEI_MARIA_DA_PENHA",
+      "Descrição": "Mulher vítima de violência (Lei Maria da Penha)"
+    },
+    {
+      "Valor": "PRORROGACAO_DA_LICENCA_MATERNIDADE",
+      "Descrição": "Prorrogação da licença maternidade"
+    },
+    {
+      "Valor": "SERVICO_MILITAR",
+      "Descrição": "Serviço militar"
+    },
+    {
+      "Valor": "SERVIDOR_PUBLICO_EM_DISPONIBILIDADE",
+      "Descrição": "Servidor público em disponibilidade"
+    },
+    {
+      "Valor": "SUSPENSAO_DISCIPLINAR_ART474_CLT",
+      "Descrição": "Suspensão disciplinar Art.474 CLT"
+    },
+    {
+      "Valor": "SUSPENSAO_DO_CONTRATO_ART476_CLT",
+      "Descrição": "Suspensão do contrato Art.476 CLT"
+    },
+    {
+      "Valor": "APOSENTADO",
+      "Descrição": "Aposentado"
+    },
+    {
+      "Valor": "DEMITIDO",
+      "Descrição": "Demitido"
+    },
+    {
+      "Valor": "AUSENCIA_LEGAL",
+      "Descrição": "Ausência Legal"
+    },
+    {
+      "Valor": "PRORROGACAO_DA_LICENCA_MATERNIDADE_11_770",
+      "Descrição": "Prorrogação da licença maternidade lei 11.770"
+    }
+  ],
+  "SituacaoPeriodoAquisitivo": [
+    {
+      "Valor": "EM_ANDAMENTO",
+      "Descrição": "Em andamento"
+    },
+    {
+      "Valor": "QUITADO",
+      "Descrição": "Quitado"
+    },
+    {
+      "Valor": "CANCELADO",
+      "Descrição": "Cancelado"
+    },
+    {
+      "Valor": "ADQUIRIDO",
+      "Descrição": "Adquirido"
+    },
+    {
+      "Valor": "ANULADO",
+      "Descrição": "Anulado"
+    }
+  ],
+  "SituacaoPeriodoAquisitivoDecimoTerceiro": [
+    {
+      "Valor": "ATRASADO",
+      "Descrição": "Atrasado"
+    },
+    {
+      "Valor": "EM_ANDAMENTO",
+      "Descrição": "Em andamento"
+    },
+    {
+      "Valor": "PERDA_DIREITO",
+      "Descrição": "Perda do direito"
+    },
+    {
+      "Valor": "QUITADO",
+      "Descrição": "Quitado"
+    },
+    {
+      "Valor": "QUITADO_PARCIALMENTE",
+      "Descrição": "Quitado parcialmente (quando há adiantamento ou reintegração da matrícula)"
+    },
+    {
+      "Valor": "ANULADO",
+      "Descrição": "Anulado"
+    }
+  ],
+  "OcorrenciaSefip": [
+    {
+      "Valor": "NUNCA_EXPOSTO_AGENTES_NOCIVOS",
+      "Descrição": "Nunca teve exposto a agentes nocivos"
+    },
+    {
+      "Valor": "EXPOSTO_ALGUMA_VEZ",
+      "Descrição": "Trabalhador já teve exposto alguma vez"
+    },
+    {
+      "Valor": "EXPOSTO_APOSENTADORIA_15_ANOS",
+      "Descrição": "Exposto a agentes nocivos - aposentadoria 15 anos"
+    },
+    {
+      "Valor": "EXPOSTO_APOSENTADORIA_20_ANOS",
+      "Descrição": "Exposto a agentes nocivos - aposentadoria 20 anos"
+    },
+    {
+      "Valor": "EXPOSTO_APOSENTADORIA_25_ANOS",
+      "Descrição": "Exposto a agentes nocivos - aposentadoria 25 anos"
+    }
+  ],
+  "TipoSalarioFamilia": [
+    {
+      "Valor": "ESTATUTARIO",
+      "Descrição": "Estatutário"
+    },
+    {
+      "Valor": "APOSENTADO",
+      "Descrição": "Aposentado"
+    },
+    {
+      "Valor": "ESPECIAL",
+      "Descrição": "Especial"
+    },
+    {
+      "Valor": "CELETISTA",
+      "Descrição": "Celetista"
+    }
+  ],
+  "TipoRetornoValeTransporte": [
+    {
+      "Valor": "QUANTIDADE",
+      "Descrição": "Quantidade"
+    },
+    {
+      "Valor": "VALOR",
+      "Descrição": "Valor"
+    }
+  ],
+  "ClassificacaoAdicional": [
+    {
+      "Valor": "ANUENIO",
+      "Descrição": "Anuênio"
+    },
+    {
+      "Valor": "BIENIO",
+      "Descrição": "Biênio"
+    },
+    {
+      "Valor": "TRIENIO",
+      "Descrição": "Triênio"
+    },
+    {
+      "Valor": "QUADRIENIO",
+      "Descrição": "Quadriênio"
+    },
+    {
+      "Valor": "QUINQUENIO",
+      "Descrição": "Quinquênio"
+    }
+  ],
+  "TipoAdicional": [
+    {
+      "Valor": "QUANTIDADE_ADICIONAIS",
+      "Descrição": "Quantidade de adicionais"
+    },
+    {
+      "Valor": "PERCENTUAL_TEMPO_SERVICO",
+      "Descrição": "Percentual de adicionais"
+    }
+  ],
+  "AbonoFalta": [
+    {
+      "Valor": "ABONO",
+      "Descrição": "Abono"
+    },
+    {
+      "Valor": "FALTA",
+      "Descrição": "Falta"
+    }
+  ],
+  "TipoAbono": [
+    {
+      "Valor": "ABONADO",
+      "Descrição": "Abonado"
+    },
+    {
+      "Valor": "NAO_ABONADO",
+      "Descrição": "Não abonado"
+    },
+    {
+      "Valor": "ABONADO_E_NAO_ABONADO",
+      "Descrição": "Abonado e não abonado"
+    }
+  ],
+  "TipoFalta": [
+    {
+      "Valor": "JUSTIFICADA",
+      "Descrição": "Justificada"
+    },
+    {
+      "Valor": "NAO_JUSTIFICADA",
+      "Descrição": "Não justificada"
+    },
+    {
+      "Valor": "JUSTIFICADA_E_NAO_JUSTIFICADA",
+      "Descrição": "Justificada e não justificada"
+    }
+  ],
+  "MotivoMovimentacaoPeriodoAquisitivoDecimoTerceiro": [
+    {
+      "Valor": "ADIANTAMENTO_DECIMO_TERCEIRO",
+      "Descrição": "Adiantamento no 13º"
+    },
+    {
+      "Valor": "ADIANTAMENTO_FERIAS",
+      "Descrição": "Adiantamento nas Férias"
+    },
+    {
+      "Valor": "COMPLEMENTAR",
+      "Descrição": "Complementar"
+    },
+    {
+      "Valor": "GRATIFICACAO_NATALINA",
+      "Descrição": "Gratificação natalina (13º integral)"
+    },
+    {
+      "Valor": "RESCISAO",
+      "Descrição": "Rescisão"
+    },
+    {
+      "Valor": "RESCISAO_COMPLEMENTAR",
+      "Descrição": "Rescisão complementar"
+    }
+  ],
+  "Bases": [
+    {
+      "Valor": "PAGAPROP",
+      "Descrição": "Paga Proporcional"
+    },
+    {
+      "Valor": "SALBASE",
+      "Descrição": "Salário Base"
+    },
+    {
+      "Valor": "HORAEXTRA",
+      "Descrição": "Horas Extras"
+    },
+    {
+      "Valor": "PERIC",
+      "Descrição": "Periculosidade"
+    },
+    {
+      "Valor": "SIND",
+      "Descrição": "Sindicato"
+    },
+    {
+      "Valor": "FGTS",
+      "Descrição": "F.G.T.S."
+    },
+    {
+      "Valor": "FGTS13",
+      "Descrição": "F.G.T.S. 13º Salário"
+    },
+    {
+      "Valor": "IRRF",
+      "Descrição": "I.R.R.F."
+    },
+    {
+      "Valor": "IRRF13",
+      "Descrição": "I.R.R.F. 13º Salário"
+    },
+    {
+      "Valor": "IRRFFERRESC",
+      "Descrição": "I.R.R.F. Férias Rescisão"
+    },
+    {
+      "Valor": "INSS",
+      "Descrição": "I.N.S.S."
+    },
+    {
+      "Valor": "INSS13",
+      "Descrição": "I.N.S.S. 13º Salário"
+    },
+    {
+      "Valor": "PREVEST",
+      "Descrição": "Prev. Estadual"
+    },
+    {
+      "Valor": "PREVEST13",
+      "Descrição": "Prev. Estadual 13º Salário"
+    },
+    {
+      "Valor": "FUNDASS",
+      "Descrição": "Fundo Assistência"
+    },
+    {
+      "Valor": "FUNDASS13",
+      "Descrição": "Fundo Assistência 13º Salário"
+    },
+    {
+      "Valor": "FUNDOPREV",
+      "Descrição": "Fundo Previdência"
+    },
+    {
+      "Valor": "FUNDPREV13",
+      "Descrição": "Fundo Previdência 13º Salário"
+    },
+    {
+      "Valor": "OUTRASBASES",
+      "Descrição": "Outras Bases"
+    },
+    {
+      "Valor": "FGTSAVISO",
+      "Descrição": "F.G.T.S. Aviso Prévio"
+    },
+    {
+      "Valor": "ABATIRRF",
+      "Descrição": "Abatimento I.R.R.F."
+    },
+    {
+      "Valor": "ABATIRRF13",
+      "Descrição": "Abatimento I.R.R.F. 13º Sal."
+    },
+    {
+      "Valor": "DESCIRRF",
+      "Descrição": "Desconto I.R.R.F."
+    },
+    {
+      "Valor": "DESCIRRF13",
+      "Descrição": "Desconto I.R.R.F. 13º Salário"
+    },
+    {
+      "Valor": "DESCIRRFERES",
+      "Descrição": "Desconto I.R.R.F. Férias Resc."
+    },
+    {
+      "Valor": "EXCEINSS",
+      "Descrição": "Excedente I.N.S.S."
+    },
+    {
+      "Valor": "EXCEINSS13",
+      "Descrição": "Excedente I.N.S.S. 13º Salário"
+    },
+    {
+      "Valor": "ABATINSS",
+      "Descrição": "Abatimento I.N.S.S."
+    },
+    {
+      "Valor": "DESCTERFER",
+      "Descrição": "Desconto 1/3 De Férias"
+    },
+    {
+      "Valor": "SALAFAM",
+      "Descrição": "Salário Família Normal"
+    },
+    {
+      "Valor": "INSSOUTRA",
+      "Descrição": "I.N.S.S. Outras Empresas"
+    },
+    {
+      "Valor": "INSSOUTRA13",
+      "Descrição": "I.N.S.S. Outras Emp. 13º Sal"
+    },
+    {
+      "Valor": "IRRFOUTRA",
+      "Descrição": "I.R.R.F. Outras Empresas"
+    },
+    {
+      "Valor": "IRRFOUTRA13",
+      "Descrição": "I.R.R.F. Outras Emp. 13º Sal"
+    },
+    {
+      "Valor": "IRRFFER",
+      "Descrição": "I.R.R.F. Férias"
+    },
+    {
+      "Valor": "CONTSIND",
+      "Descrição": "Contrib. Sindical Anual"
+    },
+    {
+      "Valor": "MEDIAUXMAT",
+      "Descrição": "Média Auxílio Maternidade"
+    },
+    {
+      "Valor": "DESC13REINT",
+      "Descrição": "Desc. 13º Salário Reintegração"
+    },
+    {
+      "Valor": "COMPHORAMES",
+      "Descrição": "Compõem Horas"
+    },
+    {
+      "Valor": "TERFERVENRES",
+      "Descrição": "1/3 Férias Vencidas Resc."
+    },
+    {
+      "Valor": "FUNDFIN",
+      "Descrição": "Fundo Financeiro"
+    },
+    {
+      "Valor": "FUNDFIN13",
+      "Descrição": "Fundo Financeiro 13º Salário"
+    },
+    {
+      "Valor": "MEDAUXMATPR",
+      "Descrição": "Média Auxílio Maternidade Proporcional"
+    },
+    {
+      "Valor": "IN13SADI",
+      "Descrição": "I.N.S.S. 13º Salário Distorção"
+    },
+    {
+      "Valor": "FUPR13SAPR",
+      "Descrição": "Fundo Previdência 13º Salário Provisão"
+    },
+    {
+      "Valor": "FUPR13SAAJPR",
+      "Descrição": "Fundo Previdência 13º Salário Ajuste Provisão"
+    },
+    {
+      "Valor": "FUPR13SAESPR",
+      "Descrição": "Fundo Previdência 13º Salário Estorno Provisão"
+    },
+    {
+      "Valor": "FUPR13SADI",
+      "Descrição": "Fundo Previdência 13º Salário Distorção"
+    },
+    {
+      "Valor": "PRES13SAPR",
+      "Descrição": "Prev. Estadual 13º Salário Provisão"
+    },
+    {
+      "Valor": "PRES13SAAJPR",
+      "Descrição": "Prev. Estadual 13º Salário Ajuste Provisão"
+    },
+    {
+      "Valor": "PRES13SAESPR",
+      "Descrição": "Prev. Estadual 13º Salário Estorno Provisão"
+    },
+    {
+      "Valor": "PRES13SADI",
+      "Descrição": "Prev. Estadual 13º Salário Distorção"
+    },
+    {
+      "Valor": "FUAS13SAPR",
+      "Descrição": "Fundo Assistência 13º Salário Provisão"
+    },
+    {
+      "Valor": "FUAS13SAAJPR",
+      "Descrição": "Fundo Assistência 13º Salário Ajuste Provisão"
+    },
+    {
+      "Valor": "FUAS13SAESPR",
+      "Descrição": "Fundo Assistência 13º Salário Estorno Provisão"
+    },
+    {
+      "Valor": "FUAS13SADI",
+      "Descrição": "Fundo Assistência 13º Salário Distorção"
+    },
+    {
+      "Valor": "FG13SAPR",
+      "Descrição": "F.G.T.S. 13º Salário Provisão"
+    },
+    {
+      "Valor": "FG13SAAJPR",
+      "Descrição": "F.G.T.S. 13º Salário Ajuste Provisão"
+    },
+    {
+      "Valor": "FG13SAESPR",
+      "Descrição": "F.G.T.S. 13º Salário Estorno Provisão"
+    },
+    {
+      "Valor": "INFEPR",
+      "Descrição": "I.N.S.S. Férias Provisão"
+    },
+    {
+      "Valor": "INFEAJPR",
+      "Descrição": "I.N.S.S. Férias Ajuste Provisão"
+    },
+    {
+      "Valor": "INFEESPR",
+      "Descrição": "I.N.S.S. Férias Estorno Provisão"
+    },
+    {
+      "Valor": "INFEDI",
+      "Descrição": "I.N.S.S. Férias Distorção"
+    },
+    {
+      "Valor": "FUPRFEPR",
+      "Descrição": "Fundo Previdência Férias Provisão"
+    },
+    {
+      "Valor": "FUPRFEAJPR",
+      "Descrição": "Fundo Previdência Férias Ajuste Provisão"
+    },
+    {
+      "Valor": "FUPRFEESPR",
+      "Descrição": "Fundo Previdência Férias Estorno Provisão"
+    },
+    {
+      "Valor": "FUPRFEDI",
+      "Descrição": "Fundo Previdência Férias Distorção"
+    },
+    {
+      "Valor": "PRESFEPR",
+      "Descrição": "Prev. Estadual Férias Provisão"
+    },
+    {
+      "Valor": "PRESFEAJPR",
+      "Descrição": "Prev. Estadual Férias Ajuste Provisão"
+    },
+    {
+      "Valor": "PRESFEESPR",
+      "Descrição": "Prev. Estadual Férias Estorno Provisão"
+    },
+    {
+      "Valor": "PRESFEDI",
+      "Descrição": "Prev. Estadual Férias Distorção"
+    },
+    {
+      "Valor": "FUASFEPR",
+      "Descrição": "Fundo Assistência Férias Provisão"
+    },
+    {
+      "Valor": "FUASFEAJPR",
+      "Descrição": "Fundo Assistência Férias Ajuste Provisão"
+    },
+    {
+      "Valor": "FUASFEESPR",
+      "Descrição": "Fundo Assistência Férias Estorno Provisão"
+    },
+    {
+      "Valor": "FUASFEDI",
+      "Descrição": "Fundo Assistência Férias Distorção"
+    },
+    {
+      "Valor": "FGFEPR",
+      "Descrição": "F.G.T.S. Férias Provisão"
+    },
+    {
+      "Valor": "FGFEAJPR",
+      "Descrição": "F.G.T.S. Férias Ajuste Provisão"
+    },
+    {
+      "Valor": "FGFEESPR",
+      "Descrição": "F.G.T.S. Férias Estorno Provisão"
+    },
+    {
+      "Valor": "13DEFEPR",
+      "Descrição": "1/3 De Férias Provisão"
+    },
+    {
+      "Valor": "13DEFEAJPR",
+      "Descrição": "1/3 De Férias Ajuste Provisão"
+    },
+    {
+      "Valor": "PRBAAUMEHOFE",
+      "Descrição": "Provisão - Base Auxiliar Média Horas Férias"
+    },
+    {
+      "Valor": "PRBAAUMEHO13",
+      "Descrição": "Provisão - Base Auxiliar Média Horas 13º Salário"
+    },
+    {
+      "Valor": "PRBAAUDI13SA",
+      "Descrição": "Provisão - Base Auxiliar Distorções 13º Salário"
+    },
+    {
+      "Valor": "PRBAAUDIFE",
+      "Descrição": "Provisão - Base Auxiliar Distorções Férias"
+    },
+    {
+      "Valor": "DEVIRRF",
+      "Descrição": "Devolução I.R.R.F."
+    },
+    {
+      "Valor": "DEVINSS",
+      "Descrição": "Devolução I.N.S.S."
+    },
+    {
+      "Valor": "PARCISENIRRF",
+      "Descrição": "Parcela Isenta I.R.R.F."
+    },
+    {
+      "Valor": "PAISIR13SA",
+      "Descrição": "Parcela Isenta I.R.R.F. 13º Salário"
+    },
+    {
+      "Valor": "INSSFER",
+      "Descrição": "I.N.S.S. DE FÉRIAS"
+    }
+  ],
+  "TipoSegurado": [
+    {
+      "Valor": "AMBOS",
+      "Descrição": "Ambos tipos dos segurados"
+    },
+    {
+      "Valor": "TITULAR",
+      "Descrição": "Apenas tipo de segurado Titular"
+    },
+    {
+      "Valor": "DEPENDENTE",
+      "Descrição": "Apenas tipo de segurado Dependentes"
+    }
+  ],
+  "TipoReembolso": [
+    {
+      "Valor": "REEMBOLSO_PLANO_SAUDE",
+      "Descrição": "Reembolso efetuado pelo empregador/plano de saúde"
+    },
+    {
+      "Valor": "REEMBOLSO_EMPREGADOR",
+      "Descrição": "Reembolso efetuado pelo próprio empregador"
+    },
+    {
+      "Valor": "AMBOS",
+      "Descrição": "Ambos os tipos de reembolso"
+    }
+  ],
+  "Competencia": [
+    {
+      "Valor": "COMPETENCIA",
+      "Descrição": "Competência referente aos reembolsos de plano de saúde"
+    }
+  ],
+  "TipoValorReembolso": [
+    {
+      "Valor": "AMBOS",
+      "Descrição": "Ambos tipos de reembolso"
+    },
+    {
+      "Valor": "ANO_CORRENTE",
+      "Descrição": "Ano corrente"
+    },
+    {
+      "Valor": "ANOS_ANTERIORES",
+      "Descrição": "Ano anterior"
+    }
+  ]
+}

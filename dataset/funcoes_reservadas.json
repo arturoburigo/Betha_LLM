@@ -1,0 +1,1472 @@
+{
+    "funcoes_reservadas": [
+        {
+            "nome": "AdicionaisTempoServico",
+            "metodo": "busca",
+            "descricao": "Busca no sistema RH a quantidade (em valor ou percentual) de adicionais adquiridos conforme a classificação de adicional.",
+            "parametros": [
+                {
+                    "nome": "tipoAdicional",
+                    "descricao": "Informe um tipo de adicional",
+                    "obrigatorio": true
+                },
+                {
+                    "nome": "classificacaoAdicional",
+                    "descricao": "Informe uma classificação de adicional",
+                    "obrigatorio": true
+                },
+                {
+                    "nome": "limitarPercentualMaximo",
+                    "descricao": "Considera percentual máximo do cadastro de adicionais?",
+                    "obrigatorio": false
+                }
+            ],
+            "exemplo_uso": {
+                "codigo": "if (rh == 1) {\n    valorReferencia = AdicionaisTempoServico.busca(TipoAdicional.PERCENTUAL_TEMPO_SERVICO, ClassificacaoAdicional.BIENIO, true)\n}",
+                "utilizado_em": "Anuênio"
+            }
+        },
+        {
+            "nome": "Afastamentos",
+            "metodo": "buscaPorFaltas",
+            "descricao": "Permite buscar os afastamentos do tipo 'Faltas' de uma matrícula, informando se deseja buscar as faltas a partir da competência de desconto ou se deseja buscar os abonos a partir da competência de abono.",
+            "parametros": [
+                {
+                    "nome": "abono/falta",
+                    "descricao": "Informe se vai buscar um tipo de abono ou falta",
+                    "obrigatorio": true
+                },
+                {
+                    "nome": "competencia_abono_ou_falta",
+                    "descricao": "Competência que será utilizada para buscar faltas ou os abonos das faltas.",
+                    "obrigatorio": true
+                }
+            ],
+            "exemplo_uso": {
+                "codigo": "def faltas = Afastamentos.buscaPorFaltas(AbonoFalta.FALTA, calculo.competencia)\n\nfaltas.each { falta ->\n    inicioAfast = Datas.data(Datas.ano(falta.inicio),Datas.mes(falta.inicio),Datas.dia(falta.inicio))\n    fimAfast = Datas.data(Datas.ano(falta.fim),Datas.mes(falta.fim),Datas.dia(falta.fim))\n    if (falta.unidade.toString() == 'DIAS') {\n        dias += falta.quantidade\n    } else {\n        horas += falta.quantidade\n    }\n}"
+            }
+        },
+        {
+            "nome": "Afastamentos",
+            "metodo": "buscaPorPeriodo",
+            "descricao": "Permite buscar os afastamentos de uma matrícula informando uma lista de classificações de tipos de afastamentos dentro de um período.",
+            "parametros": [
+                {
+                    "nome": "dataInicial",
+                    "descricao": "Data inicial da verificação de afastamentos, caso não seja informado será considerado o início da competência",
+                    "obrigatorio": false
+                },
+                {
+                    "nome": "dataFinal",
+                    "descricao": "Data final da verificação de afastamentos, caso não seja informado será considerado o início da competência",
+                    "obrigatorio": false
+                },
+                {
+                    "nome": "classificacoes",
+                    "descricao": "Informe uma Classificação de Tipo de Afastamento",
+                    "obrigatorio": true
+                }
+            ],
+            "exemplo_uso": {
+                "codigo": "Afastamentos.buscaPorPeriodo(ClassificacaoTipoAfastamento.SERVICO_MILITAR).each { afast ->\n    def diaFim = afast.fim.dia\n    def fim = afast.fim\n    if (diaFim > 30) {\n        fim = Datas.data(afast.fim.ano, afast.fim.mes, 30)\n    }\n    dias += Datas.diferencaDias(afast.inicio, fim) + 1\n}",
+                "utilizado_em": "afasservmil"
+            }
+        },
+        {
+            "nome": "Afastamentos",
+            "metodo": "buscaDiasAcidenteOuDoencaEmpregadorIsentosInss",
+            "descricao": "Busca os dias dentro da competência dos acidentes ou auxílio doença pagos pelo empregador e que originem um acidente ou auxílio doença pago pela previdência.",
+            "observacao": "Os dias de isenção serão calculados apenas para competências posteriores a 10/2015 para certos tipos de processamento e categorias de vínculos Sefip.",
+            "exemplo_uso": {
+                "codigo": "int dias = Afastamentos.buscaDiasAcidenteOuDoencaEmpregadorIsentosInss()"
+            }
+        },
+        {
+            "nome": "AvisoPrevio",
+            "metodos": [
+                {
+                    "nome": "dataPrevistaDesligamento",
+                    "descricao": "Retorna a data prevista do desligamento informado no aviso prévio"
+                },
+                {
+                    "nome": "motivoRescisao",
+                    "descricao": "Retorna o motivo da rescisão informado no aviso prévio"
+                },
+                {
+                    "nome": "dataAviso",
+                    "descricao": "Retorna a data do aviso prévio"
+                },
+                {
+                    "nome": "dataFimAviso",
+                    "descricao": "Retorna a data final do aviso prévio"
+                },
+                {
+                    "nome": "quantidadeDiasAviso",
+                    "descricao": "Retorna a quantidade de dias de aviso prévio"
+                },
+                {
+                    "nome": "tipo",
+                    "descricao": "Retorna o tipo de aviso prévio",
+                    "exemplo_uso": {
+                        "codigo": "if (AvisoPrevio.tipo.equals(TipoAvisoPrevio.INDENIZADO)) {\n   imprimir \"O tipo de aviso prévio é indenizado\"\n}"
+                    }
+                }
+            ],
+            "exemplos": [
+                {
+                    "descricao": "Retorna a data fim do aviso prévio",
+                    "codigo": "Date dataFimAviso = AvisoPrevio.dataFimAviso"
+                },
+                {
+                    "descricao": "Retorna a data prevista do desligamento informado no aviso prévio",
+                    "codigo": "Date dataPrevistaDesligamento = AvisoPrevio.dataPrevistaDesligamento"
+                },
+                {
+                    "descricao": "Retorna o motivo da rescisão informado no aviso prévio",
+                    "codigo": "String motivoRescisao = AvisoPrevio.motivoRescisao"
+                },
+                {
+                    "descricao": "Retorna a data do aviso prévio",
+                    "codigo": "Date dataAviso = AvisoPrevio.dataAviso"
+                },
+                {
+                    "descricao": "Retorna a quantidade de dias de aviso prévio",
+                    "codigo": "int quantidadeDiasAviso = AvisoPrevio.quantidadeDiasAviso"
+                }
+            ]
+        },
+        {
+            "nome": "Bases",
+            "metodos": [
+                {
+                    "nome": "valor",
+                    "descricao": "Permite buscar o valor de uma base no cálculo atual.",
+                    "parametros": [
+                        {
+                            "nome": "tipo_de_base",
+                            "descricao": "Informar um tipo de base, use Bases.[sigla da base]",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo_uso": {
+                        "codigo": "if (Eventos.valor(1) > 0) {\n    base = Bases.valor(Bases.HORAEXTRA)\n}",
+                        "utilizado_em": "HORAS EXTRAS 50%"
+                    }
+                },
+                {
+                    "nome": "valorRra",
+                    "descricao": "Permite buscar os valores da base de cálculo de um Rendimento Recebido Acumuladamente (RRA) informados no período de referência da parcela.",
+                    "parametros": [
+                        {
+                            "nome": "tipo_de_base",
+                            "descricao": "Informar um tipo de base, use Bases.[sigla da base]",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo_uso": {
+                        "codigo": "base = Bases.valorRra(Bases.IRRF) + Bases.valorRra(Bases.IRRF13)",
+                        "utilizado_em": "BASE I.R.R.F. RRA"
+                    }
+                },
+                {
+                    "nome": "compor",
+                    "descricao": "Permite informar um valor para composição de um ou vários tipos de bases de cálculo.",
+                    "parametros": [
+                        {
+                            "nome": "valor",
+                            "descricao": "Valor que irá compor a base",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "tipo_de_bases",
+                            "descricao": "Um ou vários tipos de bases",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo_uso": {
+                        "codigo": "valorCalculado = funcionario.salario;\nBases.compor(valorCalculado, Bases.SALBASE, Bases.FGTS, Bases.IRRF, Bases.INSS)",
+                        "utilizado_em": "HORAS NORMAIS"
+                    }
+                },
+                {
+                    "nome": "valorCalculado",
+                    "descricao": "Permite buscar o valor de uma base de um cálculo que não seja o atual.",
+                    "parametros": [
+                        {
+                            "nome": "tipo_de_base",
+                            "descricao": "Informar um tipo de base, use Bases.[sigla da base]",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "tipo_de_processamento",
+                            "descricao": "Informar um tipo de processamento",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "subtipo_de_processamento",
+                            "descricao": "Informar um subtipo de processamento",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "competencia",
+                            "descricao": "Informar uma competência, caso não seja informado será considerada a competência atual",
+                            "obrigatorio": false
+                        },
+                        {
+                            "nome": "tipo_de_regime",
+                            "descricao": "Informar o tipo de regime, caso não seja informado será considerado regime de competência",
+                            "obrigatorio": false
+                        }
+                    ],
+                    "exemplo_uso": {
+                        "codigo": "BigDecimal baseaux = BigDecimal.valueOf(0);\n\nif (TipoProcessamento.DECIMO_TERCEIRO_SALARIO.equals(calculo.tipoProcessamento) && vaux > 0) {\n        baseaux = Bases.valorCalculado(Bases.FGTS, calculo.tipoProcessamento, calculo.subTipoProcessamento)\n        baseaux += Bases.valorCalculado(Bases.FGTS, TipoProcessamento.MENSAL, SubTipoProcessamento.INTEGRAL)\n}",
+                        "utilizado_em": "F.G.T.S. 13º SALÁRIO"
+                    }
+                }
+            ]
+        },
+        {
+            "nome": "BasesOutrasEmpresas",
+            "metodos": [
+                {
+                    "nome": "buscaPor",
+                    "descricao": "Permite buscar uma lista de bases de outras empresas conforme o tipo de processamento e competência informada.",
+                    "parametros": [
+                        {
+                            "nome": "tipo_de_processamento",
+                            "descricao": "Informar um tipo de processamento",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "competencia",
+                            "descricao": "Informar uma competência, caso não seja informado será considerada a competência atual",
+                            "obrigatorio": false
+                        }
+                    ],
+                    "exemplo_uso": {
+                        "codigo": "return BasesOutrasEmpresas.buscaPor(TipoProcessamento.MENSAL, calculo.competencia).sum(0, { it.baseInss })",
+                        "descricao": "Usa sum() para retornar o valor total de uma propriedade em uma lista"
+                    },
+                    "exemplo_uso_percorrer": {
+                        "codigo": "BasesOutrasEmpresas.buscaPor(TipoProcessamento.MENSAL, calculo.competencia).each{ b ->\n    imprimir \"Base de inss : $b.baseInss\"\n    imprimir \"Base de irrf : $b.baseIrrf\"\n    imprimir \"Valor de inss : $b.valorRetidoInss\"\n    imprimir \"Valor de irrf : $b.valorRetidoIrrf\"\n}"
+                    }
+                }
+            ],
+            "atributos": [
+                {
+                    "nome": "baseInss",
+                    "descricao": "Valor de base do INSS"
+                },
+                {
+                    "nome": "baseIrrf",
+                    "descricao": "Valor de base do IRRF"
+                },
+                {
+                    "nome": "valorRetidoInss",
+                    "descricao": "Valor do INSS descontado em outra empresa"
+                },
+                {
+                    "nome": "valorRetidoIrrf",
+                    "descricao": "Valor do IRRF descontado em outra empresa"
+                }
+            ]
+        },
+        {
+            "nome": "Diarias",
+            "metodos": [
+                {
+                    "nome": "buscaPorPeriodo",
+                    "descricao": "Busca as diárias lançadas para a matrícula no sistema de Recursos Humanos conforme o período informado. Possui duas variações: uma para buscar as diárias vigentes durante a data inicial e final, e outra que considera também a descrição da natureza da diária.",
+                    "parametros": [
+                        {
+                            "nome": "dataInicial",
+                            "descricao": "Informe a data inicial para buscar as diárias",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "dataFinal",
+                            "descricao": "Informe a data final para buscar as diárias",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "descricaoNaturezaDiaria",
+                            "descricao": "Descrição da natureza de diária a ser considerada",
+                            "obrigatorio": false
+                        }
+                    ],
+                    "exemplo_uso_data": {
+                        "codigo": "def dataInicial = Funcoes.inicioCompetencia()\ndef dataFinal = Funcoes.fimCompetencia()\n\ndef diarias = Diarias.buscaPorPeriodo(dataInicial, dataFinal)\nif (diarias.size() <= 0) { suspender \"Não foram encontradas diárias no período informado\" }\n\ndiarias.each { diaria ->\n    imprimir \"Data da autorização: \" + diaria.dataAutorizacao\n    imprimir \"Total de despesas: \" + diaria.totalDespesas\n    diaria.despesas.each { despesa -> \n        imprimir \"Quantidade: \"  + despesa.quantidade\n        imprimir \"Valor unitário: \" + despesa.valorUnitario\n        imprimir \"Valor total: \" + despesa.valorTotal\n        if (despesa.naturezaDiaria != null) {\n            imprimir \"ID da natureza da diária: \" + despesa.naturezaDiaria.id\n            imprimir \"Natureza da diária: \" + despesa.naturezaDiaria.descricao\n        }\n    }\n}"
+                    },
+                    "exemplo_uso_data_descricao": {
+                        "codigo": "def dataInicial = Funcoes.inicioCompetencia()\ndef dataFinal = Funcoes.fimCompetencia()\ndef descricaoNaturezaDiaria = 'Diaria'\n\ndef diarias = Diarias.buscaPorPeriodo(dataInicial, dataFinal, descricaoNaturezaDiaria)\nif (diarias.size() <= 0) { suspender \"Não foram encontradas diárias que tenham a natureza de diária no período informado\" }\n\ndiarias.each { diaria ->\n    imprimir \"Data da autorização: \" + diaria.dataAutorizacao\n    imprimir \"Total de despesas: \" + diaria.totalDespesas\n    diaria.despesas.each { despesa -> \n        imprimir \"Quantidade: \"  + despesa.quantidade\n        imprimir \"Valor unitário: \" + despesa.valorUnitario\n        imprimir \"Valor total: \" + despesa.valorTotal\n        if (despesa.naturezaDiaria != null) {\n            imprimir \"ID da natureza da diária: \" + despesa.naturezaDiaria.id\n            imprimir \"Natureza da diária: \" + despesa.naturezaDiaria.descricao\n        }\n    }\n}"
+                    }
+                }
+            ],
+            "atributos": [
+                {
+                    "nome": "dataAutorizacao",
+                    "descricao": "Data da autorização da diária"
+                },
+                {
+                    "nome": "totalDespesas",
+                    "descricao": "Valor total das despesas da diária"
+                },
+                {
+                    "nome": "despesas",
+                    "descricao": "Lista de despesas relacionadas à diária",
+                    "atributos_despesa": [
+                        {
+                            "nome": "quantidade",
+                            "descricao": "Quantidade da despesa"
+                        },
+                        {
+                            "nome": "valorUnitario",
+                            "descricao": "Valor unitário da despesa"
+                        },
+                        {
+                            "nome": "valorTotal",
+                            "descricao": "Valor total da despesa"
+                        },
+                        {
+                            "nome": "naturezaDiaria",
+                            "descricao": "Natureza da diária",
+                            "atributos_naturezaDiaria": [
+                                {
+                                    "nome": "id",
+                                    "descricao": "ID da natureza da diária"
+                                },
+                                {
+                                    "nome": "descricao",
+                                    "descricao": "Descrição da natureza da diária"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Eventos",
+            "metodos": [
+                {
+                    "nome": "valor",
+                    "descricao": "Permite obter o valor calculado de um evento do cálculo atual.",
+                    "parametros": [
+                        {
+                            "nome": "codigo",
+                            "descricao": "Informar o código de um evento",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo_uso": {
+                        "codigo": "valorCalculado = Eventos.valor(4) + Eventos.valor(5) + Eventos.valor(7) + Eventos.valor(8)",
+                        "descricao": "Calcula o valor total somando os valores de eventos específicos."
+                    }
+                },
+                {
+                    "nome": "valorReferencia",
+                    "descricao": "Permite obter o valor de referência de um evento do cálculo atual.",
+                    "parametros": [
+                        {
+                            "nome": "codigo",
+                            "descricao": "Informar o código de um evento",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo_uso": {
+                        "codigo": "if (!funcionario.possuiPrevidenciaFederal) {\n    valorReferencia = Eventos.valorReferencia(7)\n}",
+                        "descricao": "Busca o valor de referência do evento com código 7, caso o funcionário não possua previdência federal."
+                    }
+                },
+                {
+                    "nome": "valorCalculado",
+                    "descricao": "Permite buscar o valor calculado ou de referência de um evento que não seja do cálculo atual.",
+                    "parametros": [
+                        {
+                            "nome": "codigo",
+                            "descricao": "Informar o código de um evento",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "tipo_valor",
+                            "descricao": "Se deseja retornar o valor calculado ou de referência, use TipoValor",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "tipo_de_processamento",
+                            "descricao": "Informar um tipo de processamento",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "subtipo_de_processamento",
+                            "descricao": "Informar um subtipo de processamento",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "competencia",
+                            "descricao": "Informar uma competência, caso não seja informado será considerada a competência atual",
+                            "obrigatorio": false
+                        },
+                        {
+                            "nome": "tipo_de_regime",
+                            "descricao": "Informar o tipo de regime, use TipoRegime, caso não seja informado será considerado regime de competência",
+                            "obrigatorio": false
+                        }
+                    ],
+                    "exemplo_uso": {
+                        "codigo": "double vaux;\nvaux  = Eventos.valorCalculado(36, TipoValor.CALCULADO , TipoProcessamento.MENSAL, SubTipoProcessamento.INTEGRAL)",
+                        "descricao": "Obtém o valor calculado do evento com código 36 no processamento mensal integral."
+                    },
+                    "exemplo_uso_referencia": {
+                        "codigo": "referencia = Eventos.valorCalculado(evento.codigo, TipoValor.REFERENCIA , TipoProcessamento.MENSAL, SubTipoProcessamento.INTEGRAL)",
+                        "descricao": "Obtém o valor de referência do evento no processamento mensal integral."
+                    }
+                },
+                {
+                    "nome": "valorCalculadoMultiplosVinculos",
+                    "descricao": "Permite buscar o valor calculado ou de referência de um evento dos outros vínculos do servidor calculados em ordem anterior ao cálculo atual, retornando apenas cálculos da mesma competência.",
+                    "parametros": [
+                        {
+                            "nome": "codigo_ou_classificacaoEvento",
+                            "descricao": "Informe um código ou classificação de evento",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "tipo_valor",
+                            "descricao": "Se deseja retornar o valor calculado ou de referência, use TipoValor",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "tipo_de_processamento",
+                            "descricao": "Informar um tipo de processamento",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "subtipo_de_processamento",
+                            "descricao": "Informar um subtipo de processamento",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo_uso": {
+                        "codigo": "BigDecimal base = Bases.valorCalculadoMultiplosVinculos(Bases.INSS, TipoProcessamento.MENSAL, SubTipoProcessamento.INTEGRAL)",
+                        "descricao": "Busca o valor da base de INSS de outros vínculos no processamento mensal integral."
+                    },
+                    "exemplo_uso_soma": {
+                        "codigo": "base += Bases.valorCalculadoMultiplosVinculos(Bases.INSS, TipoProcessamento.RESCISAO, SubTipoProcessamento.INTEGRAL)",
+                        "descricao": "Soma o valor da base de INSS de outros vínculos no processamento rescisão integral."
+                    }
+                }
+            ]
+        },
+        {
+            "EncargosSociais": {
+                "properties": {
+                    "pisoSalarial": "Retorna o piso salarial configurado na manutenção de estabelecimentos",
+                    "salarioMinimo": "Retorna o salário mínimo configurado na manutenção de estabelecimentos",
+                    "tetoSalarial": "Retorna o teto salarial configurado na manutenção de estabelecimentos",
+                    "inicioVigencia": "Retorna o inicio da vigência configurada na manutenção de estabelecimentos",
+                    "cnaePreponderante": "Retorna o CNAE preponderante configurado na manutenção de estabelecimentos",
+                    "codigoFpas": "Retorna o código FPAS configurado na manutenção de estabelecimentos",
+                    "codigoTerceiros": "Retorna o código de terceiros configurado na manutenção de estabelecimentos",
+                    "percentualFap": "Retorna o percentual do FAP configurado na manutenção de estabelecimentos",
+                    "percentualGilRat": "Retorna o percentual do RAT configurado na manutenção de estabelecimentos",
+                    "percentualInssEmpregador": "Retorna o percentual do INSS empregador configurado",
+                    "percentualIsencaoFilantropia": "Retorna o percentual de isenção de entidade filantrópica",
+                    "percentualTerceiros": "Retorna o percentual de terceiros configurado"
+                },
+                "AssistenciaMunicipal": {
+                    "methods": {
+                        "buscaContribuicao": {
+                            "description": "Retorna um valor da coluna em uma faixa encontrada conforme o valor informado",
+                            "parameters": {
+                                "base": {
+                                    "type": "number",
+                                    "description": "valor base para ser comparado",
+                                    "required": true
+                                },
+                                "coluna": {
+                                    "type": "number",
+                                    "description": "coluna que deve retornar",
+                                    "required": true
+                                }
+                            }
+                        },
+                        "buscaMaior": {
+                            "description": "Retorna a coluna referente faixa de maior valor encontrada",
+                            "parameters": {
+                                "coluna": {
+                                    "type": "number",
+                                    "description": "coluna que deve retornar",
+                                    "required": true
+                                }
+                            }
+                        },
+                        "buscaTabela": {
+                            "description": "Retorna a tabela da assistência municipal vigente na competência"
+                        }
+                    },
+                    "properties": {
+                        "maximo": "Valor máximo de desconto de assistência municipal",
+                        "minimo": "Valor mínimo de desconto de assistência municipal",
+                        "indiceAporte": "Retorna o índice do aporte de assistência municipal",
+                        "taxaAdministrativa": "Retorna a taxa administrativa de assistência municipal"
+                    }
+                },
+                "FGTS": {
+                    "properties": {
+                        "codigoFgts": "Retorna o código de saque do FGTS da entidade",
+                        "multaFgts": "Retorna o percentual de multa do FGTS"
+                    }
+                },
+                "IRRF": {
+                    "methods": {
+                        "buscaContribuicao": {
+                            "description": "Retorna um valor da coluna em uma faixa encontrada conforme o valor informado",
+                            "parameters": {
+                                "base": {
+                                    "type": "number",
+                                    "description": "valor base para ser comparado",
+                                    "required": true
+                                },
+                                "coluna": {
+                                    "type": "number",
+                                    "description": "coluna que deve retornar",
+                                    "required": true
+                                }
+                            }
+                        },
+                        "buscaMaior": {
+                            "description": "Retorna a coluna referente faixa de maior valor encontrada",
+                            "parameters": {
+                                "coluna": {
+                                    "type": "number",
+                                    "description": "coluna que deve retornar",
+                                    "required": true
+                                }
+                            }
+                        }
+                    },
+                    "properties": {
+                        "deducaoPorDependente": "Retorna o valor de dedução por dependente",
+                        "deducaoSimplificadaIrrf": "Retorna o valor da dedução simplificada do IRRF",
+                        "minimoIrrfDarf": "Retorna o valor mínimo de desconto de IRRF",
+                        "parcelaIsentaAposentadoria": "Retorna o da parcela de isenta de aposentadoria"
+                    }
+                },
+                "RGPS": {
+                    "methods": {
+                        "buscaContribuicao": {
+                            "description": "Retorna um valor da coluna em uma faixa encontrada conforme o valor informado",
+                            "parameters": {
+                                "base": {
+                                    "type": "number",
+                                    "description": "valor base para ser comparado",
+                                    "required": true
+                                },
+                                "coluna": {
+                                    "type": "number",
+                                    "description": "coluna que deve retornar",
+                                    "required": true
+                                }
+                            }
+                        },
+                        "buscaMaior": {
+                            "description": "Retorna a coluna referente faixa de maior valor encontrada",
+                            "parameters": {
+                                "coluna": {
+                                    "type": "number",
+                                    "description": "coluna que deve retornar",
+                                    "required": true
+                                }
+                            }
+                        },
+                        "buscaTabela": {
+                            "description": "Retorna a tabela da previdência federal vigente na competência"
+                        }
+                    }
+                },
+                "RPPS": {
+                    "FundoFinanceiro": {
+                        "methods": {
+                            "buscaContribuicao": {
+                                "description": "Retorna um valor da coluna em uma faixa encontrada",
+                                "parameters": {
+                                    "base": {
+                                        "type": "number",
+                                        "description": "Valor base para ser comparado",
+                                        "required": true
+                                    },
+                                    "coluna": {
+                                        "type": "number",
+                                        "description": "coluna que deve retornar",
+                                        "required": true
+                                    }
+                                }
+                            },
+                            "buscaMaior": {
+                                "description": "Retorna a coluna referente faixa de maior valor encontrada",
+                                "parameters": {
+                                    "coluna": {
+                                        "type": "number",
+                                        "description": "coluna que deve retornar",
+                                        "required": true
+                                    }
+                                }
+                            },
+                            "buscaTabela": {
+                                "description": "Retorna a tabela do fundo financeiro vigente na competência"
+                            }
+                        },
+                        "properties": {
+                            "maximo": "Valor máximo de desconto do fundo financeiro",
+                            "minimo": "Valor mínimo de desconto do fundo financeiro",
+                            "indiceAporte": "Retorna o índice do fundo financeiro própria",
+                            "taxaAdministrativa": "Retorna a taxa administrativa do fundo financeiro"
+                        }
+                    },
+                    "PrevidenciaEstadual": {
+                        "methods": {
+                            "buscaContribuicao": {
+                                "description": "Retorna um valor da coluna em uma faixa encontrada",
+                                "parameters": {
+                                    "base": {
+                                        "type": "number",
+                                        "description": "Valor base para ser comparado",
+                                        "required": true
+                                    },
+                                    "coluna": {
+                                        "type": "number",
+                                        "description": "coluna que deve retornar",
+                                        "required": true
+                                    }
+                                }
+                            },
+                            "buscaMaior": {
+                                "description": "Retorna a coluna referente faixa de maior valor encontrada",
+                                "parameters": {
+                                    "coluna": {
+                                        "type": "number",
+                                        "description": "coluna que deve retornar",
+                                        "required": true
+                                    }
+                                }
+                            },
+                            "buscaTabela": {
+                                "description": "Retorna a tabela da previdência estadual vigente na competência"
+                            }
+                        },
+                        "properties": {
+                            "maximo": "Valor máximo de desconto da previdência estadual",
+                            "minimo": "Valor mínimo de desconto da previdência estadual",
+                            "indiceAporte": "Retorna o índice do aporte da previdência estadual",
+                            "taxaAdministrativa": "Retorna a taxa administrativa da previdência estadual"
+                        }
+                    },
+                    "PrevidenciaPropria": {
+                        "methods": {
+                            "buscaContribuicao": {
+                                "description": "Retorna um valor da coluna em uma faixa encontrada",
+                                "parameters": {
+                                    "base": {
+                                        "type": "number",
+                                        "description": "Valor base para ser comparado",
+                                        "required": true
+                                    },
+                                    "coluna": {
+                                        "type": "number",
+                                        "description": "coluna que deve retornar",
+                                        "required": true
+                                    }
+                                }
+                            },
+                            "buscaMaior": {
+                                "description": "Retorna a coluna referente faixa de maior valor encontrada",
+                                "parameters": {
+                                    "coluna": {
+                                        "type": "number",
+                                        "description": "coluna que deve retornar",
+                                        "required": true
+                                    }
+                                }
+                            },
+                            "buscaTabela": {
+                                "description": "Retorna a tabela da previdência própria vigente na competência"
+                            }
+                        },
+                        "properties": {
+                            "maximo": "Valor máximo de desconto da previdência própria",
+                            "minimo": "Valor mínimo de desconto da previdência própria",
+                            "indiceAporte": "Retorna o índice do aporte da previdência própria",
+                            "taxaAdministrativa": "Retorna a taxa administrativa da previdência própria"
+                        }
+                    }
+                },
+                "SalarioFamilia": {
+                    "types": [
+                        "Celetista",
+                        "Estatutario",
+                        "Especial",
+                        "Aposentado"
+                    ],
+                    "methods": {
+                        "buscaContribuicao": {
+                            "description": "Retorna o valor da coluna do salário família conforme a base informada",
+                            "parameters": {
+                                "base": {
+                                    "type": "number",
+                                    "description": "Valor base para ser comparado",
+                                    "required": true
+                                },
+                                "coluna": {
+                                    "type": "number",
+                                    "description": "coluna que deve retornar",
+                                    "required": true
+                                }
+                            }
+                        },
+                        "buscaMaior": {
+                            "description": "Retorna o valor da coluna de maior faixa encontrada do salário família",
+                            "parameters": {
+                                "coluna": {
+                                    "type": "number",
+                                    "description": "coluna que deve retornar",
+                                    "required": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Emprestimos": {
+                "methods": {
+                    "busca": {
+                        "description": "Retorna uma lista de empréstimos cadastrados no RH",
+                        "parameters": {
+                            "situacaoEmprestimo": {
+                                "type": "enum",
+                                "description": "Situação do empréstimo",
+                                "required": false
+                            }
+                        },
+                        "returns": {
+                            "id": "Id do empréstimo",
+                            "dataInicial": "Data inicial do empréstimo",
+                            "dataFinal": "Data de final do empréstimo",
+                            "pessoaJuridica": "Data de fim do atestado no formato yyyy-MM-dd",
+                            "dataInicioDesconto": "Data inicial do desconto",
+                            "numeroContrato": "Número do contrato do empréstimo",
+                            "verba": "Verba do empréstimo",
+                            "valorTotal": "Valor total do empréstimo",
+                            "numeroParcelas": "Número total de parcelas",
+                            "situacao": "Situação do empréstimo",
+                            "parcelas": {
+                                "type": "array",
+                                "items": {
+                                    "id": "Id da parcela",
+                                    "numero": "Número da parcela",
+                                    "valorParcela": "Valor da parcela",
+                                    "dataPagamento": "Data de pagamento da parcela",
+                                    "situacao": "Situação da parcela"
+                                }
+                            }
+                        }
+                    },
+                    "pagarParcela": {
+                        "description": "Realiza a baixa da parcela de empréstimo no RH",
+                        "parameters": {
+                            "emprestimoId": {
+                                "type": "string",
+                                "description": "Identificador do empréstimo",
+                                "required": true
+                            },
+                            "parcelaId": {
+                                "type": "string",
+                                "description": "Identificador da parcela",
+                                "required": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "nome": "FuncoesGratificadas",
+            "descricao": "Operações relacionadas às funções gratificadas",
+            "metodos": [
+                {
+                    "nome": "busca",
+                    "descricao": "Retorna os dias em função gratificada na competência com o id da função gratificada.",
+                    "atributos": [
+                        {
+                            "nome": "idFuncaoGratificada",
+                            "descricao": "ID da função, pode ser obtido na edição do cadastro da função gratificada, na URL do navegador"
+                        }
+                    ],
+                    "exemplo": "int diasFuncao = FuncoesGratificadas.busca(123)"
+                }
+            ]
+        },
+        {
+            "nome": "Lancamentos",
+            "descricao": "Operações relacionadas aos lançamentos de eventos",
+            "metodos": [
+                {
+                    "nome": "valor",
+                    "descricao": "Verifica se o evento que está sendo calculado está lançado em variáveis e retorna o valor lançado caso encontrado.",
+                    "atributos": [
+                        {
+                            "nome": "evento",
+                            "descricao": "Código do evento"
+                        },
+                        {
+                            "nome": "valorPadrao",
+                            "descricao": "Permite retornar um valor padrão quando não existe lançamento. Caso não seja informado, retornará -1",
+                            "opcional": true
+                        }
+                    ],
+                    "exemplo": "def vvar = Lancamentos.valor(evento)"
+                },
+                {
+                    "nome": "valorPorEventoId",
+                    "descricao": "Verifica se o evento informado está lançado em variáveis e retorna o valor lançado caso encontrado.",
+                    "atributos": [
+                        {
+                            "nome": "eventoId",
+                            "descricao": "Código do evento"
+                        },
+                        {
+                            "nome": "valorPadrao",
+                            "descricao": "Permite retornar um valor padrão quando não existe lançamento. Caso não seja informado, retornará -1",
+                            "opcional": true
+                        }
+                    ],
+                    "exemplo": "def vvar = Lancamentos.valorPorEventoId(390)"
+                },
+                {
+                    "nome": "gerar",
+                    "descricao": "Permite inserir um valor de lançamento de evento para qualquer competência e tipo de processamento, com exceção do cálculo atual.",
+                    "atributos": [
+                        {
+                            "nome": "tipoProcessamento",
+                            "descricao": "Informe um tipo de processamento"
+                        },
+                        {
+                            "nome": "subTipoProcessamento",
+                            "descricao": "Informe um subtipo de processamento"
+                        },
+                        {
+                            "nome": "competencia",
+                            "descricao": "Informe uma competência (Date)"
+                        },
+                        {
+                            "nome": "codigoEvento",
+                            "descricao": "Informe um código de evento"
+                        },
+                        {
+                            "nome": "valor",
+                            "descricao": "Informe o valor a ser lançado"
+                        },
+                        {
+                            "nome": "observacao",
+                            "descricao": "Informe uma observação para ser inserida no lançamento de evento",
+                            "opcional": true
+                        }
+                    ],
+                    "exemplo": "Lancamentos.gerar(calculo.tipoProcessamento, calculo.subTipoProcessamento, competenciaLancamento, evento.codigo, correcao10PorCento, 'Correção de 10% do bruto das folhas anteriores')"
+                },
+                {
+                    "nome": "valorComposicaoMes",
+                    "descricao": "Retorna o valor totalizado de todos os lançamentos para eventos que compõem mês.",
+                    "exemplo": "BigDecimal compoemes = Lancamentos.valorComposicaoMes()"
+                }
+            ]
+        },
+        {
+            "funcoes": [
+                {
+                    "nome": "PlanoSaudeDespesas",
+                    "descricao": "Operações relacionadas às despesas com planos de saúde",
+                    "metodos": [
+                        {
+                            "nome": "buscaDespesasPlanoSaude",
+                            "descricao": "Busca uma lista de despesas com planos de saúde.",
+                            "atributos": [
+                                {
+                                    "nome": "competencia",
+                                    "descricao": "Competência para filtrar as despesas. Se não informado, busca todas as despesas do ano corrente.",
+                                    "opcional": true
+                                }
+                            ],
+                            "exemplo": [
+                                {
+                                    "descricao": "Carrega todas as despesas de planos de saúde da matrícula cadastradas para o ano atual.",
+                                    "codigo": "PlanoSaudeDespesas.buscaDespesasPlanoSaude().each { despesa -> if (despesa.tipo == TipoDespesaPlanoSaude.MENSALIDADE) { vaux += despesa.valor } }"
+                                },
+                                {
+                                    "descricao": "Carrega despesas de planos de saúde da matrícula cadastradas na competência informada.",
+                                    "codigo": "PlanoSaudeDespesas.buscaDespesasPlanoSaude(calculo.competencia).each { despesa -> if (despesa.tipo == TipoDespesaPlanoSaude.MENSALIDADE) { vaux += despesa.valor } }"
+                                }
+                            ]
+                        }
+                    ],
+                    "campos": [
+                        {
+                            "nome": "planoSaude",
+                            "descricao": "Plano de saúde"
+                        },
+                        {
+                            "nome": "id",
+                            "descricao": "ID do plano de saúde"
+                        },
+                        {
+                            "nome": "configuracao",
+                            "descricao": "Configuração do plano de saúde"
+                        },
+                        {
+                            "nome": "idConfig",
+                            "descricao": "ID da configuração do plano de saúde"
+                        },
+                        {
+                            "nome": "descricao",
+                            "descricao": "Descrição da configuração do plano de saúde"
+                        },
+                        {
+                            "nome": "empresa",
+                            "descricao": "Empresa de plano de saúde"
+                        },
+                        {
+                            "nome": "idEmpresa",
+                            "descricao": "ID da empresa"
+                        },
+                        {
+                            "nome": "razaoSocial",
+                            "descricao": "Razão social da empresa"
+                        },
+                        {
+                            "nome": "cnpj",
+                            "descricao": "CNPJ da empresa"
+                        },
+                        {
+                            "nome": "numeroContrato",
+                            "descricao": "Número de contrato"
+                        },
+                        {
+                            "nome": "carteiraIdentificacao",
+                            "descricao": "Carteira de identificação"
+                        },
+                        {
+                            "nome": "subsidioDiferenciado",
+                            "descricao": "Subsídio diferenciado"
+                        },
+                        {
+                            "nome": "beneficiario",
+                            "descricao": "Beneficiário do plano"
+                        },
+                        {
+                            "nome": "nomeBeneficiario",
+                            "descricao": "Nome do beneficiário"
+                        },
+                        {
+                            "nome": "cpfBeneficiario",
+                            "descricao": "CPF do beneficiário"
+                        },
+                        {
+                            "nome": "dataNascimentoBeneficiario",
+                            "descricao": "Data de nascimento do beneficiário"
+                        },
+                        {
+                            "nome": "sexoBeneficiario",
+                            "descricao": "Sexo do beneficiário"
+                        },
+                        {
+                            "nome": "procedimentoMedico",
+                            "descricao": "Procedimento realizado"
+                        },
+                        {
+                            "nome": "valor",
+                            "descricao": "Valor da despesa (com subsídio)"
+                        },
+                        {
+                            "nome": "tipo",
+                            "descricao": "Tipo de despesa"
+                        },
+                        {
+                            "nome": "valorTotal",
+                            "descricao": "Valor total da despesa"
+                        },
+                        {
+                            "nome": "titular",
+                            "descricao": "Titular do plano"
+                        },
+                        {
+                            "nome": "nomeTitular",
+                            "descricao": "Nome do titular"
+                        },
+                        {
+                            "nome": "cpfTitular",
+                            "descricao": "CPF do titular"
+                        },
+                        {
+                            "nome": "dataNascimentoTitular",
+                            "descricao": "Data de nascimento do titular"
+                        },
+                        {
+                            "nome": "sexoTitular",
+                            "descricao": "Sexo do titular"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "PeriodosAquisitivos",
+            "descricao": "Operações relacionadas aos períodos aquisitivos de férias",
+            "metodos": [
+                {
+                    "nome": "buscaPeriodosComSaldo",
+                    "descricao": "Retorna uma lista de períodos aquisitivos de férias que tenham saldo.",
+                    "exemplo": {
+                        "descricao": "Calcula o total de dias de férias que ainda têm saldo.",
+                        "codigo": "int totalDias = 0; PeriodosAquisitivos.buscaPeriodosComSaldo().each { periodos -> totalDias += periodos.saldo }"
+                    },
+                    "campos": [
+                        {
+                            "nome": "dataInicial",
+                            "descricao": "Data inicial do período aquisitivo"
+                        },
+                        {
+                            "nome": "dataFinal",
+                            "descricao": "Data final do período aquisitivo"
+                        },
+                        {
+                            "nome": "faltas",
+                            "descricao": "Quantidade de faltas"
+                        },
+                        {
+                            "nome": "saldo",
+                            "descricao": "Saldo de dias do período aquisitivo"
+                        }
+                    ]
+                },
+                {
+                    "nome": "buscaVencidos",
+                    "descricao": "Retorna uma lista de períodos aquisitivos de férias que estão vencidos.",
+                    "exemplo": {
+                        "descricao": "Utiliza a lista de períodos vencidos para calcular os dias de férias.",
+                        "codigo": "PeriodosAquisitivos.buscaVencidos().each { feriasvenc -> def diasferias = feriasvenc.saldo; ... }"
+                    },
+                    "campos": [
+                        {
+                            "nome": "dataInicial",
+                            "descricao": "Data inicial do período aquisitivo"
+                        },
+                        {
+                            "nome": "dataFinal",
+                            "descricao": "Data final do período aquisitivo"
+                        },
+                        {
+                            "nome": "saldo",
+                            "descricao": "Saldo de dias do período aquisitivo"
+                        }
+                    ]
+                },
+                {
+                    "nome": "buscaProporcional",
+                    "descricao": "Retorna um período aquisitivo de férias que esteja em andamento.",
+                    "exemplo": {
+                        "descricao": "Captura o saldo de férias proporcionais.",
+                        "codigo": "def feriasprop = PeriodosAquisitivos.buscaProporcional(); def saldo = feriasprop.saldo"
+                    },
+                    "campos": [
+                        {
+                            "nome": "dataInicial",
+                            "descricao": "Data inicial do período aquisitivo"
+                        },
+                        {
+                            "nome": "dataFinal",
+                            "descricao": "Data final do período aquisitivo"
+                        },
+                        {
+                            "nome": "saldo",
+                            "descricao": "Saldo de dias do período aquisitivo"
+                        }
+                    ]
+                },
+                {
+                    "nome": "quitaPorRescisao",
+                    "descricao": "Realiza a baixa de um período aquisitivo de férias.",
+                    "parametros": [
+                        {
+                            "nome": "periodoAquisitivo",
+                            "descricao": "O período aquisitivo que está sendo calculado",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "valorReferencia",
+                            "descricao": "Valor de referência do evento que está sendo calculado",
+                            "obrigatorio": false
+                        },
+                        {
+                            "nome": "valorCalculado",
+                            "descricao": "Valor do evento que está sendo calculado",
+                            "obrigatorio": false
+                        },
+                        {
+                            "nome": "compoeMediaVantagem",
+                            "descricao": "Indica se este evento é uma média ou vantagem",
+                            "obrigatorio": false
+                        }
+                    ],
+                    "exemplo": {
+                        "descricao": "Baixa períodos vencidos e calcula o valor da média.",
+                        "codigo": "PeriodosAquisitivos.buscaVencidos().each { feriasvenc -> vtot = valorMedia * diasferias / 30; PeriodosAquisitivos.quitaPorRescisao(feriasvenc, 0, vtot, true) }"
+                    }
+                }
+            ]
+        },
+        {
+            "nome": "PeriodosAquisitivosDecimoTerceiro",
+            "descricao": "Operações relacionadas aos períodos aquisitivos de décimo terceiro salário",
+            "metodos": [
+                {
+                    "nome": "buscaPeriodosAquisitivosBySituacao",
+                    "descricao": "Retorna uma lista de períodos aquisitivos de décimo terceiro salário conforme a situação informada.",
+                    "parametros": [
+                        {
+                            "nome": "situacao",
+                            "descricao": "A situação do período, use SituacaoPeriodoAquisitivoDecimoTerceiro.",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo": {
+                        "descricao": "Calcula a soma dos avos adquiridos para períodos em andamento.",
+                        "codigo": "int avos = 0; PeriodosAquisitivosDecimoTerceiro.buscaPeriodosAquisitivosBySituacao(SituacaoPeriodoAquisitivoDecimoTerceiro.EM_ANDAMENTO).each{ periodo -> avos += periodo.avosAdquiridos }"
+                    },
+                    "campos": [
+                        {
+                            "nome": "dataInicial",
+                            "descricao": "Data inicial do período aquisitivo"
+                        },
+                        {
+                            "nome": "dataFinal",
+                            "descricao": "Data final do período aquisitivo"
+                        },
+                        {
+                            "nome": "avosAdquiridos",
+                            "descricao": "Avos adquiridos"
+                        },
+                        {
+                            "nome": "situacao",
+                            "descricao": "Situação do período aquisitivo"
+                        },
+                        {
+                            "nome": "anoExercicio",
+                            "descricao": "Ano de exercício do período aquisitivo"
+                        }
+                    ]
+                },
+                {
+                    "nome": "buscaPeriodosAquisitivos",
+                    "descricao": "Retorna uma lista de períodos aquisitivos de décimo terceiro salário indiferentemente da situação.",
+                    "exemplo": {
+                        "descricao": "Imprime os detalhes de todos os períodos aquisitivos.",
+                        "codigo": "PeriodosAquisitivosDecimoTerceiro.buscaPeriodosAquisitivos().each { p -> imprimir \"situacao : $p.situacao\"; imprimir \"avosAdquiridos : $p.avosAdquiridos\"; imprimir \"anoExercicio : $p.anoExercicio\"; imprimir \"dataInicial : $p.dataInicial\"; imprimir \"dataFinal : $p.dataFinal\"; if (p.anoExercicio == calculo.competencia.ano) { avos = p.avosAdquiridos } }"
+                    },
+                    "campos": [
+                        {
+                            "nome": "dataInicial",
+                            "descricao": "Data inicial do período aquisitivo"
+                        },
+                        {
+                            "nome": "dataFinal",
+                            "descricao": "Data final do período aquisitivo"
+                        },
+                        {
+                            "nome": "avosAdquiridos",
+                            "descricao": "Avos adquiridos"
+                        },
+                        {
+                            "nome": "situacao",
+                            "descricao": "Situação do período aquisitivo"
+                        },
+                        {
+                            "nome": "anoExercicio",
+                            "descricao": "Ano de exercício do período aquisitivo"
+                        }
+                    ]
+                },
+                {
+                    "nome": "compoePagamento",
+                    "descricao": "Indica que o valor evento é referente a um período aquisitivo de décimo terceiro salário e realiza a baixa do mesmo.",
+                    "parametros": [
+                        {
+                            "nome": "periodoAquisitivoDecimoTerceiro",
+                            "descricao": "O período aquisitivo e décimo terceiro salário que está sendo baixado.",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "valor",
+                            "descricao": "O valor calculado.",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo": {
+                        "descricao": "Baixa os períodos em andamento com o salário do funcionário.",
+                        "codigo": "PeriodosAquisitivosDecimoTerceiro.buscaPeriodosAquisitivosBySituacao(SituacaoPeriodoAquisitivoDecimoTerceiro.EM_ANDAMENTO).each{ periodo -> valor = funcionario.salario; PeriodosAquisitivosDecimoTerceiro.compoePagamento(periodo, valor) }"
+                    }
+                }
+            ]
+        },
+        {
+            "nome": "PeriodosAquisitivosDecimoTerceiro",
+            "descricao": "Operações relacionadas aos períodos aquisitivos de décimo terceiro salário",
+            "metodos": [
+                {
+                    "nome": "buscaPeriodosAquisitivosBySituacao",
+                    "descricao": "Retorna uma lista de períodos aquisitivos de décimo terceiro salário conforme a situação informada.",
+                    "parametros": [
+                        {
+                            "nome": "situacao",
+                            "descricao": "A situação do período, use SituacaoPeriodoAquisitivoDecimoTerceiro.",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo": {
+                        "descricao": "Calcula a soma dos avos adquiridos para períodos em andamento.",
+                        "codigo": "int avos = 0; PeriodosAquisitivosDecimoTerceiro.buscaPeriodosAquisitivosBySituacao(SituacaoPeriodoAquisitivoDecimoTerceiro.EM_ANDAMENTO).each{ periodo -> avos += periodo.avosAdquiridos }"
+                    },
+                    "campos": [
+                        {
+                            "nome": "dataInicial",
+                            "descricao": "Data inicial do período aquisitivo"
+                        },
+                        {
+                            "nome": "dataFinal",
+                            "descricao": "Data final do período aquisitivo"
+                        },
+                        {
+                            "nome": "avosAdquiridos",
+                            "descricao": "Avos adquiridos"
+                        },
+                        {
+                            "nome": "situacao",
+                            "descricao": "Situação do período aquisitivo"
+                        },
+                        {
+                            "nome": "anoExercicio",
+                            "descricao": "Ano de exercício do período aquisitivo"
+                        }
+                    ]
+                },
+                {
+                    "nome": "buscaPeriodosAquisitivos",
+                    "descricao": "Retorna uma lista de períodos aquisitivos de décimo terceiro salário indiferentemente da situação.",
+                    "exemplo": {
+                        "descricao": "Imprime os detalhes de todos os períodos aquisitivos.",
+                        "codigo": "PeriodosAquisitivosDecimoTerceiro.buscaPeriodosAquisitivos().each { p -> imprimir \"situacao : \\$p.situacao\"; imprimir \"avosAdquiridos : \\$p.avosAdquiridos\"; imprimir \"anoExercicio : \\$p.anoExercicio\"; imprimir \"dataInicial : \\$p.dataInicial\"; imprimir \"dataFinal : \\$p.dataFinal\"; if (p.anoExercicio == calculo.competencia.ano) { avos = p.avosAdquiridos } }"
+                    },
+                    "campos": [
+                        {
+                            "nome": "dataInicial",
+                            "descricao": "Data inicial do período aquisitivo"
+                        },
+                        {
+                            "nome": "dataFinal",
+                            "descricao": "Data final do período aquisitivo"
+                        },
+                        {
+                            "nome": "avosAdquiridos",
+                            "descricao": "Avos adquiridos"
+                        },
+                        {
+                            "nome": "situacao",
+                            "descricao": "Situação do período aquisitivo"
+                        },
+                        {
+                            "nome": "anoExercicio",
+                            "descricao": "Ano de exercício do período aquisitivo"
+                        }
+                    ]
+                },
+                {
+                    "nome": "compoePagamento",
+                    "descricao": "Indica que o valor evento é referente a um período aquisitivo de décimo terceiro salário e realiza a baixa do mesmo.",
+                    "parametros": [
+                        {
+                            "nome": "periodoAquisitivoDecimoTerceiro",
+                            "descricao": "O período aquisitivo e décimo terceiro salário que está sendo baixado.",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "valor",
+                            "descricao": "O valor calculado.",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo": {
+                        "descricao": "Baixa os períodos em andamento com o salário do funcionário.",
+                        "codigo": "PeriodosAquisitivosDecimoTerceiro.buscaPeriodosAquisitivosBySituacao(SituacaoPeriodoAquisitivoDecimoTerceiro.EM_ANDAMENTO).each{ periodo -> valor = funcionario.salario; PeriodosAquisitivosDecimoTerceiro.compoePagamento(periodo, valor) }"
+                    }
+                }
+            ]
+        },
+        {
+            "nome": "MediaHoras",
+            "descricao": "Funções relacionadas ao cálculo da média de carga horária para o cálculo de férias.",
+            "metodos": [
+                {
+                    "nome": "calcular",
+                    "descricao": "Calcula a média da carga horária do período aquisitivo.",
+                    "parametros": [
+                        {
+                            "nome": "dataInicial",
+                            "descricao": "Data ou competência inicial a ser considerada.",
+                            "obrigatorio": false
+                        },
+                        {
+                            "nome": "dataFinal",
+                            "descricao": "Data ou competência final a ser considerada.",
+                            "obrigatorio": false
+                        }
+                    ],
+                    "exemplos": [
+                        {
+                            "descricao": "Cálculo de férias considerando alteração de carga horária.",
+                            "codigo": "MediaHoras.calcular(dataInicial: '2022-05-01', dataFinal: '2023-04-30')"
+                        }
+                    ],
+                    "explicacao": {
+                        "descricao": "O sistema considera a carga horária mensal durante o período aquisitivo.",
+                        "detalhes": [
+                            {
+                                "periodo": "01/05/2022 à 30/11/2022",
+                                "cargaHoraria": 150,
+                                "calculo": "7 meses * 150 horas = 1050 horas"
+                            },
+                            {
+                                "periodo": "01/12/2022 à 30/04/2023",
+                                "cargaHoraria": 200,
+                                "calculo": "5 meses * 200 horas = 1000 horas"
+                            },
+                            {
+                                "somaCargaHoraria": "1050 + 1000 = 2050 horas",
+                                "media": "2050 / 12 = 170,83 horas"
+                            }
+                        ]
+                    },
+                    "resultado": {
+                        "descricao": "Cálculo do valor do evento de horas férias com base no salário atual.",
+                        "formula": "valorEvento = (salario / cargaHorariaAtual) * cargaHorariaNoPeriodo",
+                        "exemplo": "R$ 1000,00 / 200 * 170,83 = R$ 854,15"
+                    }
+                },
+                {
+                    "nome": "calcularComAlteracao",
+                    "descricao": "Calcula a carga horária das férias considerando a alteração da carga horária em datas específicas.",
+                    "exemplo": {
+                        "descricao": "Cálculo de férias com datas específicas.",
+                        "codigo": "MediaHoras.calcularComAlteracao(dataInicial: '2022-05-01', dataFinal: '2023-04-30')"
+                    }
+                }
+            ]
+        },
+        {
+            "nome": "ReembolsoPlanoSaude",
+            "descricao": "Funções relacionadas ao reembolso de plano de saúde no sistema de RH.",
+            "metodos": [
+                {
+                    "nome": "buscaValor",
+                    "descricao": "Busca as informações dos reembolsos de plano de saúde cadastrados no sistema.",
+                    "parametros": [
+                        {
+                            "nome": "TipoSegurado",
+                            "descricao": "Filtra por tipo de segurado. Pode ser: titular, dependente ou ambos.",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "TipoReembolso",
+                            "descricao": "Filtra por tipo de reembolso. Pode ser: reembolso pelo plano, reembolso pelo empregador ou ambos.",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "TipoValorReembolso",
+                            "descricao": "Seleciona o valor a ser retornado. Pode ser: ano corrente, anos anteriores ou ambos.",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo": {
+                        "descricao": "Retorna o total de despesas da competência do Cálculo.",
+                        "codigo": "BigDecimal valor = ReembolsoPlanoSaude.buscaValor(TipoSegurado.AMBOS, TipoReembolso.AMBOS, TipoValorReembolso.AMBOS)"
+                    }
+                },
+                {
+                    "nome": "buscaValor",
+                    "descricao": "Busca as informações dos reembolsos de plano de saúde na competência de cálculo informada.",
+                    "parametros": [
+                        {
+                            "nome": "Competencia",
+                            "descricao": "Competência para buscar os reembolsos de plano de saúde.",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "TipoSegurado",
+                            "descricao": "Filtra por tipo de segurado. Pode ser: titular, dependente ou ambos.",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "TipoReembolso",
+                            "descricao": "Filtra por tipo de reembolso. Pode ser: reembolso pelo plano, reembolso pelo empregador ou ambos.",
+                            "obrigatorio": true
+                        },
+                        {
+                            "nome": "TipoValorReembolso",
+                            "descricao": "Seleciona o valor a ser retornado. Pode ser: ano corrente, anos anteriores ou ambos.",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo": {
+                        "descricao": "Retorna o total de despesas da competência informada (04/2023).",
+                        "codigo": "BigDecimal valor = ReembolsoPlanoSaude.buscaValor(Datas.data(2023, 4, 1), TipoSegurado.AMBOS, TipoReembolso.AMBOS, TipoValorReembolso.AMBOS)"
+                    }
+                }
+            ]
+        },
+        {
+            "nome": "ValesTransporte",
+            "descricao": "Funções relacionadas ao gerenciamento de vales transporte no sistema de RH.",
+            "metodos": [
+                {
+                    "nome": "busca",
+                    "descricao": "Retorna do RH o valor ou quantidade de vales transporte conforme o argumento fornecido.",
+                    "parametros": [
+                        {
+                            "nome": "tipoRetornoValeTransporte",
+                            "descricao": "Tipo de retorno do vale transporte.",
+                            "obrigatorio": true
+                        }
+                    ],
+                    "exemplo": [
+                        {
+                            "descricao": "Retorna o valor total do vale transporte.",
+                            "codigo": "BigDecimal valor = ValesTransporte.busca(TipoRetornoValeTransporte.VALOR)"
+                        },
+                        {
+                            "descricao": "Retorna a quantidade de vales transporte.",
+                            "codigo": "int quantidadeVales = ValesTransporte.busca(TipoRetornoValeTransporte.QUANTIDADE)"
+                        }
+                    ]
+                }
+            ],
+            "campos_disponiveis": [
+                {
+                    "campo": "valorTotal",
+                    "descricao": "Valor total do vale transporte."
+                },
+                {
+                    "campo": "tipoRetorno",
+                    "descricao": "Tipo de retorno do vale transporte."
+                }
+            ]
+        }
+    ]
+}
