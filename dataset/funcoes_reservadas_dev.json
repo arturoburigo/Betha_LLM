@@ -1,0 +1,1371 @@
+{
+    "funcoes_para_formula": {
+        "descricao": "Funções para fórmulas mantidas pelo desenvolvimento, possibilitando a criação de funções que auxiliam no uso de fórmulas de eventos, reduzindo a complexidade e permitindo o reuso do código.",
+        "funcoes": [
+            {
+                "nome": "acumula",
+                "descricao": "Acumula a movimentação de um determinado evento no período informado com o código de evento informado.",
+                "parametros": [
+                    {
+                        "nome": "codigoEvento",
+                        "descricao": "Código do evento",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "tipo",
+                        "descricao": "Informe o tipo de valor a ser buscado pela função",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "competenciaInicial",
+                        "descricao": "Competência inicial para acumular a movimentação",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "competenciaFinal",
+                        "descricao": "Competência final para acumular a movimentação",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "tipoProcessamento",
+                        "descricao": "Informe o tipo de processamento a ser considerado na busca",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "subTipoProcessamento",
+                        "descricao": "Informe o subtipo de processamento a ser considerado na busca. Quando não informado, serão considerados os subtipos de processamento INTEGRAL e COMPLEMENTAR",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": "valorAcumulado = Funcoes.acumula(67, TipoValor.CALCULADO, competencia, competencia, TipoProcessamento.MENSAL, SubTipoProcessamento.ADIANTAMENTO)"
+            },
+            {
+                "nome": "acumulaClassificacao",
+                "descricao": "Acumula a movimentação dos eventos no período informado que tenham a classificação de evento informada.",
+                "parametros": [
+                    {
+                        "nome": "classificacao",
+                        "descricao": "Classificação do evento",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "tipo",
+                        "descricao": "Informe o tipo de valor a ser buscado pela função",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "competenciaInicial",
+                        "descricao": "Competência inicial para acumular a movimentação",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "competenciaFinal",
+                        "descricao": "Competência final para acumular a movimentação",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "tipoProcessamento",
+                        "descricao": "Informe o tipo de processamento a ser considerado na busca",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "subTipoProcessamento",
+                        "descricao": "Informe o subtipo de processamento a ser considerado na busca. Quando não informado, serão considerados os subtipos de processamento INTEGRAL e COMPLEMENTAR",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": "valorAcumulado = Funcoes.acumula(ClassificacaoEvento.ABATSALM13, TipoValor.CALCULADO, competencia, competencia, TipoProcessamento.MENSAL, SubTipoProcessamento.INTEGRAL)"
+            },
+            {
+                "nome": "afasaborto",
+                "descricao": "Retorna os dias com afastamento na competência devido aborto não criminoso.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasaborto()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasacidtrab",
+                "descricao": "Retorna os dias com afastamento na competência devido acidente de trabalho (previdência).",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasacidtrab()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasacidtrabemp",
+                "descricao": "Retorna os dias com afastamento na competência devido acidente de trabalho (empregador).",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasacidtrabemp()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasadocao",
+                "descricao": "Retorna os dias com afastamento na competência devido adoção.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasadocao()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasauxdoenc",
+                "descricao": "Retorna os dias com afastamento na competência devido doença (previdência).",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasauxdoenc()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasauxdoencemp",
+                "descricao": "Retorna os dias com afastamento na competência devido doença (empregador).",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasauxdoencemp()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afascandcargoeletivocel",
+                "descricao": "Retorna os dias com afastamento na competência devido candidatura em cargo eletivo estando a matrícula em um vínculo celetista.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afascandcargoeletivocel()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasdirinteg",
+                "descricao": "Retorna os dias com afastamento na competência devido licença com vencimentos/com direitos integrais.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasdirinteg()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasexeroutroorgaoservidorouempregadopubcedido",
+                "descricao": "Retorna os dias com afastamento na competência devido exercício em outro órgão de servidor ou empregado público cedido.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasexeroutroorgaoservidorouempregadopubcedido()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afaslicmat",
+                "descricao": "Retorna os dias com afastamento na competência devido licença maternidade.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afaslicmat()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasliccvenclibempact",
+                "descricao": "Retorna os dias com afastamento na competência devido licença com vencimentos/com direitos integrais relacionados a liberdade da empresa/ACT.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasliccvenclibempact()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afaslicsvenc",
+                "descricao": "Retorna os dias com afastamento na competência devido licença sem vencimentos.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afaslicsvenc()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasmandeletivocargocomissao",
+                "descricao": "Retorna os dias com afastamento na competência devido mandato eletivo para cargo em comissão.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasmandeletivocargocomissao()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afaspartconscnpslei82131991",
+                "descricao": "Retorna os dias com afastamento na competência devido participação em conselho CNPS, em conformidade com a lei 8.213/1991.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afaspartconscnpslei82131991()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasprorroglicmat",
+                "descricao": "Retorna os dias com afastamento na competência devido prorrogação da licença maternidade.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasprorroglicmat()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasprorroglicmatlei11770",
+                "descricao": "Retorna os dias com afastamento na competência devido prorrogação da licença maternidade, em conformidade com a lei 11.770.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasprorroglicmatlei11770()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasReintegracaoComPerdaDireito",
+                "descricao": "Retorna os dias com afastamento na competência devido reintegração com perdas de direito - ou seja, sem direitos integrais.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasReintegracaoComPerdaDireito()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasReintegracaoSemPerdaDireito",
+                "descricao": "Retorna os dias com afastamento na competência devido reintegração sem perdas de direito - ou seja, com direitos integrais.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasReintegracaoSemPerdaDireito()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasrepresentantesindical",
+                "descricao": "Retorna os dias com afastamento na competência devido representação sindical.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasrepresentantesindical()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afasservmil",
+                "descricao": "Retorna os dias com afastamento na competência devido prestação de serviço militar.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afasservmil()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afassuspcontart17mp11162022",
+                "descricao": "Retorna os dias com afastamento na competência devido afastamento por suspensão do contrato, em conformidade com o artigo 17 da MP 1.116/2022.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afassuspcontart17mp11162022()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afassuspcontart19mp11162022",
+                "descricao": "Retorna os dias com afastamento na competência devido afastamento por suspensão do contrato, em conformidade com o artigo 19 da MP 1.116/2022.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afassuspcontart19mp11162022()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afassuspcontlei140202020coronavirus",
+                "descricao": "Retorna os dias com afastamento na competência devido suspensão do contrato de trabalho devido coronavírus, em conformidade com a lei 14.020/2020.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afassuspcontlei140202020coronavirus()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afassusppagtoservpubnaorecadastramento",
+                "descricao": "Retorna os dias com afastamento na competência devido suspensão de pagamento de servidor público por não recadastramento.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afassusppagtoservpubnaorecadastramento()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afastrabavulsoimpedconcorrenciaescala",
+                "descricao": "Retorna os dias com afastamento do trabalhador avulso em virtude do impedimento de concorrência à escala.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afastrabavulsoimpedconcorrenciaescala()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "afastrabavulsoinatividadetrabmaior90dias",
+                "descricao": "Retorna os dias com afastamento do trabalhador avulso em virtude da inatividade de trabalho maior que 90 dias.",
+                "exemplo": [
+                    "int diasAfastamento = Funcoes.afastrabavulsoinatividadetrabmaior90dias()",
+                    "vaux = Funcoes.cnvdpbase(diasAfastamento)",
+                    "valorCalculado = Funcoes.calcprop(funcionario.salario, vaux)"
+                ]
+            },
+            {
+                "nome": "avos13",
+                "descricao": "Quantidade de avos para cálculo de décimo terceiro salário.",
+                "parametros": [
+                    {
+                        "nome": "mes",
+                        "descricao": "Mês de referência.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "calculoFGTS",
+                        "descricao": "Se deseja retornar os avos para fins de cálculo de FGTS, se não for informado será considerado false.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "int avos13 = Funcoes.avos13(12, true)",
+                    "if (TipoProcessamento.RESCISAO.equals(calculo.tipoProcessamento)) {",
+                    "    avos13 = Funcoes.avos13(calculo.competencia.mes)",
+                    "}"
+                ]
+            },
+            {
+                "nome": "avosAuxMat13",
+                "descricao": "Quantidade de avos afastados por auxílio maternidade.",
+                "exemplo": [
+                    "int avosAuxMat13 = Funcoes.avosAuxMat13()"
+                ]
+            },
+            {
+                "nome": "buscaAbonos",
+                "descricao": "Retorna uma quantidade de abonos de faltas na competência informada, conforme os parâmetros para a busca nos lançamentos de faltas. O retorno das informações se dará de acordo com a competência de desconto e/ou competência de abono.",
+                "parametros": [
+                    {
+                        "nome": "abonada",
+                        "descricao": "Informe o tipo de abono para a busca. Informando 'Abonado', retornará a quantidade abonada. Informando 'Não abonadas', retornará a diferença entre a quantidade de faltas descontadas e a quantidade abonada - quando maior que zero. Informando 'Abonadas e não abonadas', retornará a quantidade total de faltas descontadas.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "competencia",
+                        "descricao": "Competência onde as informações serão buscadas, podendo ser ela a competência de abono ou de desconto da falta - conforme parâmetro 'abonada'.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "considerarJustificadasInjustificadas",
+                        "descricao": "Permite informar o tipo de falta a ser considerado. Quando não informado, buscará ambos os tipos de afastamentos de faltas - justificadas e injustificadas.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "double abonoFaltas = Funcoes.buscaAbonos(TipoAbono.ABONADO, calculo.competencia, TipoFalta.NAO_JUSTIFICADA)",
+                    "valorReferencia = abonoFaltas",
+                    "if (valorReferencia > 0) {",
+                    "    valorCalculado = Funcoes.calcprop(Funcoes.remuneracao(matricula.tipo).valor, valorReferencia)",
+                    "}"
+                ]
+            },
+            {
+                "nome": "buscaBaseDeOutrosProcessamentos",
+                "descricao": "Esta função busca os valores calculados para o tipo de base informado no parâmetro em folhas anteriores do processamento mensal e/ou rescisório. Para os processamentos mensal (complementar) e rescisão (integral), buscará o valor calculado nas folhas mensal (integral) e mensal (complementar). Para o processamento de rescisão (complementar), buscará as mesmas folhas mensais e as folhas de rescisão (integral) e rescisão (complementar). Nas demais folhas, retornará como valor zero. IMPORTANTE: esta função deve ser utilizada apenas nos casos de bases originadas de eventos que são calculados especificamente em um único processamento/subtipo de processamento por competência (exemplos: 'BASE I.N.S.S. OUTRAS EMPRESAS' e 'BASE I.R.R.F. OUTRAS EMPRESAS'), pois seu uso indevido pode acarretar em valores incorretos nas folhas.",
+                "exemplo": [
+                    "def baseprev = Bases.valor(Bases.INSS) + Bases.valor(Bases.INSSFER) + Bases.valor(Bases.INSSOUTRA) + Funcoes.buscaBaseDeOutrosProcessamentos(Bases.INSSOUTRA)"
+                ]
+            },
+            {
+                "nome": "buscaFaltas",
+                "descricao": "Retorna uma quantidade de faltas na competência informada, conforme os parâmetros para a busca nos lançamentos de faltas. O retorno das informações se dará de acordo com a competência de desconto.",
+                "parametros": [
+                    {
+                        "nome": "justificada",
+                        "descricao": "Informe o tipo de falta para busca. Informando 'Não justificada', retornará a quantidade de faltas com o tipo de afastamento injustificado. Informando 'Justificada', retornará a quantidade de faltas com o tipo de afastamento justificado. Informando 'Justificada e não justificada', retornará a quantidade de faltas com os tipos de afastamentos justificado e injustificado.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "competencia",
+                        "descricao": "Competência onde os descontos das faltas serão buscadas.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "double descFaltas = Funcoes.buscaFaltas(TipoFalta.NAO_JUSTIFICADA, calculo.competencia)",
+                    "valorReferencia = descFaltas",
+                    "if (valorReferencia > 0) {",
+                    "    valorCalculado = Funcoes.calcprop(Funcoes.remuneracao(matricula.tipo).valor, valorReferencia)",
+                    "}"
+                ]
+            },
+            {
+                "nome": "buscaMes",
+                "descricao": "Retorna o nome do mês conforme o mês informado por parâmetro.",
+                "parametros": [
+                    {
+                        "nome": "mes",
+                        "descricao": "Mês do ano, de 1 a 12.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "String nomeMes = Funcoes.buscaMes(12)",
+                    "// retorna 'DEZEMBRO'"
+                ]
+            },
+            {
+                "nome": "buscaQuantidadeDependentesPensao",
+                "descricao": "Retorna a quantidade de dependentes de pensão vigentes do servidor. Caso não houver, retornará 0 (zero).",
+                "exemplo": [
+                    "int quantidadeDependentes = Funcoes.buscaQuantidadeDependentesPensao()",
+                    "// exemplo de uso no evento 44 - PENSÃO ALIMENTÍCIA",
+                    "valorReferencia = Funcoes.buscaQuantidadeDependentesPensao()"
+                ]
+            },
+            {
+                "nome": "buscaValorDeOutrosProcessamentos",
+                "descricao": "Esta função busca os valores calculados para o código de evento informado no parâmetro em folhas anteriores do processamento mensal e/ou rescisório. Para os processamentos mensal (complementar) e rescisão (integral), buscará o valor calculado nas folhas mensal (integral) e mensal (complementar). Para o processamento de rescisão (complementar), buscará as mesmas folhas mensais e as folhas de rescisão (integral) e rescisão (complementar). Nas demais folhas, retornará como valor zero. IMPORTANTE: esta função deve ser utilizada apenas nos casos de eventos que são calculados especificamente em um único processamento/subtipo de processamento por competência (exemplos: 'RETENÇÃO I.N.S.S. OUTRAS EMPRESAS' e 'RETENÇÃO I.R.R.F. OUTRAS EMPRESAS'), pois seu uso indevido pode acarretar em valores incorretos nas folhas.",
+                "exemplo": [
+                    "def valorRetencaoInss = Eventos.valor(169) + Funcoes.buscaValorDeOutrosProcessamentos(169)"
+                ]
+            },
+            {
+                "nome": "buscaValorDependentesPensao",
+                "descricao": "Retorna o valor total de pensão a ser pago pelo servidor conforme o valor informado. Na função também é realizado o rateio de valores por dependente para exibição na consulta de cálculos conforme configuração da pensão - fixo ou um percentual do valor informado. Serão considerados no cálculo apenas os dependentes com pensões vigentes.",
+                "parametros": [
+                    {
+                        "nome": "valorParaCalculoDaPensao",
+                        "descricao": "Valor para o cálculo da pensão por dependente.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "double valorTotalPensao = Funcoes.buscaValorDependentesPensao(Bases.valor(Bases.SALBASE))",
+                    "// exemplo de uso no evento 44 - PENSÃO ALIMENTÍCIA",
+                    "valorCalculado = Funcoes.buscaValorDependentesPensao(Funcoes.remuneracao(matricula.tipo).valor)"
+                ]
+            },
+            {
+                "nome": "buscaValorEvento13SalarioIntegralAdiantado",
+                "descricao": "Retorna o valor de um evento da folha de 13º salário integral adiantada em competência anterior à Dezembro quando está calculando uma folha de 13º salário integral em Dezembro. Permite informar um código de evento específico ou buscar o próprio evento que está sendo calculado. Caso não houver uma folha de 13º integral anterior, ou que o evento não tenha sido calculado, ou que esteja em um processamento diferente de 13º salário integral ou não estiver calculando o 13º na competência de Dezembro, retornará 0 (zero). Esta função visa atender às exigências do eSocial.",
+                "parametros": [
+                    {
+                        "nome": "codigoEvento",
+                        "descricao": "Código do evento que deseja buscar o valor na folha de 13º salário integral adiantada. Quando não informado, buscará do próprio evento.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "valorCalculado -= Funcoes.buscaValorEvento13SalarioIntegralAdiantado()",
+                    "// exemplo onde buscará o valor do próprio evento lançado na folha de 13º salário integral anterior a Dezembro para desconto na folha de 13º salário integral de Dezembro",
+                    "valorCalculado -= Funcoes.buscaValorEvento13SalarioIntegralAdiantado(51)",
+                    "// exemplo onde buscará o valor do evento '51 - I.N.S.S. 13º SALÁRIO' lançado na folha de 13º salário integral anterior a Dezembro para desconto na folha de 13º salário integral de Dezembro"
+                ]
+            },
+            {
+                "nome": "calcexclusivo",
+                "descricao": "Calcula o evento exclusivamente no tipo de processamento com maior número de dias. Se a quantidade de dias for a mesma na comparação, retornará o tipo de processamento 1.",
+                "parametros": [
+                    {
+                        "nome": "valorReferencia",
+                        "descricao": "Valor de referência, esse é o valor que será retornado.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "tipoProcessamento1",
+                        "descricao": "Tipo de processamento 1.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "diasProcessamento1",
+                        "descricao": "Dias do tipo de processamento 1 (para comparação).",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "tipoProcessamento2",
+                        "descricao": "Tipo de processamento 2.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "diasProcessamento2",
+                        "descricao": "Dias do tipo de processamento 2 (para comparação).",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "int diasTrabalhados = 18",
+                    "int diasFerias = 12",
+                    "Funcoes.calcexclusivo(funcionario.salario, TipoProcessamento.MENSAL, diasTrabalhados, TipoProcessamento.FERIAS, diasFerias)",
+                    "// O cálculo da folha mensal será mantido e das férias cancelado"
+                ]
+            },
+            {
+                "nome": "calcprop",
+                "descricao": "Calcula um valor proporcionalmente ao número de dias ou horas passados por parâmetro. Esta proporção é feita em relação à carga horária do funcionário na unidade que está nos parâmetros do sistema.",
+                "parametros": [
+                    {
+                        "nome": "vlrCalc",
+                        "descricao": "Valor que deseja-se calcular a proporcionalidade.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "proprocional",
+                        "descricao": "Quantidade de horas ou dias a ser aplicada a proporção. Este valor deve estar na mesma unidade configurada em Parâmetros.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "BigDecimal salario = funcionario.salario;",
+                    "valorCalculado = Funcoes.calcprop(salario, Funcoes.cvndpbase(Funcoes.diastrab()));"
+                ]
+            },
+            {
+                "nome": "carregaEmprestimoEmFerias",
+                "descricao": "Realiza validações internas para registrar os valores de empréstimo nas folhas de pagamento de férias, conforme existir gozo ou apenas abono na competência de pagamento, possibilitando a réplica dos valores posteriormente.",
+                "parametros": [
+                    {
+                        "nome": "considerarApenasFeriasComGozo",
+                        "descricao": "Define se será considerado o carregamento do empréstimo apenas em férias com gozo, quando 'true', ou também em férias apenas com abonos, quando 'false'.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Funcoes.carregaEmprestimoEmFerias(true)",
+                    "// trata os valores dos empréstimos lançados em folhas de férias - informando true, considerará apenas quando houver gozo"
+                ]
+            },
+            {
+                "nome": "categoriaSefipVinculo",
+                "descricao": "Retorna o código da ocorrência Sefip da matrícula. Para autônomos, retornará 13, e para matrículas que não possuam ocorrência, retornará 0.",
+                "exemplo": [
+                    "int codigoOcorrenciaSefip = Funcoes.categoriaSefipVinculo()"
+                ]
+            },
+            {
+                "nome": "cedidocomonus",
+                "descricao": "Retorna os dias com afastamento na competência devido cedência com ônus.",
+                "exemplo": [
+                    "int cedidocomonus = Funcoes.cedidocomonus()"
+                ]
+            },
+            {
+                "nome": "cedidosemonus",
+                "descricao": "Retorna os dias com afastamento na competência devido cedência sem ônus.",
+                "exemplo": [
+                    "int cedidosemonus = Funcoes.cedidosemonus()"
+                ]
+            },
+            {
+                "nome": "cnvdpbase",
+                "descricao": "Converte um número de dias para a unidade de cálculo configurada em Parâmetros gerais de cálculo.",
+                "parametros": [
+                    {
+                        "nome": "dias",
+                        "descricao": "Para matrícula do tipo Funcionário, converte uma quantidade de dias para a unidade configurada em Parâmetros. Para os demais tipos de matrículas, o retorno é fixo e o próprio valor passado neste parâmetro. Quando já estiver configurado em dias, será retornado o próprio valor passado neste parâmetro.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "vaux = Funcoes.cnvdpbase(Funcoes.afasservmil())",
+                    "valorReferencia = vaux"
+                ]
+            },
+            {
+                "nome": "codigoMatricula",
+                "descricao": "Busca o código da matrícula com contrato que está sendo calculada no momento, removendo a barra que separa o código do contrato.",
+                "exemplo": [
+                    "int codigo = Funcoes.codigoMatricula()"
+                ]
+            },
+            {
+                "nome": "concessaoFeriasCompetencia",
+                "descricao": "Busca a quantidade de dias do gozo de férias que está sendo executada/concedida entre as datas inicial e final informadas.",
+                "parametros": [
+                    {
+                        "nome": "dataInicioGozo",
+                        "descricao": "Data inicial para buscar o gozo das férias que está sendo calculada.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "dataFimGozo",
+                        "descricao": "Data final para buscar o gozo das férias que está sendo calculada.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "int diasferias = Funcoes.concessaoFeriasCompetencia(periodoConcessao.dataInicioGozo, periodoConcessao.dataFimGozo)"
+                ]
+            },
+            {
+                "nome": "dadosMatricula",
+                "descricao": "Retorna alguns dados de matrícula, a função verifica o tipo de matrícula que está sendo calculada para buscar conforme o tipo.",
+                "observacoes": "As propriedades para consulta são: a data de início (dataInicio), a data de saída (dataSaida), e o indicativo se existe saída (existeSaida).",
+                "exemplo": [
+                    "Object dados = Funcoes.dadosMatricula()",
+                    "Date dataInicio = dados.dataInicio",
+                    "Date dataSaida = dados.dataSaida",
+                    "Boolean existeSaida = dados.existeSaida"
+                ]
+            },
+            {
+                "nome": "deducauxmat13",
+                "descricao": "Calcula o valor de dedução do salário maternidade para o 13º salário, referente os meses afastados por auxílio maternidade no que está sendo calculado.",
+                "parametros": [
+                    {
+                        "nome": "base",
+                        "descricao": "Valor da base de cálculo da previdência federal no 13º salário.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "avos",
+                        "descricao": "Quantidade de avos de 13º salário na competência que está sendo calculada.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "BigDecimal base = Bases.valor(Bases.FUNDFIN13) - Bases.valor(Bases.DESC13REINT)",
+                    "valorCalculado = Funcoes.deducauxmat13(base, Funcoes.avos13(Datas.mes(calculo.competencia)))"
+                ]
+            },
+            {
+                "nome": "descricaoCargo",
+                "descricao": "Retorna o nome do cargo que está vinculado à matrícula na competência. Quando não houver um cargo informado, retornará uma informação vazia.",
+                "exemplo": [
+                    "def cargo = Funcoes.descricaoCargo()"
+                ]
+            },
+            {
+                "nome": "descricaoVinculo",
+                "descricao": "Retorna o nome do vínculo empregatício que está vinculado à matrícula na competência. Quando não houver um vínculo informado, retornará uma informação vazia.",
+                "exemplo": [
+                    "def vinculoEmpregaticio = Funcoes.descricaoVinculo()"
+                ]
+            },
+            {
+                "nome": "diasabono",
+                "descricao": "Busca a quantidade total de dias de abono da férias que está sendo executada/concedida.",
+                "exemplo": [
+                    "int diasabono = Funcoes.diasabono()"
+                ]
+            },
+            {
+                "nome": "diasafast",
+                "descricao": "Busca o número de dias afastados em um determinado período, para determinadas classificações de tipos de afastamentos especificadas por parâmetro.",
+                "parametros": [
+                    {
+                        "nome": "dataInicial",
+                        "descricao": "Data inicial para buscar os afastamentos.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "dataFinal",
+                        "descricao": "Data final para buscar os afastamentos.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "afastamentos",
+                        "descricao": "Lista de Classificações de Tipos de Afastamentos.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "descricaoTipoAfastamento",
+                        "descricao": "Descrição do Tipo de Afastamento.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "List classificacoes = [",
+                    "    ClassificacaoTipoAfastamento.LICENCA_MATERNIDADE,",
+                    "    ClassificacaoTipoAfastamento.ABORTO_NAO_CRIMINOSO,",
+                    "    ClassificacaoTipoAfastamento.PRORROGACAO_DA_LICENCA_MATERNIDADE",
+                    "]",
+                    "String tipoAfastamento = \"Auxilio Maternidade\"",
+                    "int dias = Funcoes.diasafast(Funcoes.inicioCompetencia(), calculo.competencia, classificacoes, tipoAfastamento)"
+                ]
+            },
+            {
+                "nome": "diasafastcalc30",
+                "descricao": "Esta função busca o número de dias afastados numa determinada competência, considerando que todos os meses sejam de trinta dias (mês para efeito de folha de pagamento), para determinados tipos de afastamentos, especificados por parâmetro.",
+                "parametros": [
+                    {
+                        "nome": "competencia",
+                        "descricao": "Competência para buscar os afastamentos (Date).",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "afastamentos",
+                        "descricao": "Lista de Classificações de Tipos de Afastamentos.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "descricaoTipoAfastamento",
+                        "descricao": "Descrição do Tipo de Afastamento.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "List classificacoes = [",
+                    "    ClassificacaoTipoAfastamento.LICENCA_MATERNIDADE,",
+                    "    ClassificacaoTipoAfastamento.ABORTO_NAO_CRIMINOSO,",
+                    "    ClassificacaoTipoAfastamento.PRORROGACAO_DA_LICENCA_MATERNIDADE",
+                    "]",
+                    "String tipoAfastamento = \"Auxilio Maternidade\"",
+                    "int dias = Funcoes.diasafastcalc30(calculo.competencia, classificacoes, tipoAfastamento)"
+                ]
+            },
+            {
+                "nome": "diasuteis",
+                "descricao": "Retorna o número de dias úteis de um determinado período, podendo ou não considerar os sábados como dias úteis. Os domingos serão descartados e os feriados cadastrados no sistema (Cadastro de Feriados) também serão descartados.",
+                "parametros": [
+                    {
+                        "nome": "dataInicial",
+                        "descricao": "Data inicial para buscar os dias úteis.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "dataFinal",
+                        "descricao": "Data final para buscar os dias úteis.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "sabadoutil",
+                        "descricao": "Se é para considerar os sábados como dias úteis.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Date dataInicial = Datas.data(2021,1,1)",
+                    "Date dataFinal = Datas.data(2021,1,31)",
+                    "int diasuteis = Funcoes.diasuteis(dataInicial, dataFinal, false)",
+                    "BigDecimal vales = diasuteis * 3.50"
+                ]
+            },
+            {
+                "nome": "diasuteisafast",
+                "descricao": "Retorna o número de dias úteis afastados de um determinado período, para determinados tipos de afastamentos especificados por parâmetro, podendo ou não considerar os sábados como dias úteis. Os domingos serão descartados e os feriados cadastrados no sistema (Cadastro de Feriados) também serão descartados.",
+                "parametros": [
+                    {
+                        "nome": "dataInicial",
+                        "descricao": "Data inicial para buscar os dias úteis.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "dataFinal",
+                        "descricao": "Data final para buscar os dias úteis.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "sabadoutil",
+                        "descricao": "Se é para considerar os sábados como dias úteis.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "classificacaoDescricaoAafastamentos",
+                        "descricao": "Lista de Classificações de Tipos de Afastamentos ou lista de tipos de afastamentos (descrição).",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Date dataInicial = Datas.data(2021,1,1)",
+                    "Date dataFinal = Datas.data(2021,1,31)",
+                    "List classificacaoAfastamentos = [",
+                    "    ClassificacaoTipoAfastamento.LICENCA_SEM_VENCIMENTOS,",
+                    "    ClassificacaoTipoAfastamento.LICENCA_COM_VENCIMENTOS",
+                    "]",
+                    "//Consulta por classificação de afastamentos",
+                    "int diasuteisafastcalc30 = Funcoes.diasuteisafast(dataInicial, dataFinal, false, classificacaoAfastamentos)",
+                    "List tiposAfastamentos = ['Licença sem vencimentos', 'Licença prêmio']",
+                    "//Consulta por tipo de afastamento",
+                    "int diasuteisafastcalc30 = Funcoes.diasuteisafast(dataInicial, dataFinal, false, tiposAfastamentos)"
+                ]
+            },
+            {
+                "nome": "diasuteisafastcalc30",
+                "descricao": "Esta função retorna o número de dias úteis afastados de uma determinada competência, considerando que todos os meses sejam de trinta dias (mês para efeito de folha de pagamento), para determinados tipos de afastamentos especificados por parâmetro. Os sábados poderão ser considerados como dias úteis, mas os domingos e os feriados cadastrados no sistema (Cadastro de Feriados) serão descartados.",
+                "parametros": [
+                    {
+                        "nome": "competencia",
+                        "descricao": "Data inicial da competência para buscar os dias úteis.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "sabadoutil",
+                        "descricao": "Se é para considerar os sábados como dias úteis.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "classificacaoAafastamentos",
+                        "descricao": "Lista de Classificações de Tipos de Afastamentos ou lista de tipos de afastamentos (descrição).",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Date competencia = calculo.competencia",
+                    "List classificacaoAfastamentos = [",
+                    "    ClassificacaoTipoAfastamento.LICENCA_SEM_VENCIMENTOS,",
+                    "    ClassificacaoTipoAfastamento.LICENCA_COM_VENCIMENTOS",
+                    "]",
+                    "//Consulta por classificação de afastamentos",
+                    "int diasuteisafastcalc30 = Funcoes.diasuteisafastcalc30(competencia, false, classificacaoAfastamentos)",
+                    "List tiposAfastamentos = ['Licença sem vencimentos', 'Licença prêmio']",
+                    "//Consulta por tipo de afastamento",
+                    "int diasuteisafastcalc30 = Funcoes.diasuteisafastcalc30(competencia, false, tiposAfastamentos)"
+                ]
+            },
+            {
+                "nome": "diasuteiscalc30",
+                "descricao": "Esta função retorna o número de dias úteis de uma determinada competência, considerando que todos os meses sejam de trinta dias (mês para efeito de folha de pagamento). Os sábados poderão ser considerados como dias úteis, mas os domingos e os feriados cadastrados no sistema (Cadastro de Feriados) serão descartados.",
+                "parametros": [
+                    {
+                        "nome": "competencia",
+                        "descricao": "Data inicial da competência para buscar os dias úteis.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "sabadoutil",
+                        "descricao": "Se é para considerar os sábados como dias úteis.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Date competencia = calculo.competencia",
+                    "int diasuteiscalc30 = Funcoes.diasuteiscalc30(competencia, false)"
+                ]
+            },
+            {
+                "nome": "diasaposent",
+                "descricao": "Retorna os dias de aposento na competência.",
+                "exemplo": [
+                    "int diasaposent = Funcoes.diasaposent()"
+                ]
+            },
+            {
+                "nome": "diasferias",
+                "descricao": "Retorna os dias de férias na competência.",
+                "exemplo": [
+                    "int diasferias = Funcoes.diasferias()"
+                ]
+            },
+            {
+                "nome": "diasgozo",
+                "descricao": "Busca a quantidade total de dias de gozo da férias que está sendo executada/concedida.",
+                "exemplo": [
+                    "int diasgozo = Funcoes.diasgozo()"
+                ]
+            },
+            {
+                "nome": "diaspensionista",
+                "descricao": "Retorna os dias de pensão na competência.",
+                "exemplo": [
+                    "int diaspensionista = Funcoes.diaspensionista()"
+                ]
+            },
+            {
+                "nome": "diastrab",
+                "descricao": "Retorna os dias trabalhados na competência.",
+                "exemplo": [
+                    "int diastrab = Funcoes.diastrab()"
+                ]
+            },
+            {
+                "nome": "dtafast",
+                "descricao": "Busca a última data de afastamento, na competência calculada de um determinado tipo de afastamento.",
+                "parametros": [
+                    {
+                        "nome": "classificacao",
+                        "descricao": "Classificação de afastamento.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "licencaMaternidadeOrgininal",
+                        "descricao": "Este argumento é opcional e só terá validade para afastamentos de classificação PRORROGACAO_DA_LICENCA_MATERNIDADE. Quando esse argumento não for informado, ou for passado false, será retornada a data do início da prorrogação. Caso seja informado true, será retornada a data de início da licença maternidade que originou a prorrogação.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "int dtafast = Funcoes.dtafast(ClassificacaoTipoAfastamento.PRORROGACAO_DA_LICENCA_MATERNIDADE, true)"
+                ]
+            },
+            {
+                "nome": "dtrescisao",
+                "descricao": "Retorna a data da final de uma matrícula de qualquer tipo, caso não exista retorna 0.",
+                "exemplo": [
+                    "def dtrescisao = Funcoes.dtrescisao()"
+                ]
+            },
+            {
+                "nome": "faltas",
+                "descricao": "Busca o número de faltas em determinado período especificado. O número de faltas é buscado independentemente de ter sido processado o cálculo na época da falta.",
+                "parametros": [
+                    {
+                        "nome": "justificada",
+                        "descricao": "Se deseja retornar faltas justificadas. Informar true ou false.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "dataCompetenciaInicial",
+                        "descricao": "Competência inicial, caso não seja informada será considerada a competência atual (Date).",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "dataCompetenciaFinal",
+                        "descricao": "Competência final, caso não seja informada será considerada a competência atual (Date).",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "motivo",
+                        "descricao": "Informe a descrição do motivo de falta, para retornar de qualquer motivo informe 0 ou false.",
+                        "obrigatorio": false
+                    },
+                    {
+                        "nome": "abonada",
+                        "descricao": "Se deseja retornar faltas abonadas. Informar true ou false.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "if (vlraux <= 0) {",
+                    "    Date inicioCompetencia = Datas.data(Datas.ano(calculo.competencia), Datas.mes(calculo.competencia), 1)",
+                    "    vlraux = Funcoes.faltas(false, inicioCompetencia, calculo.competencia, 0, false)",
+                    "}"
+                ]
+            },
+            {
+                "nome": "fimCompetencia",
+                "descricao": "Retorna uma data referente ao último dia da competência que está sendo calculada.",
+                "exemplo": [
+                    "Date fimCompetencia = Funcoes.fimCompetencia()"
+                ]
+            },
+            {
+                "nome": "getAssistMunicipalFerias",
+                "descricao": "Essa função busca o valor da assistência municipal do processamento férias e faz a proporcionalização com os dias de férias na competência.",
+                "exemplo": [
+                    "Object assistMunicipalFerias = Funcoes.getAssistMunicipalFerias()",
+                    "BigDecimal referencia = assistMunicipalFerias.referencia",
+                    "BigDecimal valor = assistMunicipalFerias.valor"
+                ]
+            },
+            {
+                "nome": "getFgtsFerias",
+                "descricao": "Essa função busca o valor de FGTS do processamento férias e faz a proporcionalização com os dias de férias na competência.",
+                "exemplo": [
+                    "Object fgtsFerias = Funcoes.getfgtsFerias()",
+                    "BigDecimal referencia = fgtsFerias.referencia",
+                    "BigDecimal valor = fgtsFerias.valor"
+                ]
+            },
+            {
+                "nome": "getFundoFinanceiroFerias",
+                "descricao": "Essa função busca o valor do fundo financeiro do processamento férias e faz a proporcionalização com os dias de férias na competência.",
+                "exemplo": [
+                    "Object fundoFinanceiroFerias = Funcoes.getFundoFinanceiroFerias()",
+                    "BigDecimal referencia = fundoFinanceiroFerias.referencia",
+                    "BigDecimal valor = fundoFinanceiroFerias.valor"
+                ]
+            },
+            {
+                "nome": "getInssFerias",
+                "descricao": "Essa função busca o valor de INSS do processamento férias e faz a proporcionalização com os dias de férias na competência.",
+                "exemplo": [
+                    "Object inssFerias = Funcoes.getInssFerias()",
+                    "BigDecimal referencia = inssFerias.referencia",
+                    "BigDecimal valor = inssFerias.valor"
+                ]
+            },
+            {
+                "nome": "getIrrfFerias",
+                "descricao": "Essa função busca o valor de IRRF do processamento férias e faz a proporcionalização com os dias de férias na competência.",
+                "exemplo": [
+                    "Object irrfFerias = Funcoes.getIrrfFerias()",
+                    "BigDecimal referencia = irrfFerias.referencia",
+                    "BigDecimal valor = irrfFerias.valor"
+                ]
+            },
+            {
+                "nome": "getPrevEstadualFerias",
+                "descricao": "Essa função busca o valor da previdência estadual do processamento férias e faz a proporcionalização com os dias de férias na competência.",
+                "exemplo": [
+                    "Object prevEstadualFerias = Funcoes.getPrevEstadualFerias()",
+                    "BigDecimal referencia = prevEstadualFerias.referencia",
+                    "BigDecimal valor = prevEstadualFerias.valor"
+                ]
+            },
+            {
+                "nome": "getPrevPropriaFerias",
+                "descricao": "Essa função busca o valor da previdência própria do processamento férias e faz a proporcionalização com os dias de férias na competência.",
+                "exemplo": [
+                    "Object prevPropriaFerias = Funcoes.getPrevPropriaFerias()",
+                    "BigDecimal referencia = prevPropriaFerias.referencia",
+                    "BigDecimal valor = prevPropriaFerias.valor"
+                ]
+            },
+            {
+                "nome": "getTotalFerias",
+                "descricao": "Retorna o total da folha de férias, desconsiderando eventos de INSS/RPPS e IRRF. Esta função verifica eventos da folha interna de férias e também os eventos da folha de pagamento de férias que não existem na folha interna de férias.",
+                "exemplo": [
+                    "Object totalFerias = Funcoes.getTotalFerias()",
+                    "BigDecimal provento = totalFerias.provento",
+                    "BigDecimal desconto = totalFerias.desconto",
+                    "BigDecimal liquido = totalFerias.liquido"
+                ]
+            },
+            {
+                "nome": "getValorClassifEventoFerias",
+                "descricao": "Retorna o valor total ou proporcional à quantidade de dias de férias na competência da classificação do evento informado.",
+                "parametros": [
+                    {
+                        "nome": "classificacaoEvento",
+                        "descricao": "Classificação do evento.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "buscarValorIntegral",
+                        "descricao": "Se deseja considerar o valor integral do evento, informe true. Caso não seja informado ou informe false, retorna o valor proporcional aos dias de gozo de férias na competência.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "Object InssFerias = Funcoes.getValorClassifEventoFerias(ClassificacaoEvento.INSS, false)",
+                    "BigDecimal valor = InssFerias.valor",
+                    "BigDecimal referencia = InssFerias.referencia"
+                ]
+            },
+            {
+                "nome": "getValorCodigoEventoFerias",
+                "descricao": "Retorna o valor total ou proporcional à quantidade de dias de férias na competência do código de evento informado.",
+                "parametros": [
+                    {
+                        "nome": "codigoEvento",
+                        "descricao": "Código do evento.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "buscarValorIntegral",
+                        "descricao": "Se deseja considerar o valor integral do evento, informe true. Caso não seja informado ou informe false, retorna o valor proporcional aos dias de gozo de férias na competência.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "Object InssFerias = Funcoes.getValorCodigoEventoFerias(88, false)",
+                    "BigDecimal valor = InssFerias.valor",
+                    "BigDecimal referencia = InssFerias.referencia"
+                ]
+            },
+            {
+                "nome": "getValorFerias",
+                "descricao": "Retorna o valor de um evento da folha de férias, podendo definir se deseja buscar da folha interna ou da folha de pagamento.",
+                "parametros": [
+                    {
+                        "nome": "codigoEvento",
+                        "descricao": "Código do evento.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "buscarFolhaPagamento",
+                        "descricao": "Informe 'true' deseja buscar da folha de pagamento e folha interna informar. Se não for informado ou ser 'false', irá buscar apenas da folha interna.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "Object valorFerias = Funcoes.getValorFerias()",
+                    "BigDecimal valor = valorFerias.valor",
+                    "BigDecimal referencia = valorFerias.referencia"
+                ]
+            },
+            {
+                "nome": "getValorFeriasEventoVariavel",
+                "descricao": "Retorna o valor de um evento da folha de férias buscado na folha interna.",
+                "parametros": [
+                    {
+                        "nome": "codigoEvento",
+                        "descricao": "Código do evento.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "somarReferencias",
+                        "descricao": "Informe 'true' caso deseje somar as referências dos eventos variáveis iguais quando houver mais de uma férias calculada. Se não for informado ou ser 'false', irá considerar a última referência calculada.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "Object valorFeriasEventoVariavel = Funcoes.getValorFeriasEventoVariavel(codigoEvento)",
+                    "BigDecimal valor = valorFerias.valor",
+                    "BigDecimal referencia = valorFerias.referencia"
+                ]
+            },
+            {
+                "nome": "idade",
+                "descricao": "Retorna a idade comparando a diferença entre duas datas.",
+                "parametros": [
+                    {
+                        "nome": "menorData",
+                        "descricao": "Menor data.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "maiorData",
+                        "descricao": "Maior data.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "int idade = Funcoes.idade(Datas.data(1970, 1, 1), Datas.hoje())"
+                ]
+            },
+            {
+                "nome": "inicioCompetencia",
+                "descricao": "Retorna uma data referente ao primeiro dia da competência que está sendo calculada.",
+                "exemplo": [
+                    "Date inicioCompetencia = Funcoes.inicioCompetencia()"
+                ]
+            },
+            {
+                "nome": "mesesafast",
+                "descricao": "Busca o número de meses afastados em um determinado período, para determinadas classificações de tipos de afastamentos, especificados por parâmetro.",
+                "parametros": [
+                    {
+                        "nome": "dataInicial",
+                        "descricao": "Data inicial para buscar os afastamentos.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "dataFinal",
+                        "descricao": "Data final para buscar os afastamentos.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "classificações",
+                        "descricao": "Lista de Classificações de Tipos de Afastamentos.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "List afastamentos = [ClassificacaoTipoAfastamento.AUXILIO_DOENCA_PREVIDENCIA, ClassificacaoTipoAfastamento.LICENCA_SEM_VENCIMENTOS]",
+                    "Date dtbase = funcionario.dataBase",
+                    "Date dfin = Datas.removeMeses(calculo.competencia, 1)",
+                    "int meses = Funcoes.mesesafast(dtbase, dfin, afastamentos)"
+                ]
+            },
+            {
+                "nome": "mesesmat13",
+                "descricao": "Busca o número de meses afastados no ano por auxílio maternidade, para desconto de 13º salário. A contagem destes meses será de acordo com a regra dos avos para o 13º salário (mais que 14 dias trabalhados no mês conta como avo de 13º).",
+                "exemplo": [
+                    "if (funcionario.possuiPrevidenciaFederal) {",
+                    "    int vaux = Funcoes.mesesmat13()",
+                    "}"
+                ]
+            },
+            {
+                "nome": "ocorrenciaSefip",
+                "descricao": "Retorna a ocorrência Sefip da matrícula. Para autônomos, retornará 'CONTRIBUINTE_INDIVIDUAL', e para matrículas que não possuam ocorrência, retornará NENHUMA.",
+                "exemplo": [
+                    "String ocorrenciaSefip = Funcoes.ocorrenciaSefip()"
+                ]
+            },
+            {
+                "nome": "optanteFgts",
+                "descricao": "Retorna se a matrícula é optante de FGTS. Caso seja um tipo de matrícula que não possua opção, retornará false. Essa função pode ser usada para evitar a checagem do tipo de matrícula.",
+                "parametros": [
+                    {
+                        "nome": "tipoMatricula",
+                        "descricao": "Tipo da matrícula.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "if (Funcoes.optanteFgts(matricula.tipo)) {",
+                    "    imprimir 'É optante de FGTS'",
+                    "}"
+                ]
+            },
+            {
+                "nome": "pagapensao",
+                "descricao": "Indica se o servidor possui dependentes de pensão. Serão consideradas apenas as pensões vigentes.",
+                "exemplo": [
+                    "Boolean pagapensao = Funcoes.pagapensao()"
+                ]
+            },
+            {
+                "nome": "permitecalc13integral",
+                "descricao": "Indicativo se pode ser realizado o cálculo de décimo terceiro salário integral.",
+                "exemplo": [
+                    "Boolean permitecalc13integral = Funcoes.permitecalc13integral()"
+                ]
+            },
+            {
+                "nome": "permiteCalculoAuxilioMaternidade",
+                "descricao": "Indicativo se um cálculo de auxílio maternidade pode ser realizado.",
+                "exemplo": [
+                    "Boolean permiteCalculoAuxilioMaternidade = Funcoes.permiteCalculoAuxilioMaternidade()"
+                ]
+            },
+            {
+                "nome": "possuiPrevidencia",
+                "descricao": "Retorna se a matrícula possui o tipo de previdência própria informada. Caso seja um tipo de matrícula que não possua opção ou que seja optante da previdência federal, retornará false. Esta função pode ser usada para evitar a checagem do tipo de matrícula.",
+                "parametros": [
+                    {
+                        "nome": "tipoPrevidencia",
+                        "descricao": "Tipo de previdência.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Boolean possuiPrevidencia = Funcoes.possuiPrevidencia(TipoPrevidencia.PREVIDENCIA_PROPRIA)"
+                ]
+            },
+            {
+                "nome": "possuiPrevidenciaFederal",
+                "descricao": "Retorna se a matrícula possui previdência federal. Caso seja um tipo de matrícula que não possua opção, retornará false. Esta função pode ser usada para evitar a checagem do tipo de matrícula.",
+                "parametros": [
+                    {
+                        "nome": "tipoMatricula",
+                        "descricao": "Tipo da matrícula.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Boolean possuiPrevidenciaFederal = Funcoes.possuiPrevidenciaFederal(matricula.tipo)"
+                ]
+            },
+            {
+                "nome": "primeiroDia",
+                "descricao": "Retorna a data referente ao primeiro dia de uma competência passada por parâmetro.",
+                "parametros": [
+                    {
+                        "nome": "data",
+                        "descricao": "Informe uma data.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Date data = Funcoes.primeiroDia(funcionario.dataAdmissao)"
+                ]
+            },
+            {
+                "nome": "quantPrevidenciasAtivas",
+                "descricao": "Retorna a quantidade de previdências ativas na matrícula.",
+                "exemplo": [
+                    "int quantPrevidencias = Funcoes.quantPrevidenciasAtivas()"
+                ]
+            },
+            {
+                "nome": "recebeDecimoTerceiro",
+                "descricao": "Retorna se a matrícula recebe décimo terceiro salário. Caso seja um tipo de matrícula que não possua opção, retornará false. Esta função pode ser usada para evitar a checagem do tipo de matrícula.",
+                "parametros": [
+                    {
+                        "nome": "tipoMatricula",
+                        "descricao": "Tipo da matrícula.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Boolean recebeDecimoTerceiro = Funcoes.recebeDecimoTerceiro(matricula.tipo)"
+                ]
+            },
+            {
+                "nome": "recebidocomonus",
+                "descricao": "Retorna os dias recebidos sem ônus na competência, conforme o tipo de admissão e responsabilidade de pagamento definidos para a matrícula.",
+                "exemplo": [
+                    "int recebidocomonus = Funcoes.recebidocomonus()"
+                ]
+            },
+            {
+                "nome": "recebidosemonus",
+                "descricao": "Retorna os dias recebidos com ônus na competência, conforme o tipo de admissão e responsabilidade de pagamento definidos para a matrícula.",
+                "exemplo": [
+                    "int recebidosemonus = Funcoes.recebidosemonus()"
+                ]
+            },
+            {
+                "nome": "remuneracao",
+                "descricao": "Retorna dados de remuneração da matrícula independentemente do tipo.",
+                "parametros": [
+                    {
+                        "nome": "tipo",
+                        "descricao": "Tipo da matrícula.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Object remuneracao = Funcoes.remuneracao(matricula.tipo)",
+                    "BigDecimal valor = remuneracao.valor",
+                    "BigDecimal quantidadeHorasMes = remuneracao.quantidadeHorasMes",
+                    "if (remuneracao.unidade.equals(UnidadePagamento.MENSALISTA)) {",
+                    "    imprimir 'Unidade de pagamento é mensal'",
+                    "}"
+                ]
+            },
+            {
+                "nome": "replicaEventoVariavel",
+                "descricao": "Esta função é utilizada para realizar a réplica de eventos lançados em variáveis, sejam eles carregados do processamento mensal ou do processamento de férias, para o processamento mensal. O evento variável será lançado na competência de início de gozo de férias. Para competências sem gozo, a função não fará o carregamento em férias.",
+                "parametros": [
+                    {
+                        "nome": "codigoEvento",
+                        "descricao": "Código do evento.",
+                        "obrigatorio": true
+                    }
+                ],
+                "exemplo": [
+                    "Object valorFerias = Funcoes.replicaEventoVariavel(evento.codigo)",
+                    "BigDecimal valorCalculado = valorFerias.valor",
+                    "BigDecimal valorReferencia = valorFerias.referencia"
+                ]
+            },
+            {
+                "nome": "replicaFeriasNaFolhaMensal",
+                "descricao": "Esta função é utilizada para realizar a réplica de eventos de férias para o processamento mensal.",
+                "parametros": [
+                    {
+                        "nome": "codigoEvento",
+                        "descricao": "Código do evento.",
+                        "obrigatorio": true
+                    },
+                    {
+                        "nome": "listaComposicaoBasesValorCalculado",
+                        "descricao": "Uma lista de bases para incidência.",
+                        "obrigatorio": false
+                    },
+                    {
+                        "nome": "listaComposicaoBasesValorReferencia",
+                        "descricao": "Uma lista de bases para incidência.",
+                        "obrigatorio": false
+                    },
+                    {
+                        "nome": "listaComposicaoBasesSobreSalario",
+                        "descricao": "Uma lista de bases para incidência.",
+                        "obrigatorio": false
+                    },
+                    {
+                        "nome": "listaComposicaoBasesSobrePagaProporcional",
+                        "descricao": "Uma lista de bases para incidência.",
+                        "obrigatorio": false
+                    }
+                ],
+                "exemplo": [
+                    "Object valorFerias = Funcoes.replicaFeriasNaFolhaMensal(evento.codigo)",
+                    "if (valorFerias.valor > 0) {",
+                    "    Bases.compor(valorFerias.valor, Bases.INSS, Bases.FGTS)",
+                    "}",
+                    "BigDecimal valorCalculado = valorFerias.valor",
+                    "BigDecimal valorReferencia = valorFerias.referencia"
+                ]
+            },
+            {
+                "nome": "somenteAposentadosPensionistas",
+                "descricao": "Esta função suspende o cálculo do evento caso a matrícula não seja do tipo aposentado ou pensionista. Esta função não possui retorno.",
+                "exemplo": [
+                    "Funcoes.somenteAposentadosPensionistas()",
+                    "// suspende o cálculo do evento se não for um aposentado ou pensionista"
+                ]
+            },
+            {
+                "nome": "somenteFuncionarios",
+                "descricao": "Esta função suspende o cálculo do evento caso a matrícula não seja do tipo funcionário. Esta função não possui retorno.",
+                "exemplo": [
+                    "Funcoes.somenteFuncionarios()",
+                    "// suspende o cálculo do evento se não for um funcionário"
+                ]
+            }
+        ]
+    }
+}

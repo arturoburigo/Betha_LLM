@@ -1,0 +1,942 @@
+{
+    "variaveisReservadas": {
+        "descricao": "Variaveis reservadas do sistema",
+        "funcoes": [
+            {
+                "aposentado": {
+                    "descricao": "Retorna os dados da matrícula que sejam do tipo aposentado no cálculo",
+                    "formaPagamento": "Retorna a Forma de pagamento",
+                    "grupoFuncional": "Retorna o grupo funcional",
+                    "recebeDecimoTerceiro": "Indicativo se o aposentado recebe décimo terceiro salário conforme informado na ficha da matrícula",
+                    "dataAposentadoria": "Retorna a data de início aposentadoria",
+                    "dataCessacaoAposentadoria": "Retorna a data de cessação da aposentadoria",
+                    "valorBeneficio": "Retorna o valor do benefício do aposentado",
+                    "descricaoOrganograma": "Retorna a descrição do organograma",
+                    "codigoOrganograma": "Retorna o código do organograma",
+                    "agenciaPagamento": "Retorna a agência de pagamento informada para o aposentado",
+                    "bancoPagamento": "Retorna o banco de pagamento informado para o aposentado",
+                    "possuiFundoAssistencia": "Retorna se o aposentado é optante da assistência municipal",
+                    "possuiFundoFinanceiro": "Retorna se o aposentado é optante do fundo de assistência",
+                    "possuiPrevidenciaEstadual": "Retorna se o aposentado é optante da previdência estadual",
+                    "possuiPrevidenciaPropria": "Retorna se o aposentado é optante da previdência própria",
+                    "exemplosDeCodigo": {
+                        "formaPagamento": "if (aposentado.formaPagamento == 'CHEQUE') { imprimir 'A forma de pagamento é cheque'; }",
+                        "grupoFuncional": "String grupoFuncional = aposentado.grupoFuncional;",
+                        "recebeDecimoTerceiro": "Boolean recebeDecimoTerceiro = aposentado.recebeDecimoTerceiro;",
+                        "dataAposentadoria": "Date dataAposentadoria = aposentado.dataAposentadoria;",
+                        "dataCessacaoAposentadoria": "if (aposentado.dataCessacaoAposentadoria != null) { Date dataCessacaoAposentadoria = aposentado.dataCessacaoAposentadoria; }",
+                        "valorBeneficio": "BigDecimal valorCalculado = aposentado.valorBeneficio;",
+                        "descricaoOrganograma": "String descricaoOrganograma = aposentado.descricaoOrganograma;",
+                        "codigoOrganograma": "String codigoOrganograma = aposentado.codigoOrganograma; if (codigoOrganograma == '010102') { imprimir 'codigoOrganograma é 010102'; }",
+                        "agenciaPagamento": "String agenciaPagamento = aposentado.agenciaPagamento;",
+                        "bancoPagamento": "String bancoPagamento = aposentado.bancoPagamento;",
+                        "possuiFundoAssistencia": "Boolean possuiFundoAssistencia = aposentado.possuiFundoAssistencia;",
+                        "possuiFundoFinanceiro": "Boolean possuiFundoFinanceiro = aposentado.possuiFundoFinanceiro;",
+                        "possuiPrevidenciaEstadual": "Boolean possuiPrevidenciaEstadual = aposentado.possuiPrevidenciaEstadual;",
+                        "possuiPrevidenciaPropria": "Boolean possuiPrevidenciaPropria = aposentado.possuiPrevidenciaPropria;"
+                    },
+                    "buscaPorCessacao": {
+                        "descricao": "Permite buscar os dados das cessações do aposentado que estão vigentes na competência que está sendo informada",
+                        "parametros": {
+                            "competencia": {
+                                "descricao": "Competência que será utilizada para buscar as cessações cadastradas",
+                                "obrigatorio": true
+                            }
+                        },
+                        "retornos": {
+                            "inicioCes": "Data de início da cessação",
+                            "fimCes": "Data de fim da cessação",
+                            "motivoCes": "Motivo da cessação",
+                            "descricaoCes": "Descrição da cessação",
+                            "cnpjOrgaoSucessorCes": "CNPJ do órgão sucessor da cessação",
+                            "dataEfeitoFinanceiroCer": "Data de efeito financeiro da cessação"
+                        },
+                        "exemploDeCodigo": "def cessacoes = aposentado.buscaPorCessacao(calculo.competencia); cessacoes.each { cessacao -> inicioCes = Datas.data(Datas.ano(cessacao.dataInicial), Datas.mes(cessacao.dataInicial), Datas.dia(cessacao.dataInicial)); fimCes = Datas.data(Datas.ano(cessacao.dataFim), Datas.mes(cessacao.dataFim), Datas.dia(cessacao.dataFim)); motivoCes = cessacao.motivo; descricaoCes = cessacao.descricao; cnpjOrgaoSucessorCes = cessacao.cnpjOrgaoSucessorCes; dataEfeitoFinanceiroCer = Datas.data(Datas.ano(cessacao.dataEfeitoFinanceiro), Datas.mes(cessacao.dataEfeitoFinanceiro), Datas.dia(cessacao.dataEfeitoFinanceiro)); }"
+                    },
+                    "buscaPorSuspensao": {
+                        "descricao": "Permite buscar os dados das suspensões do aposentado que estão vigentes na competência que está sendo informada",
+                        "parametros": {
+                            "competencia": {
+                                "descricao": "Competência que será utilizada para buscar as suspensões cadastradas",
+                                "obrigatorio": true
+                            }
+                        },
+                        "retornos": {
+                            "inicioSusp": "Data de início da suspensão",
+                            "fimSusp": "Data de fim da suspensão",
+                            "motivoSusp": "Motivo da suspensão",
+                            "descricaoSusp": "Descrição da suspensão"
+                        },
+                        "exemploDeCodigo": "def suspensoes = aposentado.buscaPorSuspensao(calculo.competencia); suspensoes.each { suspensao -> inicioSusp = Datas.data(Datas.ano(suspensao.dataInicial), Datas.mes(suspensao.dataInicial), Datas.dia(suspensao.dataInicial)); fimSusp = Datas.data(Datas.ano(suspensao.dataFim), Datas.mes(suspensao.dataFim), Datas.dia(suspensao.dataFim)); motivoSusp = suspensao.motivo; descricaoSusp = suspensao.descricao; }"
+                    }
+                },
+                "autonomo": {
+                    "descricao": "Retorna os dados da matrícula que sejam do tipo autônomo no cálculo",
+                    "codESocial": "Retorna o código eSocial informado na categoria do trabalhador autônomo",
+                    "exemploDeCodigo": "String codigoESocial = autonomo.codEsocial;"
+                },
+                "calculo": {
+                    "descricao": "Retorna as informações dos parâmetros de cálculo e também do cálculo que está sendo executado",
+                    "variaveis": {
+                        "descontarEmprestimoRescisao": "Indica se os valores de empréstimo devem ser descontados na rescisão",
+                        "competencia": "Retorna uma data referente ao último dia da competência que está sendo calculada",
+                        "quantidadeDiasCompetencia": "Retorna a quantidade de dias da competência que está sendo calculada",
+                        "abonoSemGozo": "Indica se permite abono de férias sem gozo",
+                        "tipoProcessamento": "Retorna o tipo de processamento do cálculo atual",
+                        "subTipoProcessamento": "Retorna o subtipo de processamento do cálculo atual",
+                        "dataPagamento": "Retorna a data de pagamento do cálculo atual",
+                        "dataRescisao": "Retorna a Data de rescisão informada, somente quando se está calculando uma rescisão",
+                        "quantidadeDias": {
+                            "descricao": "Retorna a quantidade de dias de uma competência informada nos argumentos",
+                            "parametros": {
+                                "mes": {
+                                    "descricao": "Informe um mês de referência, use entre 1 e 12",
+                                    "obrigatorio": true
+                                },
+                                "ano": {
+                                    "descricao": "Informe um ano de referência",
+                                    "obrigatorio": true
+                                }
+                            }
+                        },
+                        "unidade": "Retorna a unidade de pagamento configurada nos parâmetros gerais de cálculo",
+                        "pagarUmTercoIntegral": "Indicativo se deve pagar um terço integral em férias parciais",
+                        "anoDecimoTerceiro": "Retorna o ano do cálculo atual para fins de décimo terceiro",
+                        "consideraAvosPerdidos": "Indicativo se deve considerar avos perdidos na contagem de avos",
+                        "individual": "Retorna verdadeiro se cálculo atual foi executado de forma individual",
+                        "rescisaoAutomaticaVincTemp": "Indicativo se parâmetro de cálculo de rescisão automática está setado",
+                        "descontarFaltasSobreFerias": "Indicativo se o parâmetro de cálculo para descontar faltas está setado",
+                        "rra": "Retorna verdadeiro se no cálculo há um pagamento anterior com RRA vinculado",
+                        "soma": {
+                            "descricao": "Soma os valores totais do cálculo para um tipo de evento passado no argumento",
+                            "parametros": {
+                                "TipoEvento": {
+                                    "descricao": "O tipo do evento. use TipoEvento.[tipo do evento]",
+                                    "obrigatorio": true
+                                }
+                            }
+                        },
+                        "motivoRescisao": {
+                            "descricao": "Retorna os dados relacionados ao motivo da rescisão",
+                            "retornos": {
+                                "descricao": "Descrição do motivo de rescisão",
+                                "tipo": "Tipo do motivo de rescisão",
+                                "classificacao": "Classificação do motivo de rescisão"
+                            }
+                        },
+                        "saldoFgts": "Retorna o saldo do FGTS informado no parâmetro de cálculo da rescisão",
+                        "avisoPrevioIndenizado": "Retorna se é aviso prévio indenizado",
+                        "quantidadeDiasAvisoPrevio": "Retorna a quantidade de dias do aviso prévio",
+                        "trabalhouDiaRescisao": "Retorna se o funcionário trabalhou no dia da rescisão",
+                        "reporVaga": "Retorna o campo repor vaga informado no parâmetro de cálculo da rescisão",
+                        "recalcularMensal": "Retorna se em cálculos de rescisão, a folha mensal foi recalculada conforme seleção do parâmetro de cálculo",
+                        "subFolhaPagamentoAnterior": "Retorna se cálculo em execução é uma sub-folha de pagamento anterior",
+                        "subFolhaDecimoTerceiro": "Retorna se cálculo em execução é uma sub-folha de pagamento anterior com pagamento de 13º salário"
+                    },
+                    "exemplos": {
+                        "descontarEmprestimoRescisao": "if (calculo.descontarEmprestimoRescisao) { imprimir 'Marcado para descontar empréstimos na rescisão'; }",
+                        "quantidadeDiasCompetencia": "int dias = calculo.quantidadeDiasCompetencia; if (dias < 30) dias = 30;",
+                        "dataPagamento": "Date dataPagamento = calculo.dataPagamento;",
+                        "motivoRescisao": "String descricao = calculo.motivoRescisao.descricao;",
+                        "soma": "BigDecimal vencimentos = calculo.soma(TipoEvento.VENCIMENTO);",
+                        "subFolhaPagamentoAnterior": "Boolean subFolhaPagamentoAnterior = calculo.subFolhaPagamentoAnterior;"
+                    }
+                },
+                "estagiario": {
+                    "descricao": "Retorna os dados da matrícula que sejam do tipo estagiário no cálculo",
+                    "variaveis": {
+                        "formaPagamento": "Retorna a forma de pagamento do estagiário",
+                        "grupoFuncional": "Retorna o grupo funcional do estagiário",
+                        "planoSalarial": "Retorna o plano salarial do estagiário",
+                        "classeSalarial": "Retorna a classe salarial do estagiário",
+                        "dataProrrogacao": "Retorna a data da prorrogação do estágio",
+                        "nivelSalarial": "Retorna o nível salarial do estagiário",
+                        "quantidadeHorasMes": "Retorna a quantidade de horas mês do estagiário",
+                        "descricaoOrganograma": "Retorna a descrição do organograma do estagiário",
+                        "recebeDecimoTerceiro": "Indicativo se o estagiário recebe décimo terceiro salário conforme a configuração do cargo",
+                        "diasDireitoFerias": "Retorna os dias de direito de férias conforme configuração de férias",
+                        "mesesAquisicaoFerias": "Retorna os meses para aquisição de férias conforme configuração de férias",
+                        "dataInicioEstagio": "Retorna a data de início do estágio",
+                        "dataFinalEstagio": "Retorna a data final do estágio",
+                        "bolsaEstudos": "Retorna o valor da bolsa de estudos, remuneração do estagiário",
+                        "agenciaPagamento": "Retorna a agência de pagamento do estagiário",
+                        "bancoPagamento": "Retorna o banco de pagamento do estagiário",
+                        "nivelSalarialCoeficiente": "Indica se o nível salarial do estagiário possui coeficiente"
+                    },
+                    "exemplos": {
+                        "formaPagamento": "if (estagiario.formaPagamento == FormaPagamento.DINHEIRO) { imprimir 'Forma de pagamento é em dinheiro'; }",
+                        "grupoFuncional": "String grupoFuncional = estagiario.grupoFuncional;",
+                        "planoSalarial": "String planoSalarial = estagiario.planoSalarial;",
+                        "classeSalarial": "String classeSalarial = estagiario.classeSalarial;",
+                        "dataProrrogacao": "if (estagiario.dataProrrogacao != null) { Date dataProrrogacao = estagiario.dataProrrogacao; }",
+                        "nivelSalarial": "String nivel = estagiario.nivelSalarial;",
+                        "quantidadeHorasMes": "BigDecimal quantidadeHorasMes = estagiario.quantidadeHorasMes; if (quantidadeHorasMes < BigDecimal.valueOf(100)) { imprimir 'Quantidade de horas mês é menor que 100'; }",
+                        "descricaoOrganograma": "String descricaoOrganograma = estagiario.descricaoOrganograma;",
+                        "recebeDecimoTerceiro": "Boolean recebeDecimoTerceiro = estagiario.recebeDecimoTerceiro;",
+                        "diasDireitoFerias": "int diasDireitoFerias = estagiario.diasDireitoFerias;",
+                        "mesesAquisicaoFerias": "int mesesAquisicaoFerias = estagiario.mesesAquisicaoFerias;",
+                        "dataInicioEstagio": "Date dataInicioEstagio = estagiario.dataInicioEstagio;",
+                        "dataFinalEstagio": "Date dataFinalEstagio = estagiario.dataFinalEstagio;",
+                        "bolsaEstudos": "BigDecimal bolsaEstudos = estagiario.bolsaEstudos;",
+                        "agenciaPagamento": "String agenciaPagamento = estagiario.agenciaPagamento;",
+                        "bancoPagamento": "String bancoPagamento = estagiario.bancoPagamento;",
+                        "nivelSalarialCoeficiente": "Boolean nivelSalarialCoeficiente = estagiario.nivelSalarialCoeficiente;"
+                    }
+                },
+                "evento": {
+                    "descricao": "Retorna as informações da configuração do evento",
+                    "variaveis": {
+                        "codigo": "Retorna o código do evento",
+                        "taxa": "Retorna a taxa do evento atual",
+                        "getTaxa()": "Retorna a taxa de outro evento passado como parâmetro",
+                        "tipo": "Retorna o tipo do evento",
+                        "unidade": "Retorna a unidade do evento",
+                        "descricaoClassificacao": "Retorna a descrição da classificação do evento",
+                        "classificacao": "Retorna a classificação do evento",
+                        "replicado": "Seta um evento como replicado no cálculo"
+                    },
+                    "exemplos": {
+                        "codigo": "Long codigo = evento.codigo;",
+                        "taxa": "BigDecimal taxa = evento.taxa; valorCalculado = funcionario.salario * taxa / 100;",
+                        "getTaxa()": "BigDecimal taxa = evento.getTaxa(26); valorCalculado = funcionario.salario * taxa / 100;",
+                        "descricao": "String descricao = evento.descricao; if (descricao.startsWith('HORAS EXTRAS')) { imprimir '$evento.descricao inicia com HORAS EXTRAS'; }",
+                        "tipo": "if (evento.tipo == TipoEvento.VENCIMENTO) { imprimir 'tipo do evento é vencimento'; }",
+                        "unidade": "if (evento.unidade == UnidadeEvento.DIAS) { imprimir 'unidade do evento é em dias'; }",
+                        "descricaoClassificacao": "String descricaoClassificacao = evento.descricaoClassificacao;",
+                        "classificacao": "if (evento.classificacao == ClassificacaoEvento.INSS) { imprimir 'a classificação do evento é inss'; }",
+                        "replicado": "if (valorCalculado > 0) { evento.replicado(true); }"
+                    }
+                },
+                "folha": {
+                    "descricao": "Permite buscar ou percorrer as informações da folha atual",
+                    "variaveis": {
+                        "calculoVirtual": "Indica se é um cálculo virtual de férias ou décimo terceiro salário",
+                        "competencia": "Retorna a competência da folha",
+                        "complementoDecimoTerceiro": "Indica se já houve um cálculo de 13º salário integral anterior",
+                        "diasAbono": "Retorna os dias de abono de férias",
+                        "diasGozo": "Retorna os dias de gozo de férias",
+                        "dataPagamento": "Retorna a data de pagamento da folha",
+                        "eventos": "Retorna uma lista de eventos calculados",
+                        "fimGozoFeriasCalculadas": "Retorna o fim do gozo de férias, se aplicável",
+                        "folhaPagamento": "Indica se é uma folha de pagamento ou uma folha interna de férias",
+                        "inicioGozoFeriasCalculadas": "Retorna o início do gozo de férias, se aplicável",
+                        "quantidadeMesesRra": "Retorna a quantidade de meses de RRA",
+                        "subTipoProcessamento": "Retorna o subtipo de processamento",
+                        "tipoProcessamento": "Retorna o tipo de processamento da folha",
+                        "totalBruto": "Retorna o total bruto da folha",
+                        "totalDesconto": "Retorna o total de desconto da folha",
+                        "totalLiquido": "Retorna o total líquido da folha"
+                    },
+                    "exemplos": {
+                        "calculoVirtual": "if (folha.calculoVirtual) { imprimir 'É uma folha de pagamento' } else { imprimir 'É uma folha de férias' }",
+                        "competencia": "Date competencia = folha.competencia;",
+                        "complementoDecimoTerceiro": "Boolean complementoDecimoTerceiro = folha.complementoDecimoTerceiro;",
+                        "dataPagamento": "String dataPagamento = folha.dataPagamento.toString();",
+                        "diasAbono": "int diasAbono = folha.diasAbono;",
+                        "diasGozo": "int diasGozo = folha.diasGozo;",
+                        "eventos": "folha.eventos.each { e -> imprimir 'Código do evento: $e.codigo' }",
+                        "fimGozoFeriasCalculadas": "Date fimGozoFeriasCalculadas = folha.fimGozoFeriasCalculadas;",
+                        "folhaPagamento": "if (folha.folhaPagamento) { imprimir 'É uma folha de pagamento' } else { imprimir 'É uma folha interna de férias' }",
+                        "inicioGozoFeriasCalculadas": "Date inicioGozoFeriasCalculadas = folha.inicioGozoFeriasCalculadas;",
+                        "quantidadeMesesRra": "double quantidadeMesesRra = folha.quantidadeMesesRra;",
+                        "subTipoProcessamento": "if (folha.subTipoProcessamento == SubTipoProcessamento.INTEGRAL) { imprimir 'subtipo de processamento integral' }",
+                        "tipoProcessamento": "if (folha.tipoProcessamento == TipoProcessamento.MENSAL) { imprimir 'É uma folha mensal' }",
+                        "totalBruto": "BigDecimal totalBruto = folha.totalBruto;",
+                        "totalDesconto": "BigDecimal totalDesconto = folha.totalDesconto;",
+                        "totalLiquido": "BigDecimal totalLiquido = folha.totalLiquido;"
+                    }
+                },
+                "folhaDecimoTerceiroIntegralAntecipado": {
+                    "descricao": "Permite buscar ou percorrer as informações da folha de 13º salário integral adiantada",
+                    "variaveis": {
+                        "competencia": "Retorna a competência da folha de 13º integral adiantado",
+                        "eventos": "Retorna uma lista de eventos calculados na folha de 13º integral adiantado",
+                        "subTipoProcessamento": "Retorna o subtipo de processamento da folha de 13º integral adiantado",
+                        "tipoProcessamento": "Retorna o tipo de processamento da folha de 13º integral adiantado",
+                        "totalBruto": "Retorna o total bruto da folha de 13º integral adiantado",
+                        "totalDesconto": "Retorna o total de descontos da folha de 13º integral adiantado",
+                        "totalLiquido": "Retorna o total líquido da folha de 13º integral adiantado"
+                    },
+                    "exemplos": {
+                        "competencia": "Date competencia = folhaDecimoTerceiroIntegralAntecipado.competencia;",
+                        "eventos": "folhaDecimoTerceiroIntegralAntecipado.eventos.each { e -> imprimir 'Código do evento: $e.codigo' }",
+                        "subTipoProcessamento": "if (folhaDecimoTerceiroIntegralAntecipado.subTipoProcessamento == SubTipoProcessamento.INTEGRAL) { imprimir 'subtipo de processamento integral' }",
+                        "tipoProcessamento": "if (folhaDecimoTerceiroIntegralAntecipado.tipoProcessamento == TipoProcessamento.DECIMO_TERCEIRO_SALARIO) { imprimir 'É uma folha de décimo terceiro' }",
+                        "totalBruto": "BigDecimal totalBruto = folhaDecimoTerceiroIntegralAntecipado.totalBruto;",
+                        "totalDesconto": "BigDecimal totalDesconto = folhaDecimoTerceiroIntegralAntecipado.totalDesconto;",
+                        "totalLiquido": "BigDecimal totalLiquido = folhaDecimoTerceiroIntegralAntecipado.totalLiquido;"
+                    }
+                },
+                "folhas": {
+                    "descricao": "Permite buscar folhas tanto do cálculo atual como de outras competências e tipos de processamento",
+                    "metodos": {
+                        "valorCalculadoEvento": {
+                            "descricao": "Retorna a soma de um evento em todos os cálculos da competência atual.",
+                            "parametros": {
+                                "codigo": "Código do evento que deseja buscar o valor calculado (obrigatório)"
+                            },
+                            "exemplo": "BigDecimal valorCalculadoEvento = folhas.valorCalculadoEvento(22);"
+                        },
+                        "valorReferenciaEvento": {
+                            "descricao": "Retorna a soma da referência de um evento em todos os cálculos da competência atual.",
+                            "parametros": {
+                                "codigo": "Código do evento que deseja buscar o valor de referência (obrigatório)"
+                            },
+                            "exemplo": "BigDecimal valorReferenciaEvento = folhas.valorReferenciaEvento(22);"
+                        },
+                        "buscaFolhas": {
+                            "descricao": "Busca dados da folha atual. Deve ser usado marcando o evento para calcular por último caso queira buscar valores totalizados.",
+                            "exemplo": "folhas.buscaFolhas().each{ f -> imprimir 'tipoProcessamento: $f.tipoProcessamento'; }"
+                        },
+                        "buscaFolhasOutrasCompetencias": {
+                            "descricao": "Busca dados de folhas de outras competências ou tipos de processamentos, não retorna dados da folha atual.",
+                            "parametros": {
+                                "competencia": "Informe uma competência para buscar as folhas (obrigatório)",
+                                "tipoProcessamento": "Informe um tipo de processamento (opcional)",
+                                "subTipoProcessamento": "Informe um subtipo de processamento (opcional)"
+                            },
+                            "exemplo": "folhas.buscaFolhasOutrasCompetencias(competenciaConsulta, tipoProcessamento, subTipoProcessamento).each{ f -> imprimir 'tipoProcessamento: $f.tipoProcessamento'; }"
+                        }
+                    }
+                },
+                "folhasPeriodo": {
+                    "descricao": "Permite consultar folhas do período (competência atual)",
+                    "metodos": {
+                        "buscaFolhas": {
+                            "descricao": "Busca dados da folha atual, deve ser usado marcando o evento para calcular por último caso queira buscar valores totalizados.",
+                            "obrigatorio": false,
+                            "exemplo": [
+                                "folhasPeriodo.buscaFolhas().each{ f ->",
+                                "    imprimir 'folhaPagamento: $f.folhaPagamento';",
+                                "    imprimir 'tipoProcessamento: $f.tipoProcessamento';",
+                                "    imprimir 'subTipoProcessamento: $f.subTipoProcessamento';",
+                                "    imprimir 'diasGozo: $f.diasGozo';",
+                                "    imprimir 'eventos: $f.eventos';",
+                                "    f.eventos.each{ e ->",
+                                "        imprimir 'e.valor: $e.valor';",
+                                "    }",
+                                "}"
+                            ]
+                        },
+                        "buscaFolhasProcessamento": {
+                            "descricao": "Busca folhas de outros tipos de processamentos da mesma competência.",
+                            "parametros": {
+                                "tipoProcessamento": {
+                                    "descricao": "Informe um tipo de processamento.",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "exemplo": [
+                                "folhasPeriodo.buscaFolhasProcessamento(TipoProcessamento.FERIAS).each{ f ->",
+                                "    imprimir 'competencia: $f.competencia';",
+                                "    imprimir 'subTipoProcessamento: $f.subTipoProcessamento';",
+                                "    imprimir 'diasGozo: $f.diasGozo';",
+                                "    imprimir 'eventos: $f.eventos';",
+                                "    f.eventos.each{ e ->",
+                                "        imprimir 'e.valor: $e.valor';",
+                                "    }",
+                                "}"
+                            ]
+                        },
+                        "buscaFolhasInternas": {
+                            "descricao": "Busca folhas internas de férias referentes às férias pagas ou gozadas na competência.",
+                            "parametros": {
+                                "tipoProcessamento": {
+                                    "descricao": "Informe um tipo de processamento. Usar sempre TipoProcessamento.FERIAS.",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "exemplo": [
+                                "BigDecimal provento = BigDecimal.valueOf(0);",
+                                "BigDecimal desconto = BigDecimal.valueOf(0);",
+                                "folhasPeriodo.buscaFolhasInternas(TipoProcessamento.FERIAS).each{ f ->",
+                                "    imprimir 'competencia: $f.competencia';",
+                                "    imprimir 'diasGozo: $f.diasGozo';",
+                                "    imprimir 'eventos: $f.eventos';",
+                                "    f.eventos.each{ e ->",
+                                "        imprimir 'e.valor: $e.valor';",
+                                "        imprimir 'e.tipo: $e.tipo';",
+                                "        if (TipoEvento.VENCIMENTO.equals(e.tipo)) {",
+                                "            provento += e.valor.abs();",
+                                "        }",
+                                "        if (TipoEvento.DESCONTO.equals(e.tipo)) {",
+                                "            desconto += e.valor.abs();",
+                                "        }",
+                                "    }",
+                                "}"
+                            ]
+                        }
+                    }
+                },
+                "folhasMultiplosVinculosPeriodo": {
+                    "descricao": "Permite consultar folhas dos outros vínculos do servidor na competência.",
+                    "metodos": {
+                        "buscaFolhas": {
+                            "descricao": "Busca folhas dos outros vínculos do servidor no período (folhas de férias).",
+                            "exemplo": [
+                                "BigDecimal base = BigDecimal.valueOf(0);",
+                                "BigDecimal valorEventoPorClassificacao = BigDecimal.valueOf(0);",
+                                "folhasMultiplosVinculosPeriodo.buscaFolhas().each{ f ->",
+                                "    base += f.valorBase(Base.INSS);",
+                                "    valorEventoPorClassificacao += f.valorClassificacaoEvento(Base.INSS);",
+                                "    f.eventos.each{ e ->",
+                                "        imprimir 'e.valor: $e.valor';",
+                                "        imprimir 'e.tipo: $e.tipo';",
+                                "        if (TipoEvento.VENCIMENTO.equals(e.tipo)) {",
+                                "            provento += e.valor.abs();",
+                                "        }",
+                                "        if (TipoEvento.DESCONTO.equals(e.tipo)) {",
+                                "            desconto += e.valor.abs();",
+                                "        }",
+                                "    }",
+                                "}"
+                            ]
+                        }
+                    }
+                },
+                "funcionario": {
+                    "descricao": "Retorna os dados da matrícula que sejam do tipo funcionário no cálculo.",
+                    "metodos": {
+                        "cargoOrigemRendimento": {
+                            "descricao": "Retorna o cargo conforme a origem do rendimento informada.",
+                            "parametros": {
+                                "OrigemRendimento": {
+                                    "descricao": "informe a origem do rendimento do cargo ou cargo comissionado",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "exemplo": "String cargo = funcionario.cargoOrigemRendimento(OrigemRendimento.CARGO)"
+                        },
+                        "planoSalarialOrigemRendimento": {
+                            "descricao": "Retorna o plano salarial conforme a origem do rendimento informada.",
+                            "parametros": {
+                                "OrigemRendimento": {
+                                    "descricao": "informe a origem do rendimento do cargo ou cargo comissionado",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "exemplo": "String plano = funcionario.planoSalarialOrigemRendimento(OrigemRendimento.CARGO)"
+                        },
+                        "classeSalarialOrigemRendimento": {
+                            "descricao": "Retorna a classe salarial conforme a origem do rendimento informada.",
+                            "parametros": {
+                                "OrigemRendimento": {
+                                    "descricao": "informe a origem do rendimento do cargo ou cargo comissionado",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "exemplo": "def classe = funcionario.classeSalarialOrigemRendimento(OrigemRendimento.CARGO_COMISSIONADO)"
+                        },
+                        "salarioOrigemRendimento": {
+                            "descricao": "Retorna o salário conforme a origem do rendimento informada.",
+                            "parametros": {
+                                "OrigemRendimento": {
+                                    "descricao": "informe a origem do rendimento do cargo ou cargo comissionado",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "exemplo": "BigDecimal salario = funcionario.salarioOrigemRendimento(OrigemRendimento.CARGO_COMISSIONADO)"
+                        },
+                        "nivelSalarialCoeficienteOrigemRendimento": {
+                            "descricao": "Retorna se o nível salarial utiliza coeficiente conforme a origem do rendimento informada.",
+                            "parametros": {
+                                "OrigemRendimento": {
+                                    "descricao": "informe a origem do rendimento do cargo ou cargo comissionado",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "exemplo": "Boolean coeficiente = funcionario.nivelSalarialCoeficienteOrigemRendimento(OrigemRendimento.CARGO_COMISSIONADO)"
+                        },
+                        "nivelSalarialOrigemRendimento": {
+                            "descricao": "Retorna o nível salarial conforme a origem do rendimento informada.",
+                            "parametros": {
+                                "OrigemRendimento": {
+                                    "descricao": "informe a origem do rendimento do cargo ou cargo comissionado",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "exemplo": "String nivel = funcionario.nivelSalarialOrigemRendimento(OrigemRendimento.CARGO_COMISSIONADO)"
+                        },
+                        "contaVagaOrigemRendimento": {
+                            "descricao": "Indicativo se funcionário conta vaga considerando a origem do rendimento.",
+                            "parametros": {
+                                "OrigemRendimento": {
+                                    "descricao": "informe a origem do rendimento do cargo ou cargo comissionado",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "exemplo": "Boolean contaVaga = funcionario.contaVagaOrigemRendimento(OrigemRendimento.CARGO_COMISSIONADO)"
+                        },
+                        "recebeDecimoTerceiroPorOrigem": {
+                            "descricao": "Indicativo se funcionário recebe décimo terceiro salário considerando a origem do rendimento.",
+                            "parametros": {
+                                "OrigemRendimento": {
+                                    "descricao": "informe a origem do rendimento do cargo ou cargo comissionado",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "exemplo": "Boolean recebeDecimo = funcionario.recebeDecimoTerceiroPorOrigem(OrigemRendimento.CARGO_COMISSIONADO)"
+                        },
+                        "ocorrenciaSefip": {
+                            "descricao": "Retorna a Ocorrência SEFIP do funcionário.",
+                            "exemplo": "if (funcionario.ocorrenciaSefip == OcorrenciaSefip.EXPOSTO_APOSENTADORIA_15_ANOS) { imprimir 'Ocorrencia é EXPOSTO_APOSENTADORIA_15_ANOS' }"
+                        },
+                        "classeSalarial": {
+                            "descricao": "Retorna a Classe salarial do funcionário.",
+                            "exemplo": "def classeSalarial = funcionario.classeSalarial"
+                        },
+                        "mesContribuicaoSindical": {
+                            "descricao": "Retorna o mês de contribuição sindical conforme configuração do sindicato.",
+                            "exemplo": "if (funcionario.mesContribuicaoSindical == MesContribuicaoSindical.MAIO) { imprimir 'Mês de contribuição é maio' }"
+                        },
+                        "tipoVinculo": {
+                            "descricao": "Retorna o tipo de vínculo do funcionário.",
+                            "exemplo": "if (funcionario.tipoVinculo == TipoVinculo.CELETISTA) { imprimir 'Tipo de vínculo é celetista' }"
+                        },
+                        "categoriaSefipVinculo": {
+                            "descricao": "Retorna a categoria SEFIP do vínculo do funcionário.",
+                            "exemplo": "String categoria = funcionario.categoriaSefipVinculo.toString()"
+                        },
+                        "descricaoOrganograma": {
+                            "descricao": "Retorna a descrição do organograma do funcionário.",
+                            "exemplo": "String descricaoOrganograma = funcionario.descricaoOrganograma"
+                        },
+                        "codigoOrganograma": {
+                            "descricao": "Retorna o código do organograma do funcionário.",
+                            "exemplo": "String codigoOrganograma = funcionario.codigoOrganograma"
+                        },
+                        "contaVaga": {
+                            "descricao": "Indicativo se funcionário conta vaga, retorna true ou false.",
+                            "exemplo": "if (funcionario.contaVaga) { imprimir 'Funcionário conta vaga' }"
+                        },
+                        "recebeDecimoTerceiro": {
+                            "descricao": "Indicativo se funcionário recebe décimo terceiro salário, retorna true ou false.",
+                            "exemplo": "Boolean recebeDecimoTerceiro = funcionario.recebeDecimoTerceiro"
+                        },
+                        "diasDireitoFerias": {
+                            "descricao": "Retorna os dias de direito de férias conforme a configuração de férias.",
+                            "exemplo": "int diasDireitoFerias = funcionario.diasDireitoFerias"
+                        },
+                        "mesesAquisicaoFerias": {
+                            "descricao": "Retorna os meses para aquisição de período férias conforme a configuração de férias.",
+                            "exemplo": "int mesesAquisicaoFerias = funcionario.mesesAquisicaoFerias"
+                        },
+                        "optanteFgts": {
+                            "descricao": "Indicativo se funcionário é optante de FGTS.",
+                            "exemplo": "Boolean optanteFgts = funcionario.optanteFgts"
+                        },
+                        "dataOpcaoFgts": {
+                            "descricao": "Retorna a data da opção de FGTS do funcionário.",
+                            "exemplo": "if (funcionario.optanteFgts) { Date dataOpcaoFgts = funcionario.dataOpcaoFgts }"
+                        },
+                        "dataFimVinculo": {
+                            "descricao": "Retorna a data final de um vínculo temporário.",
+                            "exemplo": "Date dataFimVinculo = funcionario.dataFimVinculo"
+                        },
+                        "salario": {
+                            "descricao": "Retorna o salário do funcionário.",
+                            "exemplo": "BigDecimal salario = funcionario.salario"
+                        },
+                        "nivelSalarialCoeficiente": {
+                            "descricao": "Indicativo se o nível salarial utiliza coeficiente.",
+                            "exemplo": "Boolean nivelSalarialCoeficiente = funcionario.nivelSalarialCoeficiente"
+                        },
+                        "planoSalarial": {
+                            "descricao": "Retorna o plano salarial do funcionário.",
+                            "exemplo": "String planoSalarial = funcionario.planoSalarial"
+                        },
+                        "dataBase": {
+                            "descricao": "Retorna a data base do funcionário.",
+                            "exemplo": "Date dataBase = funcionario.dataBase"
+                        },
+                        "sindicato": {
+                            "descricao": "Retorna o nome do sindicato do funcionário.",
+                            "exemplo": "String sindicato = funcionario.sindicato"
+                        },
+                        "responsabilidadePagamento": {
+                            "descricao": "Retorna a informação de responsabilidade do pagamento de funcionário cedido.",
+                            "exemplo": "if (funcionario.responsabilidadePagamento == ResponsabilidadePagamento.PAGAMENTO_EXCLUSIVAMENTE_PELO_CEDENTE_ORIGEM) { imprimir 'Responsabilidade do pagamento exclusivamente do cedente (origem)' }"
+                        },
+                        "nivelSalarial": {
+                            "descricao": "Retorna o nível salarial do funcionário.",
+                            "exemplo": "String nivelSalarial = funcionario.nivelSalarial"
+                        },
+                        "estatutario": {
+                            "descricao": "Indicativo se funcionário é estatutário, retorna true ou false.",
+                            "exemplo": "Boolean estatutario = funcionario.estatutario"
+                        },
+                        "classificacaoCargo": {
+                            "descricao": "Retorna a classificação do cargo do funcionário.",
+                            "exemplo": "String classificacaoCargo = funcionario.classificacaoCargo"
+                        },
+                        "dataInclusao": {
+                            "descricao": "Retorna a data de inclusão do funcionário.",
+                            "exemplo": "Date dataInclusao = funcionario.dataInclusao"
+                        },
+                        "dataAdmissao": {
+                            "descricao": "Retorna a data de admissão do funcionário.",
+                            "exemplo": "Date dataAdmissao = funcionario.dataAdmissao"
+                        }
+                    }
+                },
+                "mediaVantagem": {
+                    "descricao": "Retorna os valores de média ou vantagem calculados conforme o tipo configurado para o evento.",
+                    "metodos": {
+                        "calcular": {
+                            "descricao": "Calcula a média ou vantagem conforme o tipo e a configuração do evento.",
+                            "parametros": {
+                                "periodoAquisitivo": {
+                                    "descricao": "Informe o período aquisitivo.",
+                                    "obrigatorio": true,
+                                    "utilizacao": "Utilizado no evento MÉDIA HORAS FÉRIAS",
+                                    "exemplo": "BigDecimal valorMedia = mediaVantagem.calcular(periodoAquisitivo)"
+                                },
+                                "avos": {
+                                    "descricao": "Informe os avos para referência.",
+                                    "obrigatorio": true,
+                                    "utilizacao": "Utilizado no evento MÉDIA HORAS 13º SALÁRIO",
+                                    "exemplo": "valorReferencia = Funcoes.avos13(12); BigDecimal valorMedia = mediaVantagem.calcular(valorReferencia);"
+                                },
+                                "dataInicial": {
+                                    "descricao": "Data inicial para média ou vantagem.",
+                                    "obrigatorio": true,
+                                    "utilizacao": "Utilizado no evento MÉDIA HORAS FÉRIAS PROPORCIONAL RESCISÃO",
+                                    "exemplo": "def periodo = PeriodosAquisitivos.buscaProporcional(); BigDecimal valorMedia = mediaVantagem.calcular(periodo.dataInicial, calculo.dataRescisao);"
+                                },
+                                "dataFinal": {
+                                    "descricao": "Data final para média ou vantagem.",
+                                    "obrigatorio": true,
+                                    "utilizacao": "Utilizado no evento MÉDIA HORAS FÉRIAS PROPORCIONAL RESCISÃO",
+                                    "exemplo": "def periodo = PeriodosAquisitivos.buscaProporcional(); BigDecimal valorMedia = mediaVantagem.calcular(periodo.dataInicial, calculo.dataRescisao);"
+                                },
+                                "utilizarMediaHoras": {
+                                    "descricao": "Define se será usada a última hora contratual ou a média de horas contratuais do período aquisitivo.",
+                                    "obrigatorio": false,
+                                    "utilizacao": "Considerado nas médias horas de 13° salário, abono de férias, férias, férias vencidas, férias proporcionais e aviso prévio.",
+                                    "exemplo": "BigDecimal valorMedia = mediaVantagem.calcular(dataInicial, dataFinal, true);"
+                                }
+                            },
+                            "exemplo": "Se chamar a função passando o parâmetro mediaHoras(16/04/2023) e a carga horária do funcionário é de 200 horas desde 01/02/2023, a função deve retornar 200."
+                        }
+                    }
+                },
+                "matricula": {
+                    "descricao": "Retorna os dados comuns a todos os tipos de matrículas.",
+                    "metodos": {
+                        "tipo": {
+                            "descricao": "Retorna o tipo de matrícula.",
+                            "exemplo": "BigDecimal valorRemuneracao; if (matricula.tipo == TipoMatricula.FUNCIONARIO) { valorRemuneracao = funcionario.salario } else { valorRemuneracao = estagiario.bolsaEstudos }"
+                        },
+                        "codigo": {
+                            "descricao": "Retorna o código da matrícula.",
+                            "exemplo": "if (matricula.codigo.equals('100')) { imprimir 'O código da matrícula é 100' }"
+                        }
+                    }
+                },
+                "periodoAquisitivo": {
+                    "descricao": "Retorna dados do período aquisitivo de férias que está sendo calculado/consultado.",
+                    "metodos": {
+                        "configuracaoFerias": {
+                            "descricao": "Retorna dados da configuração de férias do período.",
+                            "campos": {
+                                "diasParaAdquirirNoPeriodo": "Dias para adquirir no período.",
+                                "mesesParaAquisicao": "Meses para aquisição.",
+                                "mesesParaConcessao": "Meses para concessão.",
+                                "diasAbono": "Quantidade de dias para abono.",
+                                "pagamentoFerias": "Pagamento de férias (proporcional ou integral).",
+                                "periodoNovoFeriasProporcional": "Período novo de férias proporcionais.",
+                                "inicioPeriodo": "Tipo de início do período.",
+                                "diaMesInicioPeriodo": "Mês e ano de início (quando o início do período é dia e mês específicos)."
+                            },
+                            "exemplo": "configuracaoFerias = periodoAquisitivo.configuracaoFerias; int mesesParaAquisicao = configuracaoFerias.mesesParaAquisicao;"
+                        },
+                        "situacao": {
+                            "descricao": "Retorna a situação do período aquisitivo de férias.",
+                            "exemplo": "if (periodoAquisitivo.situacao == SituacaoPeriodoAquisitivo.ADQUIRIDO) { imprimir 'Situação do período é adquirido' }"
+                        },
+                        "dataFinal": {
+                            "descricao": "Retorna a Data final do período aquisitivo de férias.",
+                            "exemplo": "Date dataFinal = periodoAquisitivo.dataFinal;"
+                        },
+                        "dataInicial": {
+                            "descricao": "Retorna a Data inicial do período aquisitivo de férias.",
+                            "exemplo": "Date dataInicial = periodoAquisitivo.dataInicial;"
+                        },
+                        "saldo": {
+                            "descricao": "Retorna o saldo de dias para gozo do período aquisitivo de férias.",
+                            "exemplo": "BigDecimal saldo = periodoAquisitivo.saldo;"
+                        },
+                        "faltas": {
+                            "descricao": "Retorna a quantidade de faltas do período aquisitivo de férias.",
+                            "exemplo": "BigDecimal faltas = periodoAquisitivo.faltas;"
+                        },
+                        "faltasBrutas": {
+                            "descricao": "Retorna a quantidade de faltas brutas do período aquisitivo de férias.",
+                            "exemplo": "BigDecimal faltasBrutas = periodoAquisitivo.faltasBrutas;"
+                        },
+                        "faltasEnquadradas": {
+                            "descricao": "Retorna a quantidade de faltas enquadradas do período aquisitivo de férias.",
+                            "exemplo": "BigDecimal faltasEnquadradas = periodoAquisitivo.faltasEnquadradas;"
+                        },
+                        "diasAdquiridos": {
+                            "descricao": "Retorna os dias já adquiridos até o momento do período aquisitivo de férias.",
+                            "exemplo": "BigDecimal diasAdquiridos = periodoAquisitivo.diasAdquiridos;"
+                        },
+                        "cancelados": {
+                            "descricao": "Retorna os dias cancelados do período aquisitivo de férias.",
+                            "exemplo": "BigDecimal cancelados = periodoAquisitivo.cancelados;"
+                        },
+                        "suspensos": {
+                            "descricao": "Retorna os dias suspensos do período aquisitivo de férias.",
+                            "exemplo": "BigDecimal suspensos = periodoAquisitivo.suspensos;"
+                        },
+                        "diasFeriasPagosRescisao": {
+                            "descricao": "Retorna os dias de férias que foram pagos em rescisão do período aquisitivo de férias.",
+                            "exemplo": "BigDecimal diasFeriasPagosRescisao = periodoAquisitivo.diasFeriasPagosRescisao;"
+                        },
+                        "pagouUmTercoIntegral": {
+                            "descricao": "Indicativo se terço integral das férias já foram pagos anteriormente, referente ao período aquisitivo de férias.",
+                            "exemplo": "Boolean pagouUmTercoIntegral = periodoAquisitivo.pagouUmTercoIntegral;"
+                        },
+                        "pagoRescisao": {
+                            "descricao": "Retorna o valor pago na rescisão.",
+                            "exemplo": "BigDecimal pagoRescisao = periodoAquisitivo.pagoRescisao;"
+                        },
+                        "valorReferenciaPago": {
+                            "descricao": "Retorna o valor de referência já pago no adiantamento das férias do período aquisitivo.",
+                            "exemplo": "BigDecimal valorReferenciaPago = periodoAquisitivo.valorReferenciaPago;"
+                        },
+                        "valorCalculadoPago": {
+                            "descricao": "Retorna o valor de calculado já pago no adiantamento das férias do período aquisitivo.",
+                            "exemplo": "BigDecimal valorCalculadoPago = periodoAquisitivo.valorCalculadoPago;"
+                        },
+                        "valorCalculadoPagoMediaVantagem": {
+                            "descricao": "O valor de calculado já pago no adiantamento das férias do período aquisitivo que foi pago em média ou vantagem.",
+                            "exemplo": "BigDecimal valorCalculadoPagoMediaVantagem = periodoAquisitivo.valorCalculadoPagoMediaVantagem;"
+                        }
+                    }
+                },
+                "periodoConcessao": {
+                    "descricao": "Retorna dados da concessão das férias que está sendo calculada.",
+                    "metodos": {
+                        "diasGozo": {
+                            "descricao": "Retorna os dias de gozo de férias que está sendo calculada.",
+                            "exemplo": "BigDecimal diasGozo = periodoConcessao.diasGozo;"
+                        },
+                        "diasFalta": {
+                            "descricao": "Retorna os dias de faltas de férias que está sendo calculada.",
+                            "exemplo": "int diasFalta = periodoConcessao.diasFalta;"
+                        },
+                        "dataPagamento": {
+                            "descricao": "Retorna a data do pagamento de férias que está sendo calculada.",
+                            "exemplo": "Date dataPagamento = periodoConcessao.dataPagamento;"
+                        },
+                        "dataInicioGozo": {
+                            "descricao": "Retorna a data do início de gozo de férias que está sendo calculada.",
+                            "exemplo": "Date dataInicioGozo = periodoConcessao.dataInicioGozo;"
+                        },
+                        "dataFimGozo": {
+                            "descricao": "Retorna a data do fim de gozo de férias que está sendo calculada.",
+                            "exemplo": "Date dataFimGozo = periodoConcessao.dataFimGozo;"
+                        },
+                        "diasAbono": {
+                            "descricao": "Retorna os dias de abono de férias que está sendo calculada.",
+                            "exemplo": "int diasAbono = periodoConcessao.diasAbono;"
+                        }
+                    }
+                },
+                "pensionista": {
+                    "descricao": "Retorna os dados da matrícula que sejam do tipo pensionista no cálculo.",
+                    "metodos": {
+                        "formaPagamento": {
+                            "descricao": "Retorna a forma de pagamento do pensionista.",
+                            "exemplo": "if (pensionista.formaPagamento.equals(FormaPagamento.CREDITO_EM_CONTA)) { imprimir 'A forma de pagamento é crédito em conta' }"
+                        },
+                        "grupoFuncional": {
+                            "descricao": "Retorna o grupo funcional do pensionista.",
+                            "exemplo": "String grupoFuncional = pensionista.grupoFuncional;"
+                        },
+                        "recebeDecimoTerceiro": {
+                            "descricao": "Indicativo se o pensionista recebe décimo terceiro salário.",
+                            "exemplo": "Boolean recebeDecimoTerceiro = pensionista.recebeDecimoTerceiro;"
+                        },
+                        "valorBeneficio": {
+                            "descricao": "Retorna o valor do benefício do pensionista.",
+                            "exemplo": "BigDecimal valorBeneficio = pensionista.valorBeneficio; valorCalculado = valorBeneficio;"
+                        },
+                        "dataInicioBeneficio": {
+                            "descricao": "Retorna a data do início do benefício do pensionista.",
+                            "exemplo": "Date dataInicioBeneficio = pensionista.dataInicioBeneficio;"
+                        },
+                        "dataCessacaoBeneficio": {
+                            "descricao": "Retorna a data de cessação do benefício do pensionista.",
+                            "exemplo": "if (pensionista.dataCessacaoBeneficio != null) { Date dataCessacaoBeneficio = pensionista.dataCessacaoBeneficio; }"
+                        },
+                        "descricaoOrganograma": {
+                            "descricao": "Retorna a descrição do organograma do pensionista.",
+                            "exemplo": "String descricaoOrganograma = pensionista.descricaoOrganograma;"
+                        },
+                        "agenciaPagamento": {
+                            "descricao": "Retorna a agência de pagamento do pensionista.",
+                            "exemplo": "String agenciaPagamento = pensionista.agenciaPagamento;"
+                        },
+                        "bancoPagamento": {
+                            "descricao": "Retorna o banco de pagamento do pensionista.",
+                            "exemplo": "String bancoPagamento = pensionista.bancoPagamento;"
+                        },
+                        "possuiFundoAssistencia": {
+                            "descricao": "Indicativo se o pensionista é optante da assistência municipal.",
+                            "exemplo": "Boolean possuiFundoAssistencia = pensionista.possuiFundoAssistencia;"
+                        },
+                        "possuiFundoFinanceiro": {
+                            "descricao": "Indicativo se o pensionista é optante do fundo de assistência.",
+                            "exemplo": "Boolean possuiFundoFinanceiro = pensionista.possuiFundoFinanceiro;"
+                        },
+                        "possuiPrevidenciaEstadual": {
+                            "descricao": "Indicativo se o pensionista é optante da previdência estadual.",
+                            "exemplo": "Boolean possuiPrevidenciaEstadual = pensionista.possuiPrevidenciaEstadual;"
+                        },
+                        "possuiPrevidenciaPropria": {
+                            "descricao": "Indicativo se o pensionista é optante da previdência própria.",
+                            "exemplo": "Boolean possuiPrevidenciaPropria = pensionista.possuiPrevidenciaPropria;"
+                        }
+                    }
+                },
+                "buscaPorSuspensao": {
+                    "descricao": "Permite buscar os dados das suspensões do pensionista que estão vigentes na competência informada.",
+                    "metodo": "buscaPorSuspensao()",
+                    "parametros": {
+                        "competencia": {
+                            "descricao": "Competência que será utilizada para buscar as suspensões cadastradas.",
+                            "obrigatorio": true
+                        }
+                    },
+                    "exemplo": {
+                        "codigo": "def suspensoes = pensionista.buscaPorSuspensao(calculo.competencia); def inicioSusp; def fimSusp; def motivoSusp; def descricaoSusp; suspensoes.each { suspensao -> inicioSusp = Datas.data(Datas.ano(suspensao.dataInicial), Datas.mes(suspensao.dataInicial), Datas.dia(suspensao.dataInicial)); fimSusp = Datas.data(Datas.ano(suspensao.dataFim), Datas.mes(suspensao.dataFim), Datas.dia(suspensao.dataFim)); motivoSusp = suspensao.motivo; descricaoSusp = suspensao.descricao; }"
+                    }
+                },
+                "buscaPorCessacao": {
+                    "descricao": "Permite buscar os dados das cessações do pensionista que estão vigentes na competência informada.",
+                    "metodo": "buscaPorCessacao()",
+                    "parametros": {
+                        "competencia": {
+                            "descricao": "Competência que será utilizada para buscar as cessações cadastradas.",
+                            "obrigatorio": true
+                        }
+                    },
+                    "exemplo": {
+                        "codigo": "def cessacoes = pensionista.buscaPorCessacao(calculo.competencia); def inicioCes; def fimCes; def motivoCes; def descricaoCes; def cnpjOrgaoSucessorCes; def dataEfeitoFinanceiroCer; cessacoes.each { cessacao -> inicioCes = Datas.data(Datas.ano(cessacao.dataInicial), Datas.mes(cessacao.dataInicial), Datas.dia(cessacao.dataInicial)); fimCes = Datas.data(Datas.ano(cessacao.dataFim), Datas.mes(cessacao.dataFim), Datas.dia(cessacao.dataFim)); motivoCes = cessacao.motivo; descricaoCes = cessacao.descricao; cnpjOrgaoSucessorCes = cessacao.cnpjOrgaoSucessorCes; dataEfeitoFinanceiroCer = Datas.data(Datas.ano(cessacao.dataEfeitoFinanceiro), Datas.mes(cessacao.dataEfeitoFinanceiro), Datas.dia(cessacao.dataEfeitoFinanceiro)); }"
+                    }
+                },
+                "periodoAquisitivoDecimoTerceiro": {
+                    "descricao": "Retorna dados do período aquisitivo de décimo terceiro que está sendo calculado/consultado.",
+                    "metodos": {
+                        "avosAdquiridos": {
+                            "descricao": "Retorna os avos adquiridos de décimo terceiro salário.",
+                            "codigo": "int avosAdquiridos = periodoAquisitivoDecimoTerceiro.avosAdquiridos"
+                        },
+                        "avosAdquiridosFgts": {
+                            "descricao": "Retorna os avos adquiridos para cálculo de FGTS de décimo terceiro salário.",
+                            "codigo": "int avosAdquiridosFgts = periodoAquisitivoDecimoTerceiro.avosAdquiridosFgts"
+                        },
+                        "avosPerdidos": {
+                            "descricao": "Retorna os avos perdidos de décimo terceiro salário.",
+                            "codigo": "int avosPerdidos = periodoAquisitivoDecimoTerceiro.avosPerdidos"
+                        },
+                        "avosDireito": {
+                            "descricao": "Retorna os avos de direito de décimo terceiro salário.",
+                            "codigo": "int avosDireito = periodoAquisitivoDecimoTerceiro.avosDireito"
+                        },
+                        "anoExercicio": {
+                            "descricao": "Retorna o ano de exercício de décimo terceiro salário.",
+                            "codigo": "int anoExercicio = periodoAquisitivoDecimoTerceiro.anoExercicio"
+                        },
+                        "movimentacoes": {
+                            "descricao": "Retorna uma lista de movimentações do período aquisitivo de décimo terceiro salário.",
+                            "codigo": "periodoAquisitivoDecimoTerceiro.movimentacoes.each{ m -> imprimir \"competencia : $m.competencia\"; imprimir \"consideraAvosPerdidos : $m.consideraAvosPerdidos\"; imprimir \"valor : $m.valor\"; imprimir \"motivo : $m.motivo\"; }"
+                        },
+                        "situacao": {
+                            "descricao": "Retorna a situação do período aquisitivo de décimo terceiro salário.",
+                            "codigo": "if (periodoAquisitivoDecimoTerceiro.situacao == SituacaoPeriodoAquisitivoDecimoTerceiro.EM_ANDAMENTO) { imprimir \"A situação do período é em andamento\"; }"
+                        },
+                        "dataInicial": {
+                            "descricao": "Retorna a data inicial do período aquisitivo de décimo terceiro salário.",
+                            "codigo": "Date dataInicial = periodoAquisitivoDecimoTerceiro.dataInicial"
+                        },
+                        "dataFinal": {
+                            "descricao": "Retorna a data final do período aquisitivo de décimo terceiro salário.",
+                            "codigo": "Date dataFinal = periodoAquisitivoDecimoTerceiro.dataFinal"
+                        },
+                        "totalMovimentacoes": {
+                            "descricao": "Retorna o valor total de movimentações do período aquisitivo de décimo terceiro salário.",
+                            "codigo": "BigDecimal totalMovimentacoes = periodoAquisitivoDecimoTerceiro.totalMovimentacoes"
+                        },
+                        "totalMovimentacoesByMotivo": {
+                            "descricao": "Retorna o valor total de movimentações do período aquisitivo de décimo terceiro salário por motivo.",
+                            "parametros": {
+                                "motivo": {
+                                    "descricao": "Motivo da movimentação.",
+                                    "obrigatorio": true
+                                }
+                            },
+                            "codigo": "BigDecimal totalMovimentacaoPorMotivo = periodoAquisitivoDecimoTerceiro.totalMovimentacoesByMotivo(MotivoMovimentacaoPeriodoAquisitivoDecimoTerceiro.ADIANTAMENTO_DECIMO_TERCEIRO)"
+                        }
+                    }
+                },
+                "servidor": {
+                    "descricao": "Retorna os dados do servidor/pessoa",
+                    "metodos": {
+                        "grauEscolaridade": {
+                            "descricao": "Retorna o grau de escolaridade do servidor.",
+                            "codigo": "if (servidor.grauEscolaridade.toString().equals('ENSINO_FUNDAMENTAL_ANOS_INICIAIS')) { imprimir \"O grau de escolaridade é ENSINO_FUNDAMENTAL_ANOS_INICIAIS\"; }"
+                        },
+                        "dataNascimento": {
+                            "descricao": "Retorna a data de nascimento do servidor.",
+                            "codigo": "Date dataNascimento = servidor.dataNascimento; int idade = Datas.diferencaDias(dataNascimento, calculo.competencia) / 365;"
+                        },
+                        "estadoCivil": {
+                            "descricao": "Retorna o estado civil do servidor.",
+                            "codigo": "if (servidor.estadoCivil.toString().equals('CASADO')) { imprimir \"Esta civil do servidor é casado\"; }"
+                        },
+                        "nacionalidade": {
+                            "descricao": "Retorna a nacionalidade do servidor.",
+                            "codigo": "String nacionalidade = servidor.nacionalidade;"
+                        },
+                        "dataChegada": {
+                            "descricao": "Retorna a data da chegada do servidor estrangeiro.",
+                            "codigo": "Date dataChegada = servidor.dataChegada;"
+                        },
+                        "dependentes": {
+                            "descricao": "Retorna a quantidade geral de dependentes do servidor.",
+                            "codigo": "Long dependentes = servidor.dependentes;"
+                        },
+                        "buscaDependentes": {
+                            "descricao": "Retorna a lista com todos os dados de dependentes do servidor.",
+                            "codigo": "servidor.buscaDependentes.sum(0, { it.pensao ? 1 : 0 }); servidor.buscaDependentes.each { dependente -> imprimir \"dataInicio : $dependente.dataInicio\"; imprimir \"dataTermino : $dependente.dataTermino\"; imprimir \"dataNascimento : $dependente.dataNascimento\"; imprimir \"salarioFamilia : $dependente.salarioFamilia\"; imprimir \"irrf : $dependente.irrf\"; if (dependente.pensao) { if (dependente.aplicacaoDesconto.toString().equals('VALOR_PERCENTUAL')) { valorPensaoPorDependente = (salario * dependente.percentualDesconto / 100) / quantidadePensionistas; } else { valorPensaoPorDependente = dependente.valorDesconto; } dependente.aplicaRateio(valorPensaoPorDependente); valorTotalPensao += valorPensaoPorDependente; } }"
+                        },
+                        "sexo": {
+                            "descricao": "Retorna o sexo do servidor.",
+                            "codigo": "if (servidor.sexo == Sexo.MASCULINO) { imprimir \"Sexo do servidor é masculino\"; }"
+                        },
+                        "dependentesIrrf": {
+                            "descricao": "Retorna a quantidade de dependentes de IRRF do servidor.",
+                            "codigo": "Long dependentesIrrf = servidor.dependentesIrrf;"
+                        },
+                        "possuiMolestiaGrave": {
+                            "descricao": "Indicativo se servidor possui moléstia grave.",
+                            "codigo": "Boolean possuiMolestiaGrave = servidor.possuiMolestiaGrave;"
+                        }
+                    }
+                },
+                "valorCalculado": {
+                    "descricao": "É a variável responsável por registrar o valor para o cálculo do evento. O valor final calculado deve ser atribuído a esta propriedade.",
+                    "codigo": "vaux = Funcoes.calcprop(funcionario.salario, funcionario.quantidadeHorasMes); valorCalculado = vaux;"
+                },
+                "valorReferencia": {
+                    "descricao": "É a variável responsável por registrar o valor de referência do evento. O valor final de referência deve ser atribuído a esta propriedade.",
+                    "codigo": "vaux = Funcoes.calcprop(funcionario.salario, funcionario.quantidadeHorasMes); valorReferencia = funcionario.quantidadeHorasMes;"
+                }
+            }
+        ]
+    }
+}
