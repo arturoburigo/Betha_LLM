@@ -1,0 +1,87 @@
+{
+  "perguntas_respostas": {
+    "geral": {
+      "pergunta": "O que \u00e9 o objeto estagiario e qual sua fun\u00e7\u00e3o principal?",
+      "resposta": "O objeto estagiario retorna os dados da matr\u00edcula que sejam do tipo estagi\u00e1rio no c\u00e1lculo. Ele permite acessar todas as informa\u00e7\u00f5es relacionadas ao cadastro e configura\u00e7\u00f5es do estagi\u00e1rio."
+    },
+    "dados_pagamento": {
+      "pergunta": "Como posso acessar as informa\u00e7\u00f5es banc\u00e1rias e de pagamento do estagi\u00e1rio?",
+      "resposta": {
+        "descricao": "Existem v\u00e1rias propriedades relacionadas ao pagamento:",
+        "variaveis": [
+          "formaPagamento: Retorna a forma de pagamento do estagi\u00e1rio",
+          "bancoPagamento: Retorna o banco de pagamento",
+          "agenciaPagamento: Retorna a ag\u00eancia de pagamento",
+          "bolsaEstudos: Retorna o valor da bolsa de estudos (remunera\u00e7\u00e3o)"
+        ],
+        "exemplo": {
+          "forma_pagamento": "if (estagiario.formaPagamento == FormaPagamento.DINHEIRO) { imprimir 'Forma de pagamento \u00e9 em dinheiro'; }",
+          "dados_bancarios": "String bancoPagamento = estagiario.bancoPagamento;\nString agenciaPagamento = estagiario.agenciaPagamento;"
+        }
+      }
+    },
+    "dados_salariais": {
+      "pergunta": "Como posso obter informa\u00e7\u00f5es sobre o plano salarial do estagi\u00e1rio?",
+      "resposta": {
+        "descricao": "O objeto estagiario possui v\u00e1rias propriedades relacionadas \u00e0 estrutura salarial:",
+        "variaveis": [
+          "grupoFuncional: Retorna o grupo funcional",
+          "planoSalarial: Retorna o plano salarial",
+          "classeSalarial: Retorna a classe salarial",
+          "nivelSalarial: Retorna o n\u00edvel salarial",
+          "nivelSalarialCoeficiente: Indica se o n\u00edvel salarial possui coeficiente"
+        ],
+        "exemplos": {
+          "acesso_basico": "String planoSalarial = estagiario.planoSalarial;\nString classeSalarial = estagiario.classeSalarial;",
+          "verificacao_coeficiente": "Boolean nivelSalarialCoeficiente = estagiario.nivelSalarialCoeficiente;"
+        }
+      }
+    },
+    "periodo_estagio": {
+      "pergunta": "Como verificar as datas e per\u00edodos relacionados ao est\u00e1gio?",
+      "resposta": {
+        "descricao": "Existem v\u00e1rias propriedades para controle de datas do est\u00e1gio:",
+        "variaveis": [
+          "dataInicioEstagio: Data de in\u00edcio do est\u00e1gio",
+          "dataFinalEstagio: Data final do est\u00e1gio",
+          "dataProrrogacao: Data da prorroga\u00e7\u00e3o do est\u00e1gio"
+        ],
+        "exemplo": {
+          "verificacao_data": "Date dataInicioEstagio = estagiario.dataInicioEstagio;\nDate dataFinalEstagio = estagiario.dataFinalEstagio;",
+          "verificacao_prorrogacao": "if (estagiario.dataProrrogacao != null) { Date dataProrrogacao = estagiario.dataProrrogacao; }"
+        }
+      }
+    },
+    "ferias_beneficios": {
+      "pergunta": "Como consultar informa\u00e7\u00f5es sobre f\u00e9rias e benef\u00edcios do estagi\u00e1rio?",
+      "resposta": {
+        "descricao": "O objeto possui propriedades espec\u00edficas para f\u00e9rias e benef\u00edcios:",
+        "variaveis": [
+          "recebeDecimoTerceiro: Indica se recebe 13\u00ba conforme configura\u00e7\u00e3o do cargo",
+          "diasDireitoFerias: Dias de direito de f\u00e9rias conforme configura\u00e7\u00e3o",
+          "mesesAquisicaoFerias: Meses para aquisi\u00e7\u00e3o de f\u00e9rias"
+        ],
+        "exemplos": {
+          "verificacao_13": "Boolean recebeDecimoTerceiro = estagiario.recebeDecimoTerceiro;",
+          "consulta_ferias": "int diasDireitoFerias = estagiario.diasDireitoFerias;\nint mesesAquisicaoFerias = estagiario.mesesAquisicaoFerias;"
+        }
+      }
+    },
+    "carga_horaria": {
+      "pergunta": "Como verificar a carga hor\u00e1ria do estagi\u00e1rio?",
+      "resposta": {
+        "descricao": "Use a propriedade quantidadeHorasMes",
+        "exemplo": "BigDecimal quantidadeHorasMes = estagiario.quantidadeHorasMes;\nif (quantidadeHorasMes < BigDecimal.valueOf(100)) {\n    imprimir 'Quantidade de horas m\u00eas \u00e9 menor que 100';\n}",
+        "observacao": "O valor retornado \u00e9 do tipo BigDecimal para maior precis\u00e3o no c\u00e1lculo"
+      }
+    },
+    "dados_organizacionais": {
+      "pergunta": "Como obter informa\u00e7\u00f5es sobre a localiza\u00e7\u00e3o organizacional do estagi\u00e1rio?",
+      "resposta": {
+        "descricao": "Use a propriedade descricaoOrganograma",
+        "exemplo": "String descricaoOrganograma = estagiario.descricaoOrganograma;",
+        "observacao": "Retorna a descri\u00e7\u00e3o completa do organograma onde o estagi\u00e1rio est\u00e1 alocado"
+      }
+    }
+  }
+}
